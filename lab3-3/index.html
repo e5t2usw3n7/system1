@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="http://zju-sys.pages.zjusct.io/sys1/sys1-sp24/lab3-3/" rel="canonical"/>
+<link href="../lab3-2/" rel="prev"/>
+<link href="../lab3-1-appendix/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.34" name="generator"/>
+<title>第三部分 - 浙江大学24年春夏系统一实验</title>
+<link href="../assets/stylesheets/main.35f28582.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#3-3">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-header__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            浙江大学24年春夏系统一实验
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              第三部分
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-nav__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    浙江大学24年春夏系统一实验
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    首页
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导零
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            实验指导零
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2-appendix/">
+<span class="md-ellipsis">
+    附录：verilog 与电路
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导一
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            实验指导一
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导二
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            实验指导二
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1-appendix/">
+<span class="md-ellipsis">
+    附录：参数式编程
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导三
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            实验指导三
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    第三部分
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    第三部分
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      实验目的
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      实验环境
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      背景知识
+    </span>
+</a>
+<nav aria-label="背景知识" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiplier">
+<span class="md-ellipsis">
+      乘法器（Multiplier）
+    </span>
+</a>
+<nav aria-label="乘法器（Multiplier）" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      乘法器的基本概念
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      乘法器的硬件实现
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      乘法器的优化实现
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      逻辑设计到电路设计范式
+    </span>
+</a>
+<nav aria-label="逻辑设计到电路设计范式" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      得到逻辑算法设计
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      状态机设计
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      各阶段电路设计
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      状态机控制寄存器
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      总结
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#start-finish">
+<span class="md-ellipsis">
+      start-finish 握手信号
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+<span class="md-ellipsis">
+      实验步骤
+    </span>
+</a>
+<nav aria-label="实验步骤" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_14">
+<span class="md-ellipsis">
+      实验前准备
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_15">
+<span class="md-ellipsis">
+      设计参数配置的无符号乘法器
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_16">
+<span class="md-ellipsis">
+      仿真
+    </span>
+</a>
+<nav aria-label="仿真" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_17">
+<span class="md-ellipsis">
+      仿真样例生成
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dpi-c">
+<span class="md-ellipsis">
+      DPI-C 实践
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_18">
+<span class="md-ellipsis">
+      综合下板
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#40">
+<span class="md-ellipsis">
+      实验报告 40%
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_19">
+<span class="md-ellipsis">
+      代码提交
+    </span>
+</a>
+<nav aria-label="代码提交" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#40_1">
+<span class="md-ellipsis">
+      验收检查点 40%
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_20">
+<span class="md-ellipsis">
+      提交文件
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1-appendix/">
+<span class="md-ellipsis">
+    附录：reg 与时序电路
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-3-appendix/">
+<span class="md-ellipsis">
+    附录：阻塞赋值
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导四
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            实验指导四
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1-appendix/">
+<span class="md-ellipsis">
+    附录：SystemVerilog 高级语法
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导五
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            实验指导五
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导 project
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            实验指导 project
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-bonus/">
+<span class="md-ellipsis">
+    Bonus
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2-appendix/">
+<span class="md-ellipsis">
+    附录：处理器差分测试
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setup/">
+<span class="md-ellipsis">
+    环境配置
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../issue/">
+<span class="md-ellipsis">
+    提交提问
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pull/">
+<span class="md-ellipsis">
+    提交修改
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      实验目的
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      实验环境
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      背景知识
+    </span>
+</a>
+<nav aria-label="背景知识" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiplier">
+<span class="md-ellipsis">
+      乘法器（Multiplier）
+    </span>
+</a>
+<nav aria-label="乘法器（Multiplier）" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      乘法器的基本概念
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      乘法器的硬件实现
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      乘法器的优化实现
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      逻辑设计到电路设计范式
+    </span>
+</a>
+<nav aria-label="逻辑设计到电路设计范式" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      得到逻辑算法设计
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      状态机设计
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      各阶段电路设计
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      状态机控制寄存器
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      总结
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#start-finish">
+<span class="md-ellipsis">
+      start-finish 握手信号
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+<span class="md-ellipsis">
+      实验步骤
+    </span>
+</a>
+<nav aria-label="实验步骤" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_14">
+<span class="md-ellipsis">
+      实验前准备
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_15">
+<span class="md-ellipsis">
+      设计参数配置的无符号乘法器
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_16">
+<span class="md-ellipsis">
+      仿真
+    </span>
+</a>
+<nav aria-label="仿真" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_17">
+<span class="md-ellipsis">
+      仿真样例生成
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dpi-c">
+<span class="md-ellipsis">
+      DPI-C 实践
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_18">
+<span class="md-ellipsis">
+      综合下板
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#40">
+<span class="md-ellipsis">
+      实验报告 40%
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_19">
+<span class="md-ellipsis">
+      代码提交
+    </span>
+</a>
+<nav aria-label="代码提交" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#40_1">
+<span class="md-ellipsis">
+      验收检查点 40%
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_20">
+<span class="md-ellipsis">
+      提交文件
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24/-/blob/master/docs/lab3-3.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
+</a>
+<h1 id="3-3">实验<span class="heti-skip"><span class="heti-spacing"> </span>3-3:<span class="heti-spacing"> </span></span>乘法器<a class="headerlink" href="#3-3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<h2 id="_1">实验目的<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>继续学习时序电路设计的方法</li>
+<li>设计实现乘法器</li>
+</ul>
+<h2 id="_2">实验环境<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>操作系统：Windows 10+ 22H2，Ubuntu 22.04+</li>
+<li>VHDL：Verilog，SystemVerilog</li>
+</ul>
+<h2 id="_3">背景知识<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="multiplier">乘法器（Multiplier）<a class="headerlink" href="#multiplier" title="Permanent link">¶</a></h3>
+<h4 id="_4">乘法器的基本概念<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>被乘数<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>1000</span>，乘数<span class="heti-skip"><span class="heti-spacing"> </span>y<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>1001</span>，下面的乘法过程是手工运算的一个步骤，而计算机在做乘法时就是模拟手工运算的执行过程。 </p>
+<p><img alt="" src="../img/lab3-3/5.png"/></p>
+<h4 id="_5">乘法器的硬件实现<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>因为是两个<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>位数相乘，所以结果应该是四个数加和得到的。</p>
+<ul>
+<li>先判断<span class="heti-skip"><span class="heti-spacing"> </span>y<span class="heti-spacing"> </span></span>的最低位是<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>还是<span><span class="heti-spacing"> </span>1</span></li>
+<li>如果是<span><span class="heti-spacing"> </span>1</span>，则需要把<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>加到部分积上，若为<span><span class="heti-spacing"> </span>0</span>，则保持原值</li>
+<li><span>x<span class="heti-spacing"> </span></span>左移一位，之后再让<span class="heti-skip"><span class="heti-spacing"> </span>y<span class="heti-spacing"> </span></span>右移一位</li>
+<li>若<span class="heti-skip"><span class="heti-spacing"> </span>y<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>0</span>，则循环结束，否则继续此循环过程。</li>
+</ul>
+<p>电路图和流程图如下。</p>
+<p><img alt="" src="../img/lab3-3/6.png"/></p>
+<p><img alt="" src="../img/lab3-3/7.png"/></p>
+<h4 id="_6">乘法器的优化实现<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>为了节省不必要的硬件消耗，乘法器可以做如下的优化</p>
+<p><img alt="" src="../img/lab3-3/8.png"/></p>
+<p>这样子节省了乘数寄存器、被乘数寄存器的位宽，被乘数寄存器也不需要设计为移位寄存器</p>
+<p>如果是<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位的流程图如下：</p>
+<p><img alt="" src="../img/lab3-3/9.png"/></p>
+<h3 id="_7">逻辑设计到电路设计范式<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>在设计电路的时候，我们首先获得的是一个任务，然后我们根据任务需要设计一个算法，那么我们要怎么将这个算法转换为我们的电路，有什么通用的方法吗？我们可以以上面乘法器算法为例做一个简要介绍：</p>
+<h4 id="_8">得到逻辑算法设计<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>我们也可以用一些伪代码来描述上面的乘法算法：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="n">high_product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="n">low_product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiplier</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="c1">// 初始化阶段，product 的高 64 位载入 0</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="c1">// product 的低 64 位载入乘数</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">64</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">        </span><span class="c1">// 计算阶段，需要经历 64 次迭代</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">low_product</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">            </span><span class="n">high_product_tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">high_product</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiplicand</span><span class="p">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">            </span><span class="n">high_product_tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">high_product</span><span class="p">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">        </span><span class="c1">// 参考列竖式的计算方式，每次迭代都做一次加法，不要忘记加法的进位</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">        </span><span class="p">{</span><span class="n">high_product</span><span class="p">,</span><span class="w"> </span><span class="n">low_product</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">high_product_tmp</span><span class="p">,</span><span class="w"> </span><span class="n">low_product</span><span class="p">}</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">        </span><span class="c1">// 加法的结果右移，等价于被乘数左移，起到进位的作用</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">        </span><span class="c1">// 乘数的右移既是为了给加法的右移提供空间</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">        </span><span class="c1">// 空余多得到的 1 bit 可以存放加法的进位</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">        </span><span class="c1">// 下次迭代要参考的乘数的 0/1 bit 可以在 low_product 的最低位</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">high_product</span><span class="p">,</span><span class="w"> </span><span class="n">low_product</span><span class="p">};</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="c1">// 结束阶段，返回最终结果</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="_9">状态机设计<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>在算法中我们可以总结出若干个状态，这里是三个状态：初始化、迭代、结束。</p>
+<p>所以，我们的乘法器的有限状态机也可以由三个状态进行控制：</p>
+<ul>
+<li>
+<p>初始状态：当模块被使能时（因此需要额外的<span class="heti-skip"><span class="heti-spacing"> </span>start<span class="heti-spacing"> </span></span>信号作为<span><span class="heti-spacing"> </span>request</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，将被乘数、乘数载入对应的寄存器，进入工作状态开始执行迭代</p>
+</li>
+<li>
+<p>工作状态：执行加法、根据乘数的<span class="heti-skip"><span class="heti-spacing"> </span>bit<span class="heti-spacing"> </span></span>值选择是用加法结果还是载入原值、计算结果移位后载入寄存器、计数器迭代，迭代到次数了进入结束状态</p>
+</li>
+<li>
+<p>结束状态：输出最终结果，并通知调用方接收结果（因此需要额外的<span class="heti-skip"><span class="heti-spacing"> </span>finish<span class="heti-spacing"> </span></span>信号作为<span><span class="heti-spacing"> </span>reply</span>）</p>
+</li>
+</ul>
+<p>我们可以设计如下的有限状态机：</p>
+<p><img alt="state-multiplier" src="../img/lab3-3/state.png"/></p>
+<h4 id="_10">各阶段电路设计<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>现在我们为每个寄存器的每个阶段设计对应的电路</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/><input id="__tabbed_1_2" name="__tabbed_1" type="radio"/><input id="__tabbed_1_3" name="__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="__tabbed_1_1">初始化阶段</label><label for="__tabbed_1_2">工作阶段</label><label for="__tabbed_1_3">结束阶段</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>之后我们来看初始化每个寄存器需要的计算电路：</p>
+<ul>
+<li><span>multiplicand<span class="heti-spacing"> </span></span>寄存器载入输入的被乘数</li>
+<li><span>product<span class="heti-spacing"> </span></span>寄存器载入<span class="heti-skip"><span class="heti-spacing"> </span>multiplier<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>0</span></li>
+</ul>
+<p><img alt="init-state" src="../img/lab3-3/init.png"/></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><span>multiplicand<span class="heti-spacing"> </span></span>保持不变</li>
+<li><span>product<span class="heti-spacing"> </span></span>载入加法运算、选择运算、移位运算的结果</li>
+</ul>
+<p><img alt="work-state" src="../img/lab3-3/work.png"/></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><span>multiplicand<span class="heti-spacing"> </span></span>保持不变</li>
+<li><span>product<span class="heti-spacing"> </span></span>保持不变</li>
+</ul>
+</div>
+</div>
+</div>
+<h4 id="_11">状态机控制寄存器<a class="headerlink" href="#_11" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>可以看到每个状态下，每个寄存器需要的计算电路和载入的结果都略有不同，所以这里的每一套计算电路我们都是需要实现的，然后根据状态机的状态将对应的计算电路的计算结果用选择器选择出来，载入给对应的寄存器。</p>
+<p>所以寄存器和状态机的协同电路如下：</p>
+<p><img alt="full-circuit" src="../img/lab3-3/full.png"/></p>
+<h4 id="_12">总结<a class="headerlink" href="#_12" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>我们可以简单总结这个形式化设计的过程：</p>
+<ol>
+<li>将任务转换为算法，写出对应的伪代码</li>
+<li>根据伪代码总结出多个执行阶段和变量参数（一些控制流和数据流分析的方法）</li>
+<li>根据执行阶段的流程图总结出有限状态机的状态和状态转移</li>
+<li>根据数据流总结出需要的寄存器</li>
+<li>为每个寄存器设计每个阶段下的算术运算、选择运算对应的组合电路</li>
+<li>有限状态机的状态通过译码，为每个寄存器多个状态下的不同组合电路的结果输入提供选择子、为每个寄存器提供使能信号</li>
+</ol>
+<h3 id="start-finish"><span>start-finish<span class="heti-spacing"> </span></span>握手信号<a class="headerlink" href="#start-finish" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>考虑以下场景，我们的处理器有时需要使用乘法器进行乘法操作。因此处理器需要信号通知乘法器单元接收运算内容、开始乘法运算，当乘法器单元执行结束之后，乘法器需要信号通知处理器计算完毕、接收运算结果。所以可以定义简单的<span class="heti-skip"><span class="heti-spacing"> </span>start-finish<span class="heti-spacing"> </span></span>握手协议：</p>
+<ul>
+<li>
+<p>调用模块（caller）向被调用模块（callee）发送只要被执行的数据和至少持续一个周期的<span class="heti-skip"><span class="heti-spacing"> </span>start<span class="heti-spacing"> </span></span>信号，当<span class="heti-skip"><span class="heti-spacing"> </span>start = 1<span class="heti-spacing"> </span></span>的时候发送的数据有效；<span>callee<span class="heti-spacing"> </span></span>发现<span class="heti-skip"><span class="heti-spacing"> </span>start = 1<span class="heti-spacing"> </span></span>必须立刻接受<span class="heti-skip"><span class="heti-spacing"> </span>caller<span class="heti-spacing"> </span></span>的数据，因为<span class="heti-skip"><span class="heti-spacing"> </span>start<span class="heti-spacing"> </span></span>复位后数据有效性不能保证
+<img alt="" src="../img/lab3-3/start-finish-1.png"/></p>
+</li>
+<li>
+<p><span>callee<span class="heti-spacing"> </span></span>执行结束后向<span class="heti-skip"><span class="heti-spacing"> </span>caller<span class="heti-spacing"> </span></span>发送执行结果和至少持续一个周期的<span class="heti-skip"><span class="heti-spacing"> </span>finish<span class="heti-spacing"> </span></span>信号，当<span class="heti-skip"><span class="heti-spacing"> </span>finish = 1<span class="heti-spacing"> </span></span>的时候发送的数据有效；被<span class="heti-skip"><span class="heti-spacing"> </span>caller<span class="heti-spacing"> </span></span>发现<span class="heti-skip"><span class="heti-spacing"> </span>finish = 1<span class="heti-spacing"> </span></span>必须立刻接受<span class="heti-skip"><span class="heti-spacing"> </span>callee<span class="heti-spacing"> </span></span>的数据，因为<span class="heti-skip"><span class="heti-spacing"> </span>finish<span class="heti-spacing"> </span></span>复位后数据有效性不能保证
+<img alt="" src="../img/lab3-3/start-finish-2.png"/></p>
+</li>
+<li>
+<p>当一个<span class="heti-skip"><span class="heti-spacing"> </span>start<span class="heti-spacing"> </span></span>请求被发送而<span class="heti-skip"><span class="heti-spacing"> </span>finish<span class="heti-spacing"> </span></span>请求没有反馈之前，不能发送下一个<span class="heti-skip"><span class="heti-spacing"> </span>start<span class="heti-spacing"> </span></span>请求，<span>callee<span class="heti-spacing"> </span></span>不保证是否响应；<span>caller<span class="heti-spacing"> </span></span>只有收到<span class="heti-skip"><span class="heti-spacing"> </span>callee<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>finish<span class="heti-spacing"> </span></span>信号之后，才可以发送下一个<span class="heti-skip"><span class="heti-spacing"> </span>start<span class="heti-spacing"> </span></span>信号
+<img alt="" src="../img/lab3-3/start-finish-3.png"/></p>
+</li>
+<li>
+<p>当一个<span class="heti-skip"><span class="heti-spacing"> </span>start<span class="heti-spacing"> </span></span>请求没被发送，<span>caller<span class="heti-spacing"> </span></span>不能发送<span><span class="heti-spacing"> </span>finish</span></p>
+</li>
+</ul>
+<p>其中<span class="heti-skip"><span class="heti-spacing"> </span>caller<span class="heti-spacing"> </span></span>发送给<span class="heti-skip"><span class="heti-spacing"> </span>callee<span class="heti-spacing"> </span></span>的数据和<span class="heti-skip"><span class="heti-spacing"> </span>start<span class="heti-spacing"> </span></span>信号作为<span class="heti-skip"><span class="heti-spacing"> </span>caller<span class="heti-spacing"> </span></span>发送给<span class="heti-skip"><span class="heti-spacing"> </span>callee<span class="heti-spacing"> </span></span>的请求信号（request<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；<span>callee<span class="heti-spacing"> </span></span>发送给<span class="heti-skip"><span class="heti-spacing"> </span>caller<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>finish<span class="heti-spacing"> </span></span>信号作为<span class="heti-skip"><span class="heti-spacing"> </span>callee<span class="heti-spacing"> </span></span>响应<span class="heti-skip"><span class="heti-spacing"> </span>caller<span class="heti-spacing"> </span></span>的回应信号（resp）</p>
+<p><img alt="" src="../img/lab3-3/request-reply.png"/></p>
+<p><span>multiplier<span class="heti-spacing"> </span></span>乘法器的调用遵循该协议。</p>
+<h2 id="_13">实验步骤<a class="headerlink" href="#_13" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_14">实验前准备<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>与之前的<span class="heti-skip"><span class="heti-spacing"> </span>lab<span class="heti-spacing"> </span></span>相同，启动安装在你电脑中的<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu 22.04<span class="heti-spacing"> </span></span>环境（<span>WSL<span class="heti-spacing"> </span></span>或虚拟机）</p>
+<p><span>cd<span class="heti-spacing"> </span></span>到<span class="heti-skip"><span class="heti-spacing"> </span>sys1-sp24<span class="heti-spacing"> </span></span>文件夹</p>
+<p>执行</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>repo/sys-project
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>other
+</code></pre></div></td></tr></table></div>
+<h3 id="_15">设计参数配置的无符号乘法器<a class="headerlink" href="#_15" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>仔细阅读指导，编写<code>src/lab3-3/submit/multiplier</code>文件夹下的文件，按照<strong><span>3.2.3<span class="heti-spacing"> </span></span>优化乘法器实现</strong>的方法设计无符号乘法器。</p>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>如果想要获得<span class="heti-skip"><span class="heti-spacing"> </span>LEN<span class="heti-spacing"> </span></span>位的<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>或者<span><span class="heti-spacing"> </span>1</span>，不能使用<code>LEN'b0</code>或者<code>LEN'b1</code>，而要使用<code>{LEN{1'b0}}</code>和<code>{LEN{1'b1}}</code>。</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">module</span><span class="w"> </span><span class="n">Multiplier</span><span class="w"> </span><span class="p">#(</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">LEN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="c1">// 乘数、被乘数的长度参数</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">)</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="c1">// 使用 rst，rst = 1 复位</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="n">LEN</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">multiplicand</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="n">LEN</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">multiplier</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="n">LEN</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">product</span><span class="p">,</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">finish</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="p">);</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">    </span><span class="k">localparam</span><span class="w"> </span><span class="n">PRODUCT_LEN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LEN</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">    </span><span class="c1">// 表示乘积的位宽</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="n">LEN</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">multiplicand_reg</span><span class="p">;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">    </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="n">PRODUCT_LEN</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">product_reg</span><span class="p">;</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">    </span><span class="k">localparam</span><span class="w"> </span><span class="n">CNT_LEN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">$</span><span class="n">clog2</span><span class="p">(</span><span class="n">LEN</span><span class="p">);</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">    </span><span class="c1">// 表示迭代计数器的位宽</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">    </span><span class="k">localparam</span><span class="w"> </span><span class="n">CNT_NUM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LEN</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="w">    </span><span class="c1">// 迭代需要的立即数，大家按需使用</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="w">    </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="n">CNT_LEN</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">work_cnt</span><span class="p">;</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">    </span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="n">IDLE</span><span class="p">,</span><span class="w"> </span><span class="n">WORK</span><span class="p">,</span><span class="w"> </span><span class="n">FINAL</span><span class="p">}</span><span class="w"> </span><span class="n">fsm_state</span><span class="p">;</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="w">    </span><span class="c1">// 有限状态机</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="w">    </span><span class="n">fsm_state</span><span class="w"> </span><span class="n">fsm_state_reg</span><span class="p">;</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">    </span><span class="c1">// fill the code</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a>
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="_16">仿真<a class="headerlink" href="#_16" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<h4 id="_17">仿真样例生成<a class="headerlink" href="#_17" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>在<code>sim/testbench.v</code>的仿真激励中生成不少于<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>组随机样例，并且<span class="heti-skip"><span class="heti-spacing"> </span>start<span class="heti-spacing"> </span></span>信号的激励要满足<span class="heti-skip"><span class="heti-spacing"> </span>start-finish<span class="heti-spacing"> </span></span>协议</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="w">    </span><span class="k">integer</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="k">initial</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">        </span><span class="n">clk</span><span class="o">=</span><span class="mh">0</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="n">rst</span><span class="o">=</span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">        </span><span class="p">#</span><span class="mh">20</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">        </span><span class="n">rst</span><span class="o">=</span><span class="mh">0</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">        </span><span class="c1">// fill the code</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">        </span><span class="nb">$display</span><span class="p">(</span><span class="s">"success!!!"</span><span class="p">);</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">        </span><span class="nb">$finish</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="dpi-c"><span>DPI-C<span class="heti-spacing"> </span></span>实践<a class="headerlink" href="#dpi-c" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>本次乘法器的从差分测试继续使用<span class="heti-skip"><span class="heti-spacing"> </span>DPI-C<span class="heti-spacing"> </span></span>函数接口提供验证功能。请在<code>sim/judge.v</code>中补全<span class="heti-skip"><span class="heti-spacing"> </span>mul_judge<span class="heti-spacing"> </span></span>函数的<span class="heti-skip"><span class="heti-spacing"> </span>DPI-C<span class="heti-spacing"> </span></span>接口声明，在<code>sim/judge.cpp</code> 中实现乘法判断功能。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">// fill the declaration</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">module</span><span class="w"> </span><span class="n">Judge</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rstn</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">multiplicand</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">multiplier</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">63</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">product</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">finish</span><span class="p">,</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">error</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">extern</span><span class="w"> </span><span class="s">"C"</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mul_judge</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">multiplicand</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">multiplier</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">product</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="p">){</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="c1">// fill the code</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">right</span><span class="p">){</span><span class="w"> </span><span class="c1">// right 是仿真结果和执行结果是否一致</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"*********error***********</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"simulation multiplicand = %08x, multiplier = %08x, product = %016llx</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">multiplicand</span><span class="p">,</span><span class="w"> </span><span class="n">multiplier</span><span class="p">,</span><span class="w"> </span><span class="n">simulate_result</span><span class="p">);</span><span class="c1">// simulate_result 是仿真得到的 product 结果</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"hardware   multiplicand = %08x, multiplier = %08x, product = %016llx</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">multiplicand</span><span class="p">,</span><span class="w"> </span><span class="n">multiplier</span><span class="p">,</span><span class="w"> </span><span class="n">product</span><span class="p">);</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="w">    </span><span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"simulation multiplicand = %08x, multiplier = %08x, product = %016llx</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">multiplicand</span><span class="p">,</span><span class="w"> </span><span class="n">multiplier</span><span class="p">,</span><span class="w"> </span><span class="n">simulate_result</span><span class="p">);</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">right</span><span class="p">;</span><span class="w"> </span><span class="c1">// 如果一致返回 1，反之返回 0</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>最后执行<code>make verilate</code>，如果仿真通过最后会输出<code>success!!!</code>，反之就是<code>fail!!!</code>和报错信息</p>
+<h3 id="_18">综合下板<a class="headerlink" href="#_18" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>我们的测试数据由<code>sys-project/lab3-3/syn/DataGenerator.v</code>的<span class="heti-skip"><span class="heti-spacing"> </span>DataGenerator<span class="heti-spacing"> </span></span>模块提供。测试数据存储在<code>sys-project/lab3-3/syn/initial.hex</code>，我们在<code>lab3-3/include/initial_file.vh</code>文件中将<span class="heti-skip"><span class="heti-spacing"> </span>FILE_PATH<span class="heti-spacing"> </span></span>变量设置为<span class="heti-skip"><span class="heti-spacing"> </span>initial.hex<span class="heti-spacing"> </span></span>的绝对路径，然后<span class="heti-skip"><span class="heti-spacing"> </span>DataGenerator<span class="heti-spacing"> </span></span>就会用其中的值初始化<span class="heti-skip"><span class="heti-spacing"> </span>data<span class="heti-spacing"> </span></span>寄存器组。其中<span class="heti-skip"><span class="heti-spacing"> </span>initial_file<span class="heti-spacing"> </span></span>一共存储了四组测试数据，也即四组<span class="heti-skip"><span class="heti-spacing"> </span>multiplicant<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>multiplier</span>。</p>
+<p>当<span class="heti-skip"><span class="heti-spacing"> </span>next_state = 1<span class="heti-spacing"> </span></span>的时候，输出下一组测试样例的<span><span class="heti-spacing"> </span>multiplicant</span>、multiplier，并且将<span class="heti-skip"><span class="heti-spacing"> </span>start<span class="heti-spacing"> </span></span>拉高一个周期，之后乘法器会根据<span class="heti-skip"><span class="heti-spacing"> </span>DataGenerator<span class="heti-spacing"> </span></span>的输出进行乘法计算。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span>
+<span class="normal"><a href="#__codelineno-6-23">23</a></span>
+<span class="normal"><a href="#__codelineno-6-24">24</a></span>
+<span class="normal"><a href="#__codelineno-6-25">25</a></span>
+<span class="normal"><a href="#__codelineno-6-26">26</a></span>
+<span class="normal"><a href="#__codelineno-6-27">27</a></span>
+<span class="normal"><a href="#__codelineno-6-28">28</a></span>
+<span class="normal"><a href="#__codelineno-6-29">29</a></span>
+<span class="normal"><a href="#__codelineno-6-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">module</span><span class="w"> </span><span class="n">DataGenerator</span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rstn</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">next_test</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">multiplicand</span><span class="p">,</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">multiplier</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="p">);</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">    </span><span class="no">`include</span><span class="s">"initial_file.vh"</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="p">[</span><span class="mh">7</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">    </span><span class="k">initial</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">        </span><span class="nb">$readmemh</span><span class="p">(</span><span class="n">FILE_PATH</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">index</span><span class="p">;</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rstn</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">~</span><span class="n">rstn</span><span class="p">)</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b11</span><span class="p">;</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">next_test</span><span class="p">)</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">index</span><span class="o">+</span><span class="mh">2</span><span class="mb">'b01</span><span class="p">;</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">rstn</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">~</span><span class="n">rstn</span><span class="p">)</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">next_test</span><span class="p">)</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26"></a>
+<a id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">multiplicand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[{</span><span class="n">index</span><span class="p">,</span><span class="mh">1</span><span class="mb">'b0</span><span class="p">}];</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">multiplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[{</span><span class="n">index</span><span class="p">,</span><span class="mh">1</span><span class="mb">'b1</span><span class="p">}];</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29"></a>
+<a id="__codelineno-6-30" name="__codelineno-6-30"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<p>顶层模块如下：</p>
+<p><img alt="top" src="../img/lab3-3/top.png"/></p>
+<p>通过按按钮<span class="heti-skip"><span class="heti-spacing"> </span>btn[0]<span class="heti-spacing"> </span></span>让<span class="heti-skip"><span class="heti-spacing"> </span>datatgenerator<span class="heti-spacing"> </span></span>输出下一组测试样例，然后乘法器计算得到结果<span><span class="heti-spacing"> </span>product</span>，之后根据开关<span class="heti-skip"><span class="heti-spacing"> </span>sw[1:0]<span class="heti-spacing"> </span></span>选择<span><span class="heti-spacing"> </span>multiplicant</span>、<span>multiplier<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>product<span class="heti-spacing"> </span></span>的值发送给七段数码管显示。</p>
+<p>其中<span class="heti-skip"><span class="heti-spacing"> </span>sw<span class="heti-spacing"> </span></span>对输出数据的选择关系如下：</p>
+<p></p><center>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span>sw<span class="heti-spacing"> </span></span>值</th>
+<th style="text-align: center;">选择的输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">00</td>
+<td style="text-align: center;">multiplicant</td>
+</tr>
+<tr>
+<td style="text-align: center;">01</td>
+<td style="text-align: center;">multiplier</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">product[31:0]</td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">product[63:32]</td>
+</tr>
+</tbody>
+</table>
+<p></p></center>
+<p>执行<code>make bitstream</code>下板验证即可</p>
+<h2 id="40">实验报告<font color="Red"><span><span class="heti-spacing"> </span>40%</span></font><a class="headerlink" href="#40" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ol>
+<li>请在实验报告中详细描述每一步的过程并配有适当的截图和解释，对于仿真设计和上板验证的结果也应当有适当的解释和照片<font color="Red"><span><span class="heti-spacing"> </span>Total: 20%</span></font></li>
+</ol>
+<blockquote>
+<p>细分：</p>
+<ul>
+<li>仿真通过，输出<code>success!!!</code><font color="Red"><span><span class="heti-spacing"> </span>10%</span></font></li>
+<li>综合实现乘法器<font color="Red"><span><span class="heti-spacing"> </span>10%</span></font></li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>
+<p>解释仿真测试样例和下板的顶层结构为什么满足<span class="heti-skip"><span class="heti-spacing"> </span>start-finish<span class="heti-spacing"> </span></span>握手协议。尝试给出<span class="heti-skip"><span class="heti-spacing"> </span>start-finish<span class="heti-spacing"> </span></span>握手协议存在的缺点和改进的方法。 <font color="Red">10%</font></p>
+</li>
+<li>
+<p>请仿照乘法器的设计方法和我们<strong>手动计算除法</strong>的方式，设计<strong><span>32bit<span class="heti-spacing"> </span></span>无符号整数除法器</strong>，你只需要给出设计思路即可。流程图和伪代码是推荐的描述形式。 <font color="Red">10%</font></p>
+</li>
+</ol>
+<p>作为参考的接口定义如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">module</span><span class="w"> </span><span class="n">Divider_32</span><span class="p">(</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">        </span><span class="k">input</span><span class="w">    </span><span class="n">clk</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">        </span><span class="k">input</span><span class="w">    </span><span class="n">rst</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">        </span><span class="k">input</span><span class="w">    </span><span class="n">start</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">        </span><span class="k">input</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">dividend</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">        </span><span class="k">input</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">divisor</span><span class="p">,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">        </span><span class="k">output</span><span class="w">    </span><span class="n">finish</span><span class="p">,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">        </span><span class="k">output</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">quotient</span><span class="p">,</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">        </span><span class="k">output</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">remainder</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">        </span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<ol start="4">
+<li><span>(bonus)<span class="heti-spacing"> </span></span>尝试改进目前的有限状态机，使得一次乘法操作或者连续乘法操作消耗的时钟周期数可以减少。 <font color="Red">
++15%</font></li>
+</ol>
+<h2 id="_19">代码提交<a class="headerlink" href="#_19" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="40_1">验收检查点<font color="Red"><span><span class="heti-spacing"> </span>40%</span></font><a class="headerlink" href="#40_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>仿真波形展示<font color="Red"><span><span class="heti-spacing"> </span>10%</span></font></li>
+<li>代码解释或设计思路<font color="Red"><span><span class="heti-spacing"> </span>15%</span></font></li>
+<li>下板验证<font color="Red"><span><span class="heti-spacing"> </span>15%</span></font></li>
+</ul>
+<h3 id="_20">提交文件<a class="headerlink" href="#_20" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><code>src/lab3-3/</code> 中编写的<span><span class="heti-spacing"> </span>submit</span>、<span>sim<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>include<span class="heti-spacing"> </span></span>的代码</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: 第二部分" class="md-footer__link md-footer__link--prev" href="../lab3-2/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                第二部分
+              </div>
+</div>
+</a>
+<a aria-label="Next: 附录：reg 与时序电路" class="md-footer__link md-footer__link--next" href="../lab3-1-appendix/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                附录：reg 与时序电路
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../js/katex.js"></script>
+</body>
+</html>

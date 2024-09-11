@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="http://zju-sys.pages.zjusct.io/sys1/sys1-sp24/project-2-appendix/" rel="canonical"/>
+<link href="../project-bonus/" rel="prev"/>
+<link href="../setup/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.34" name="generator"/>
+<title>附录：处理器差分测试 - 浙江大学24年春夏系统一实验</title>
+<link href="../assets/stylesheets/main.35f28582.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-header__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            浙江大学24年春夏系统一实验
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              附录：处理器差分测试
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-nav__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    浙江大学24年春夏系统一实验
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    首页
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导零
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            实验指导零
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2-appendix/">
+<span class="md-ellipsis">
+    附录：verilog 与电路
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导一
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            实验指导一
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导二
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            实验指导二
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1-appendix/">
+<span class="md-ellipsis">
+    附录：参数式编程
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导三
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            实验指导三
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-3/">
+<span class="md-ellipsis">
+    第三部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1-appendix/">
+<span class="md-ellipsis">
+    附录：reg 与时序电路
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-3-appendix/">
+<span class="md-ellipsis">
+    附录：阻塞赋值
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导四
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            实验指导四
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1-appendix/">
+<span class="md-ellipsis">
+    附录：SystemVerilog 高级语法
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导五
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            实验指导五
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导 project
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            实验指导 project
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-bonus/">
+<span class="md-ellipsis">
+    Bonus
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    附录：处理器差分测试
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    附录：处理器差分测试
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      处理器正确性验证
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#co-simulation">
+<span class="md-ellipsis">
+      co-simulation 差分测试
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cj_comsimulation">
+<span class="md-ellipsis">
+      cj_comsimulation 测试细节
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setup/">
+<span class="md-ellipsis">
+    环境配置
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../issue/">
+<span class="md-ellipsis">
+    提交提问
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pull/">
+<span class="md-ellipsis">
+    提交修改
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      处理器正确性验证
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#co-simulation">
+<span class="md-ellipsis">
+      co-simulation 差分测试
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cj_comsimulation">
+<span class="md-ellipsis">
+      cj_comsimulation 测试细节
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24/-/blob/master/docs/project-2-appendix.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
+</a>
+<h1 id="_1">处理器差分测试<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<h2 id="_2">处理器正确性验证<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>处理器，本质上其实就是一个有限状态机。处理器在架构层面的状态<span class="heti-skip"><span class="heti-spacing"> </span>S<span class="heti-spacing"> </span></span>包括<span class="heti-skip"><span class="heti-spacing"> </span>PC<span class="heti-spacing"> </span></span>寄存器的状态<span><span class="heti-spacing"> </span><span class="arithmatex">\(S_{pc}\)</span></span>、寄存器文件的状态<span><span class="heti-spacing"> </span><span class="arithmatex">\(S_{reg}\)</span></span>、内存的状态<span><span class="heti-spacing"> </span><span class="arithmatex">\(S_{mem}\)</span></span> ，我们可以简单的认为<span><span class="heti-spacing"> </span><span class="arithmatex">\(S={S_{pc}, S_{reg}, S_{mem}}\)</span></span> 。只要<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S\)</span><span class="heti-spacing"> </span></span>确定，下个周期得到的<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S'\)</span><span class="heti-spacing"> </span></span>的状态也是确定的，进而整个状态序列都是确定的。因此我们检查一个处理器是否执行正确只要检查所有的状态值寄存器的值是否正确即可。</p>
+<p>第一种方法是，每执行一条指令（或者每执行一个周期，在这里是等价的<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，处理器状态转换变为<span><span class="heti-spacing"> </span><span class="arithmatex">\(S'\)</span></span> ，我们将所有<span><span class="heti-spacing"> </span>PC</span>、RegFile、<span>Mem<span class="heti-spacing"> </span></span>的内部状态<span class="heti-skip"><span class="heti-spacing"> </span>dump<span class="heti-spacing"> </span></span>出来，然后和正确执行的结果<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S_1'\)</span><span class="heti-spacing"> </span></span>进行比对，如果每个周期执行之后都保持一致，则可以认为处理器是正确的。不过因为<span class="heti-skip"><span class="heti-spacing"> </span>RegFile<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Mem<span class="heti-spacing"> </span></span>的状态非常庞大，尤其是<span><span class="heti-spacing"> </span>Mem</span>，所以在状态比对的时候直接比对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S'\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S_1'\)</span><span class="heti-spacing"> </span></span>不太现实，因此可以对比处理器的状态转换<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S \rightarrow S'\)</span><span class="heti-spacing"> </span></span>和正确结果的状态转换<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S_1 \rightarrow S_1'\)</span><span class="heti-spacing"> </span></span>是否一致。</p>
+<ul>
+<li>在第一个周期，因为初始化的存在， <span><span class="arithmatex">\(S\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S_1\)</span><span class="heti-spacing"> </span></span>都是初始化的全<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>值（<strong>初始化的重要性</strong>）</li>
+<li>已知<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S = S_1\)</span><span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span><span class="arithmatex">\(S \rightarrow S' = S_1 \rightarrow S_1'\)</span></span> ，所以等价于<span><span class="heti-spacing"> </span><span class="arithmatex">\(S' = S_1'\)</span></span></li>
+<li>所以只要处理器执行正确， <span><span class="arithmatex">\(S' = S_1'\)</span><span class="heti-spacing"> </span></span>恒成立</li>
+</ul>
+<p><span><span class="arithmatex">\(S \rightarrow S'\)</span><span class="heti-spacing"> </span></span>包括该条指令之后<span class="heti-skip"><span class="heti-spacing"> </span>PC<span class="heti-spacing"> </span></span>的跳转情况、寄存器的写入情况和内存的写入情况，例如：</p>
+<ul>
+<li>
+<p><code>add x2, x1, x3</code> 的<span><span class="heti-spacing"> </span><span class="arithmatex">\(S \rightarrow S'\)</span></span> ：</p>
+<ul>
+<li>PC <span class="arithmatex">\(\rightarrow\)</span> PC + 4</li>
+<li>Reg[2] <span class="arithmatex">\(\rightarrow\)</span> Reg[1] + Reg[3]</li>
+<li><span>Mem<span class="heti-spacing"> </span></span>状态不变</li>
+</ul>
+</li>
+<li>
+<p><code>sd x1, 0(x2)</code> 的<span><span class="heti-spacing"> </span><span class="arithmatex">\(S \rightarrow S'\)</span></span>：</p>
+<ul>
+<li>PC <span class="arithmatex">\(\rightarrow\)</span> PC + 4</li>
+<li><span>Reg<span class="heti-spacing"> </span></span>状态不变</li>
+<li>Mem[Reg[2]] <span class="arithmatex">\(\rightarrow\)</span> Reg[1]</li>
+</ul>
+</li>
+<li>
+<p><code>jalr x2, 4(x3)</code> 的<span><span class="heti-spacing"> </span><span class="arithmatex">\(S \rightarrow S'\)</span></span> ：</p>
+<ul>
+<li>PC <span class="arithmatex">\(\rightarrow\)</span> Reg[3] + 4</li>
+<li>Reg[2] <span class="arithmatex">\(\rightarrow\)</span> PC + 4</li>
+<li><span>Mem<span class="heti-spacing"> </span></span>状态不变</li>
+</ul>
+</li>
+</ul>
+<p>但是这样存在一些缺点：</p>
+<ul>
+<li>处理器正确执行的结果需要人工推演，是耗时却容易出错的</li>
+<li>处理器的状态转换和正确执行的状态转换需要从状态空间中人工提取</li>
+<li>处理器的状态转换和正确执行的状态转换需要人工比对</li>
+</ul>
+<p>我们可以用自动化的方法解决这些问题吗？</p>
+<h2 id="co-simulation"><span>co-simulation<span class="heti-spacing"> </span></span>差分测试<a class="headerlink" href="#co-simulation" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>处理器正确执行结果的自动推导，我们可以使用<span class="heti-skip"><span class="heti-spacing"> </span>ISA<span class="heti-spacing"> </span></span>模拟器来解决，我们这里使用的是<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>模拟器。我们以<span class="heti-skip"><span class="heti-spacing"> </span>TESTCASE=sample<span class="heti-spacing"> </span></span>为例来讲解它的基本流程如下：</p>
+<ul>
+<li>软件生成部分：</li>
+</ul>
+<ol>
+<li>使用<span class="heti-skip"><span class="heti-spacing"> </span>riscv<span class="heti-spacing"> </span></span>工具链的<span class="heti-skip"><span class="heti-spacing"> </span>gcc<span class="heti-spacing"> </span></span>工具将<span class="heti-skip"><span class="heti-spacing"> </span>sample.S<span class="heti-spacing"> </span></span>的汇编文件转换为<span class="heti-skip"><span class="heti-spacing"> </span>.o<span class="heti-spacing"> </span></span>文件<span><span class="heti-spacing"> </span>sample.o</span></li>
+<li>使用<span class="heti-skip"><span class="heti-spacing"> </span>riscv<span class="heti-spacing"> </span></span>工具链的<span class="heti-skip"><span class="heti-spacing"> </span>ld<span class="heti-spacing"> </span></span>工具将<span class="heti-skip"><span class="heti-spacing"> </span>sample.o<span class="heti-spacing"> </span></span>根据链接脚本<span class="heti-skip"><span class="heti-spacing"> </span>link.ld<span class="heti-spacing"> </span></span>的地址空间设置生成可执行程序<span><span class="heti-spacing"> </span>testcase.elf</span>（确保可执行程序的地址空间布局和我们处理器的内存地址布局相一致）</li>
+<li>使用<span class="heti-skip"><span class="heti-spacing"> </span>riscv<span class="heti-spacing"> </span></span>工具链的<span class="heti-skip"><span class="heti-spacing"> </span>objcopy<span class="heti-spacing"> </span></span>工具得到<span class="heti-skip"><span class="heti-spacing"> </span>sample.elf<span class="heti-spacing"> </span></span>对应的<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>进制内容<span><span class="heti-spacing"> </span>sample.hex</span></li>
+</ol>
+<ul>
+<li>测试执行部分：</li>
+</ul>
+<ol start="4">
+<li>将<span class="heti-skip"><span class="heti-spacing"> </span>testcase.elf<span class="heti-spacing"> </span></span>载入我们的模拟器<span><span class="heti-spacing"> </span>spike</span>，等待被调用；将<span class="heti-skip"><span class="heti-spacing"> </span>testcase.hex<span class="heti-spacing"> </span></span>的内容载入到处理器<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>mem<span class="heti-spacing"> </span></span>内存中</li>
+<li>模拟执行<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>描述的处理器，每执行一个时钟周期（或者说执行一条指令）可将处理器的状态变化发送给差分测试模块<span class="heti-skip"><span class="heti-spacing"> </span>cj_comsimulation<span class="heti-spacing"> </span></span>进行差分测试</li>
+<li><span>cj_comsimluation<span class="heti-spacing"> </span></span>模块通过<span class="heti-skip"><span class="heti-spacing"> </span>DPI<span class="heti-spacing"> </span></span>接口调用<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>的接口，然后<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>会模拟执行一条指令，并将执行结果和<span class="heti-skip"><span class="heti-spacing"> </span>cj_comsimulation<span class="heti-spacing"> </span></span>提供的处理器执行结果相比对。如果执行结果不一致则会报错，从而发现<span><span class="heti-spacing"> </span>error</span></li>
+</ol>
+<ul>
+<li>测试环境编译部分：</li>
+</ul>
+<ol start="7">
+<li>在<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>的基础上扩展为了<span class="heti-skip"><span class="heti-spacing"> </span>co-sim<span class="heti-spacing"> </span></span>工具，然后编译为静态链接库，保存在<span class="heti-skip"><span class="heti-spacing"> </span>ip<span class="heti-spacing"> </span></span>文件夹下</li>
+<li><span>cj_comsimulation<span class="heti-spacing"> </span></span>和处理器使用<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>编写，然后通过<span class="heti-skip"><span class="heti-spacing"> </span>DPI<span class="heti-spacing"> </span></span>接口调用<span class="heti-skip"><span class="heti-spacing"> </span>co-sim<span class="heti-spacing"> </span></span>的差分测试功能，使用<span class="heti-skip"><span class="heti-spacing"> </span>Verilator<span class="heti-spacing"> </span></span>工具将<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>编译为<span class="heti-skip"><span class="heti-spacing"> </span>cpp<span class="heti-spacing"> </span></span>文件</li>
+<li>编译连接这些<span class="heti-skip"><span class="heti-spacing"> </span>cpp<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>文件得到最后的测试程序<span><span class="heti-spacing"> </span>Testbench</span>，然后执行差分测试即可</li>
+</ol>
+<p><img alt="co-sim" src="../img/project-2/co-sim.png"/></p>
+<h2 id="cj_comsimulation"><span>cj_comsimulation<span class="heti-spacing"> </span></span>测试细节<a class="headerlink" href="#cj_comsimulation" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>为了测试<span class="heti-skip"><span class="heti-spacing"> </span>PC<span class="heti-spacing"> </span></span>状态的变化，处理器的<span class="heti-skip"><span class="heti-spacing"> </span>cosim_core_info<span class="heti-spacing"> </span></span>提供当前模拟指令的<span class="heti-skip"><span class="heti-spacing"> </span>pc<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>inst</span>，然后调用<span class="heti-skip"><span class="heti-spacing"> </span>cosim_commit<span class="heti-spacing"> </span></span>函数比较<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>模拟得到的指令的<span class="heti-skip"><span class="heti-spacing"> </span>pc<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>inst<span class="heti-spacing"> </span></span>是否一致，如果保持一致则<span class="heti-skip"><span class="heti-spacing"> </span>PC<span class="heti-spacing"> </span></span>寄存器的状态变化正确。</p>
+<p>为了测试<span class="heti-skip"><span class="heti-spacing"> </span>reg<span class="heti-spacing"> </span></span>寄存器状态的变化，处理器的<span class="heti-skip"><span class="heti-spacing"> </span>cosim_core_info<span class="heti-spacing"> </span></span>提供当前模拟指令的<span><span class="heti-spacing"> </span>we</span>、rd、wdata，即是否修改寄存器、写回寄存器地址、写回寄存器的值，然后调用<span class="heti-skip"><span class="heti-spacing"> </span>cosim_judge<span class="heti-spacing"> </span></span>函数比较<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>模拟得到的寄存器修改情况是否一致，如果一致则<span class="heti-skip"><span class="heti-spacing"> </span>reg<span class="heti-spacing"> </span></span>寄存器状态变化正确。</p>
+<p>内存状态变化因为外围的内存操作过于复杂，所以没有做检查，默认内存变化都是正确的。<span>sd<span class="heti-spacing"> </span></span>指令的操作往往以来之后<span class="heti-skip"><span class="heti-spacing"> </span>ld<span class="heti-spacing"> </span></span>指令访问同一个内存的时候，检查写回寄存器的结果来进行判断。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kt">reg</span><span class="w"> </span><span class="n">error1</span><span class="o">=</span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="kt">reg</span><span class="w"> </span><span class="n">error2</span><span class="o">=</span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rstn</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="no">`BSV_RESET_VALUE</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">cosim_valid</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cosim_commit</span><span class="p">(</span><span class="mh">0</span><span class="p">,</span><span class="w"> </span><span class="n">cosim_pc</span><span class="p">,</span><span class="w"> </span><span class="n">cosim_inst</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mh">0</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">            </span><span class="nb">$display</span><span class="p">(</span><span class="s">"[CJ] %d Commit Failed"</span><span class="p">,</span><span class="w"> </span><span class="mh">0</span><span class="p">);</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">            </span><span class="n">error1</span><span class="o">=</span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">          </span><span class="k">end</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cosim_we</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">              </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cosim_judge</span><span class="p">(</span><span class="mh">0</span><span class="p">,</span><span class="w"> </span><span class="s">"int"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mh">27</span><span class="mb">'b0</span><span class="p">,</span><span class="n">cosim_rd</span><span class="p">},</span><span class="w"> </span><span class="n">cosim_wdate</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mh">0</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">                </span><span class="nb">$display</span><span class="p">(</span><span class="s">"[CJ] %d int register write Judge Failed"</span><span class="p">,</span><span class="w"> </span><span class="mh">0</span><span class="p">);</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">                </span><span class="n">error2</span><span class="o">=</span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">              </span><span class="k">end</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">          </span><span class="k">end</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">          </span><span class="c1">// $display("[CJ] nop instruction");</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">      </span><span class="k">end</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">  </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<p>更多细节请阅读代码仓库<a href="https://github.com/sycuricon/riscv-isa-cosim.git"><span class="heti-skip"><span class="heti-spacing"> </span>https://github.com/sycuricon/riscv-isa-cosim.git<span class="heti-spacing"> </span></span></a>和论文<a href="https://www.usenix.org/conference/usenixsecurity23/presentation/xu-jinyan"><span><span class="heti-spacing"> </span>MorFuzz: Fuzzing Processor via Runtime Instruction Morphing enhanced Synchronizable Co-simulation</span></a></p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Bonus" class="md-footer__link md-footer__link--prev" href="../project-bonus/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                Bonus
+              </div>
+</div>
+</a>
+<a aria-label="Next: 环境配置" class="md-footer__link md-footer__link--next" href="../setup/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                环境配置
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../js/katex.js"></script>
+</body>
+</html>

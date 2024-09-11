@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="http://zju-sys.pages.zjusct.io/sys1/sys1-sp24/project-bonus/" rel="canonical"/>
+<link href="../project-2/" rel="prev"/>
+<link href="../project-2-appendix/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.34" name="generator"/>
+<title>Bonus - 浙江大学24年春夏系统一实验</title>
+<link href="../assets/stylesheets/main.35f28582.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#projectbonus">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-header__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            浙江大学24年春夏系统一实验
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Bonus
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-nav__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    浙江大学24年春夏系统一实验
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    首页
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导零
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            实验指导零
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2-appendix/">
+<span class="md-ellipsis">
+    附录：verilog 与电路
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导一
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            实验指导一
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导二
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            实验指导二
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1-appendix/">
+<span class="md-ellipsis">
+    附录：参数式编程
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导三
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            实验指导三
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-3/">
+<span class="md-ellipsis">
+    第三部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1-appendix/">
+<span class="md-ellipsis">
+    附录：reg 与时序电路
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-3-appendix/">
+<span class="md-ellipsis">
+    附录：阻塞赋值
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导四
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            实验指导四
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1-appendix/">
+<span class="md-ellipsis">
+    附录：SystemVerilog 高级语法
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导五
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            实验指导五
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导 project
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            实验指导 project
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Bonus
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Bonus
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      实验目的
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      实验环境
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      背景知识
+    </span>
+</a>
+<nav aria-label="背景知识" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      内存总线握手协议
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      多周期处理器
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory-mapping-io">
+<span class="md-ellipsis">
+      memory-mapping I/O
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      实验步骤
+    </span>
+</a>
+<nav aria-label="实验步骤" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      实验前准备
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cpu">
+<span class="md-ellipsis">
+      实现多周期 CPU
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      执行串口收发
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      实验报告
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      代码提交
+    </span>
+</a>
+<nav aria-label="代码提交" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      验收检查点
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      提交文件
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2-appendix/">
+<span class="md-ellipsis">
+    附录：处理器差分测试
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setup/">
+<span class="md-ellipsis">
+    环境配置
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../issue/">
+<span class="md-ellipsis">
+    提交提问
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pull/">
+<span class="md-ellipsis">
+    提交修改
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      实验目的
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      实验环境
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      背景知识
+    </span>
+</a>
+<nav aria-label="背景知识" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      内存总线握手协议
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      多周期处理器
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory-mapping-io">
+<span class="md-ellipsis">
+      memory-mapping I/O
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      实验步骤
+    </span>
+</a>
+<nav aria-label="实验步骤" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      实验前准备
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cpu">
+<span class="md-ellipsis">
+      实现多周期 CPU
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      执行串口收发
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      实验报告
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      代码提交
+    </span>
+</a>
+<nav aria-label="代码提交" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      验收检查点
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      提交文件
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24/-/blob/master/docs/project-bonus.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
+</a>
+<h1 id="projectbonus">project：多周期处理器（bonus）<a class="headerlink" href="#projectbonus" title="Permanent link">¶</a></h1>
+<h2 id="_1">实验目的<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>尝试实践内存总线握手协议</li>
+<li>学习实践多周期处理器的控制状态机设计方法</li>
+<li>学习实践<span class="heti-skip"><span class="heti-spacing"> </span>mmio<span class="heti-spacing"> </span></span>的外设管理方法和串口驱动</li>
+</ul>
+<h2 id="_2">实验环境<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>操作系统：Windows 10+ 22H2，Ubuntu 22.04+</li>
+<li>VHDL：Verilog，SystemVerilog</li>
+</ul>
+<h2 id="_3">背景知识<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_4">内存总线握手协议<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>project-1<span class="heti-spacing"> </span></span>中我们介绍了自行设计的内存总线<span><span class="heti-spacing"> </span>mem_ift</span>，本实验我们会介绍该总线的具体用法。</p>
+<p>在真实的计算机系统中，我们会有各种的主设备和从设备，主设备向从设备发出读写请求，然后获得读写结果。主设备和从设备的种类数多种多样的，常见的主设备有处理器核心，常见的从设备有内存、串口等，甚至有些设备既可以作为主设备、也可以作为从设备，比如显卡、网卡、总线互联等。各类设备的工作模式、硬件实现、内部协议都是互不相同甚至大相径庭的，如果我们为任何一个主从设备都定制专门的连接，这个设计开销是巨大的，所以我们定义了总线协议和总线接口。主设备实现遵守总线协议的主总线接口，从设备实现遵守总线协议的从总线接口，这样任何主从设备之间都可以直接用总线串联，然后正常工作。</p>
+<p>我们介绍一下<span class="heti-skip"><span class="heti-spacing"> </span>mem_ift<span class="heti-spacing"> </span></span>的总线握手协议，让同学们对于总线协议有一个简单的认识，实际使用的总线协议因为实际需求更多，所以会有更复杂的实现和更强大的功能。</p>
+<ul>
+<li>
+<p>读请求：</p>
+<ol>
+<li><span>Master<span class="heti-spacing"> </span></span>设备将要访问的地址放到<span class="heti-skip"><span class="heti-spacing"> </span>r_request_bits.raddr<span class="heti-spacing"> </span></span>上，待地址数据稳定后，将<span class="heti-skip"><span class="heti-spacing"> </span>r_request_valid<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>1</span></li>
+<li><span>Slave<span class="heti-spacing"> </span></span>设备在可以接受读请求的时候将<span class="heti-skip"><span class="heti-spacing"> </span>r_request_ready<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>1</span></li>
+<li>
+<p>当<span class="heti-skip"><span class="heti-spacing"> </span>r_request_valid &amp; r_request_ready<span class="heti-spacing"> </span></span>的时候，说明握手成功</p>
+</li>
+<li>
+<p><span>Master<span class="heti-spacing"> </span></span>发送请求成功，关闭请求或者发送下一个请求，在可以接受读返回数据之后，将<span class="heti-skip"><span class="heti-spacing"> </span>r_reply_ready<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>1</span></p>
+</li>
+<li><span>Slave<span class="heti-spacing"> </span></span>接收到<span class="heti-skip"><span class="heti-spacing"> </span>Master<span class="heti-spacing"> </span></span>的请求之后根据<span class="heti-skip"><span class="heti-spacing"> </span>r_request_bits.raddr<span class="heti-spacing"> </span></span>的地址获得对应的数据，然后放置到<span class="heti-skip"><span class="heti-spacing"> </span>r_reply_bits.rdata<span class="heti-spacing"> </span></span>上，如果访问成功将<span class="heti-skip"><span class="heti-spacing"> </span>r_reply_bits.rresp<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>OKAY</span>，反之设置为<span><span class="heti-spacing"> </span>SLVERR</span>。待数据稳定后，将<span class="heti-skip"><span class="heti-spacing"> </span>r_reply_valid<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>1</span></li>
+<li>
+<p>当<span class="heti-skip"><span class="heti-spacing"> </span>r_reply_valid &amp; r_reply_ready<span class="heti-spacing"> </span></span>的时候，说明握手成功</p>
+</li>
+<li>
+<p><span>Master<span class="heti-spacing"> </span></span>接收<span class="heti-skip"><span class="heti-spacing"> </span>Slave<span class="heti-spacing"> </span></span>返回的结果，关闭<span class="heti-skip"><span class="heti-spacing"> </span>ready<span class="heti-spacing"> </span></span>或者等待接收下一个返回结果</p>
+</li>
+<li><span>Slave<span class="heti-spacing"> </span></span>关闭数据响应或者准备发送下一个读请求的结果</li>
+</ol>
+</li>
+<li>
+<p>写请求：</p>
+<ol>
+<li><span>Master<span class="heti-spacing"> </span></span>设备将要写入的地址、数据、字节使能放到<span><span class="heti-spacing"> </span>w_request_bits.waddr</span>、wdata、<span>wmask<span class="heti-spacing"> </span></span>上，待地址数据稳定后，将<span class="heti-skip"><span class="heti-spacing"> </span>w_request_valid<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>1</span></li>
+<li><span>Slave<span class="heti-spacing"> </span></span>设备在可以接受写请求的时候将<span class="heti-skip"><span class="heti-spacing"> </span>w_request_ready<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>1</span></li>
+<li>
+<p>当<span class="heti-skip"><span class="heti-spacing"> </span>w_request_valid &amp; w_request_ready<span class="heti-spacing"> </span></span>的时候，说明握手成功</p>
+</li>
+<li>
+<p><span>Master<span class="heti-spacing"> </span></span>发送请求成功，关闭请求或者发送下一个请求，在可以接受读返回数据之后，将<span class="heti-skip"><span class="heti-spacing"> </span>w_reply_ready<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>1</span></p>
+</li>
+<li><span>Slave<span class="heti-spacing"> </span></span>接收到<span class="heti-skip"><span class="heti-spacing"> </span>Master<span class="heti-spacing"> </span></span>的请求之后根据<span><span class="heti-spacing"> </span>w_request_bits.waddr</span>、wdata、<span>wmask<span class="heti-spacing"> </span></span>进行对应的写操作，如果地址合法且写入成功将<span class="heti-skip"><span class="heti-spacing"> </span>w_reply_bits.rresp<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>OKAY</span>，反之设置为<span><span class="heti-spacing"> </span>SLVERR</span>。待数据稳定后，将<span class="heti-skip"><span class="heti-spacing"> </span>w_reply_valid<span class="heti-spacing"> </span></span>设置为<span><span class="heti-spacing"> </span>1</span></li>
+<li>
+<p>当<span class="heti-skip"><span class="heti-spacing"> </span>w_reply_valid &amp; w_reply_ready<span class="heti-spacing"> </span></span>的时候，说明握手成功</p>
+</li>
+<li>
+<p><span>Master<span class="heti-spacing"> </span></span>接收<span class="heti-skip"><span class="heti-spacing"> </span>Slave<span class="heti-spacing"> </span></span>返回的结果，关闭<span class="heti-skip"><span class="heti-spacing"> </span>ready<span class="heti-spacing"> </span></span>或者等待接收下一个返回结果</p>
+</li>
+<li><span>Slave<span class="heti-spacing"> </span></span>关闭数据响应或者准备发送下一个写请求的结果</li>
+</ol>
+</li>
+</ul>
+<p>简单来说，<span>Master<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Slave<span class="heti-spacing"> </span></span>通过<span class="heti-skip"><span class="heti-spacing"> </span>request<span class="heti-spacing"> </span></span>通道握手，<span>Master<span class="heti-spacing"> </span></span>将<span class="heti-skip"><span class="heti-spacing"> </span>request<span class="heti-spacing"> </span></span>的信息发送给<span><span class="heti-spacing"> </span>Slave</span>；然后再通过<span class="heti-skip"><span class="heti-spacing"> </span>reply<span class="heti-spacing"> </span></span>通道握手，<span>Slave<span class="heti-spacing"> </span></span>将<span class="heti-skip"><span class="heti-spacing"> </span>reply<span class="heti-spacing"> </span></span>的信息发送给<span><span class="heti-spacing"> </span>Master</span>。<span>Read<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Write<span class="heti-spacing"> </span></span>的通道可以简单地认为相互不影响。需要注意，在没有发送<span class="heti-skip"><span class="heti-spacing"> </span>request<span class="heti-spacing"> </span></span>请求之前，理论上不应该有<span class="heti-skip"><span class="heti-spacing"> </span>reply<span class="heti-spacing"> </span></span>响应。</p>
+<p><span>Slave<span class="heti-spacing"> </span></span>发送<span class="heti-skip"><span class="heti-spacing"> </span>request<span class="heti-spacing"> </span></span>的请求之后，<span>Master<span class="heti-spacing"> </span></span>一般至少下一个周期才可以返回<span class="heti-skip"><span class="heti-spacing"> </span>reply<span class="heti-spacing"> </span></span>结果，所以在内存总线的场景下处理器的一次内存访问是多周期的，最少一个周期的<span><span class="heti-spacing"> </span>request</span>、一个周期的<span><span class="heti-spacing"> </span>reply</span>。但是实际上<span class="heti-skip"><span class="heti-spacing"> </span>Slave<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Master<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>request<span class="heti-spacing"> </span></span>握手本身可能需要若干个周期，<span>Slave<span class="heti-spacing"> </span></span>处理数据内容也需要大量周期，最后<span class="heti-skip"><span class="heti-spacing"> </span>Slave<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Master<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>reply<span class="heti-spacing"> </span></span>握手又需要大量的周期，这就导致实际上一次内存访问需要几十甚至上百周期。</p>
+<p>实际上内存访问多周期并不是总线引入的，而是<span class="heti-skip"><span class="heti-spacing"> </span>Slave<span class="heti-spacing"> </span></span>设备本身引入的，比如我们的<span class="heti-skip"><span class="heti-spacing"> </span>core<span class="heti-spacing"> </span></span>如果不用专门定制的（实际不存在的）<span>dram<span class="heti-spacing"> </span></span>进行一周期的读写操作，而是用常见的<span class="heti-skip"><span class="heti-spacing"> </span>sram<span class="heti-spacing"> </span></span>或者<span><span class="heti-spacing"> </span>ddr</span>，则可能需要<span class="heti-skip"><span class="heti-spacing"> </span>10-50<span class="heti-spacing"> </span></span>个周期才可以获得一次数据。恰恰相反，因为内存总线的存在使得<span class="heti-skip"><span class="heti-spacing"> </span>Slave<span class="heti-spacing"> </span></span>设备的访问控制变得简单，我们可以忽略每个设备复杂的驱动协议，仅仅通过总线握手和等待就可以得到正确的执行结果。</p>
+<h3 id="_5">多周期处理器<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>真实的处理器在处理一条指令的时候，取指、译码、执行、访存、写回的每个操作可能都需要很多个时钟周期。例如取指和访存操作需要访问内存，而内存访问需要总线握手和内存处理，可能要等待几十个到上百个周期；译码如<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>需要作微码转换、解码等操作，又需要很多周期；执行简单的指令如加法、移位可能只需要一个周期，但是复杂的指令操作如乘法、除法、同步等需要几十上百个周期；写回有时候可能也要多周期。所以处理器的一条指令分多个周期执行完成是很正常。</p>
+<p>为了让处理器可以有条不紊的用多个周期处理一条指令，我们需要设计一个控制多周期处理器工作的有限状态机，它可以在不同的状态控制不同的处理器部件工作，以确保指令正确执行，各个部件不冲突。本实验的指令除了访存都只需要执行一个周期，所以我们可以简单设计如下的有限状态机：</p>
+<ul>
+<li>IF1：发送<span class="heti-skip"><span class="heti-spacing"> </span>imem<span class="heti-spacing"> </span></span>内存的读请求，等待读请求握手达成。握手成功进入<span class="heti-skip"><span class="heti-spacing"> </span>IF2<span class="heti-spacing"> </span></span>状态</li>
+<li>IF2：等待<span class="heti-skip"><span class="heti-spacing"> </span>imem<span class="heti-spacing"> </span></span>内存的读响应，等待读响应握手达成。握手成功，获得待执行的指令，进入<span class="heti-skip"><span class="heti-spacing"> </span>EXE<span class="heti-spacing"> </span></span>状态</li>
+<li>ID-EXE：对指令译码，如果不是访存指令，就执行计算并写回计算结果，进入<span class="heti-skip"><span class="heti-spacing"> </span>IF1<span class="heti-spacing"> </span></span>状态，开始执行下一条指令；如果是访存指令，发送<span class="heti-skip"><span class="heti-spacing"> </span>dmem<span class="heti-spacing"> </span></span>内存的读写请求，等待读写请求握手达成，握手成功进入<span class="heti-skip"><span class="heti-spacing"> </span>MEM<span class="heti-spacing"> </span></span>状态</li>
+<li>MEM：等待<span class="heti-skip"><span class="heti-spacing"> </span>dmem<span class="heti-spacing"> </span></span>的读写相应，握手成功将读到的数据写入寄存器组，然后返回<span class="heti-skip"><span class="heti-spacing"> </span>IF1<span class="heti-spacing"> </span></span>状态开始执行下一条指令</li>
+</ul>
+<p><img alt="multi-fsm" src="../img/project-bonus/multi-fsm.png"/></p>
+<p>所以如果我们想在单周期处理器的基础上实现多周期处理器，需要进行如下的修改：</p>
+<ul>
+<li>设置一个有限状态机，做状态的转换</li>
+<li>增加新的控制信号或者修改控制信号<ul>
+<li><span>stall<span class="heti-spacing"> </span></span>信号，当一条指令没有执行完毕时，<span>PC<span class="heti-spacing"> </span></span>保持不变</li>
+<li><span>we_reg<span class="heti-spacing"> </span></span>信号，当一条指令没有执行完毕时，寄存器组不写回</li>
+<li><span>mem_ift<span class="heti-spacing"> </span></span>信号，在不同的接口发送不断的请求、响应握手信号</li>
+</ul>
+</li>
+<li>增加中间寄存器，保存必要的结果<ul>
+<li><span>inst<span class="heti-spacing"> </span></span>寄存器，当<span class="heti-skip"><span class="heti-spacing"> </span>imem<span class="heti-spacing"> </span></span>响应实现时将返回的<span class="heti-skip"><span class="heti-spacing"> </span>inst<span class="heti-spacing"> </span></span>写入寄存器</li>
+</ul>
+</li>
+<li>其他有必要的修改</li>
+</ul>
+<p>可以参考<code>submit/Core.sv</code>的<span class="heti-skip"><span class="heti-spacing"> </span>MultiFSM<span class="heti-spacing"> </span></span>的模块接口实现对应的有限状态机和控制信号。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">module</span><span class="w"> </span><span class="n">MultiFSM</span><span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="n">Mem_ift</span><span class="p">.</span><span class="n">Master</span><span class="w"> </span><span class="n">imem_ift</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="n">Mem_ift</span><span class="p">.</span><span class="n">Master</span><span class="w"> </span><span class="n">dmem_ift</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">we_mem</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">re_mem</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">addr_t</span><span class="w"> </span><span class="n">pc</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">addr_t</span><span class="w"> </span><span class="n">alu_res</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">data_t</span><span class="w"> </span><span class="n">data_package</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">mask_t</span><span class="w"> </span><span class="n">mask_package</span><span class="p">,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">stall</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="p">);</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::*</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="c1">// fill your code for bonus</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="memory-mapping-io">memory-mapping I/O<a class="headerlink" href="#memory-mapping-io" title="Permanent link">¶</a></h3>
+<p>我们之前提到，在一个体系结构中，处理器核心有多个从设备可以读写访问，比如内存、串口、加速器、<span>PCIE<span class="heti-spacing"> </span></span>设备等等。对于内存，我们可以用<span class="heti-skip"><span class="heti-spacing"> </span>load-store<span class="heti-spacing"> </span></span>指令直接访问，但是对于串口等<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>设备我们要怎么进行读写操作呢？</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>等指令集中有特定的<span class="heti-skip"><span class="heti-spacing"> </span>in-out<span class="heti-spacing"> </span></span>指令，并且给每一个外设的可编程寄存器提供了专门的编号，然后就可以用<code>in/out ID</code>的形式来访问这些寄存器。因此<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>有针对内存的<span class="heti-skip"><span class="heti-spacing"> </span>load-store<span class="heti-spacing"> </span></span>指令，同时兼有针对<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>in-out<span class="heti-spacing"> </span></span>指令。但是这样就需要管理两套设备访问指令，无论是设备提供商还是软件开发者都是比较繁琐的。<span>riscv<span class="heti-spacing"> </span></span>则采用<span class="heti-skip"><span class="heti-spacing"> </span>memory-mapping<span class="heti-spacing"> </span></span>的方式来解决这个问题。</p>
+<p><span>in-out<span class="heti-spacing"> </span></span>是为每一个<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>的可编程寄存器提供了一个编号进行访问，<span>memory-mapping<span class="heti-spacing"> </span></span>则是从物理地址中划分了一部分，然后作为这些寄存器的地址。只要用<span class="heti-skip"><span class="heti-spacing"> </span>load-store<span class="heti-spacing"> </span></span>指令访问这些特殊的地址，就可以读写对应的<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>寄存器，从而实现读<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>的输入、提供<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>的输出、设置<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>的状态等一系列功能繁复的操作。<span>memory-mapping I/O<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>load-store<span class="heti-spacing"> </span></span>读写的地址并不一定是真正的存储单元，可能是任何有效的硬件实现，具体的使用还是要看设备提供商提供的操作手册。</p>
+<p>在本实验中，我们将串口封装为一个从设备，然后将它的状态、数据管理抽象为可编程读写接口：
+    * 0x10000000-0x10000001：串口数据寄存器，宽度一字节。读这个寄存器可以得到串口接收到的字符：写这个寄存器可以让串口发送写入的字符。因为数据寄存器只有 8 位，所以写入的数据只有低八位有效。
+    * 0x10000001-0x10000002：串口状态寄存器，宽度一字节。读这个寄存器可以得到串口的工作状态：读到数据的最低位是 TX 的工作状态，如果是 1，则可以发送数据，如果是 0，则串口发送端处于繁忙；读到数据的次低位是 RX 的工作状态，如果是 1，则可以接受数据，如果是 0，则没有数据被接受。
+    * 如果读写的地址不合理，或者读写的时候 TX、RX 没有就绪，串口会返回 SLVERR 报告</p>
+<p>我们来查看一个当前<span class="heti-skip"><span class="heti-spacing"> </span>SoC<span class="heti-spacing"> </span></span>的外围设计：</p>
+<p><img alt="SoC" src="../img/project-bonus/SoC.png"/></p>
+<p><span>imem_ift<span class="heti-spacing"> </span></span>总线接口直接直连到<span class="heti-skip"><span class="heti-spacing"> </span>dram<span class="heti-spacing"> </span></span>的一号口，<span>dmem_ift<span class="heti-spacing"> </span></span>总线经过<span class="heti-skip"><span class="heti-spacing"> </span>interconnect<span class="heti-spacing"> </span></span>的路由，根据输入地址的不同访问内存或者串口，物理地址分布如下：</p>
+<ul>
+<li>0x00000000 - 0x00001000：<span>dram<span class="heti-spacing"> </span></span>地址范围，仅在该地址范围访问内存有效</li>
+<li>0x10000000 - 0x10000100：<span>uart<span class="heti-spacing"> </span></span>地址范围，该范围仅<span class="heti-skip"><span class="heti-spacing"> </span>0x10000000-0x10000002<span class="heti-spacing"> </span></span>有效，其他访问返回<span><span class="heti-spacing"> </span>SLVERR</span></li>
+<li>other：无效地址范围，访问返回<span><span class="heti-spacing"> </span>DECERR</span></li>
+</ul>
+<p><span>memory-mapping<span class="heti-spacing"> </span></span>根据地址访问各种不同的从设备依赖于复杂的<span class="heti-skip"><span class="heti-spacing"> </span>interconnection<span class="heti-spacing"> </span></span>连接来实现。</p>
+<h2 id="_6">实验步骤<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_7">实验前准备<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>与之前的<span class="heti-skip"><span class="heti-spacing"> </span>lab<span class="heti-spacing"> </span></span>相同，启动安装在你电脑中的<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu 22.04<span class="heti-spacing"> </span></span>环境（ <span>WSL<span class="heti-spacing"> </span></span>或虚拟机<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，随后通过 <code>cd</code> 移动到 <code>sys1-sp24</code> 目录下，执行下面的命令：
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>repo/sys-project
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>multicycle
+</code></pre></div></td></tr></table></div>
+该实验的 sys-project 代码在 multicycle 分支下。
+<h3 id="cpu">实现多周期<span><span class="heti-spacing"> </span>CPU</span><a class="headerlink" href="#cpu" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>根据<span class="heti-skip"><span class="heti-spacing"> </span>"<span class="heti-spacing"> </span></span>多周期处理器<span class="heti-skip"><span class="heti-spacing"> </span>"<span class="heti-spacing"> </span></span>一节实现<code>submit/Core.sv</code>的<span class="heti-skip"><span class="heti-spacing"> </span>MultiFSM<span class="heti-spacing"> </span></span>模块，并修改<span class="heti-skip"><span class="heti-spacing"> </span>core<span class="heti-spacing"> </span></span>的细节，将<span class="heti-skip"><span class="heti-spacing"> </span>core<span class="heti-spacing"> </span></span>转换为可以顺利执行的多周期处理器。之后执行<code>make verilate TESTCASE=full</code>，仿真测试，如果顺利结束可以证明执行正确。</p>
+<p>然后执行<code>make board_sim TESTCASE=full</code>得到用于下板的执行文件<span><span class="heti-spacing"> </span>testcase.hex</span>，然后修改<code>include/initial_mem.hex</code>的<span><span class="heti-spacing"> </span>FILE_PATH</span>，用该<span class="heti-skip"><span class="heti-spacing"> </span>hex<span class="heti-spacing"> </span></span>修改处理器的内存的值。然后综合下板，如果处理器单步执行周期数合理（实验指导的状态及对应的非访存指令为<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>周期，访存指令为<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>周期，也可以是其他实现<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，并最终停顿在<span class="heti-skip"><span class="heti-spacing"> </span>pc=9a8<span class="heti-spacing"> </span></span>处则说明下板执行正确。</p>
+<h3 id="_8">执行串口收发<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>之前我们用回环测试的模块实现了串口收发，现在我们用处理器执行程序的方式来实现串口收发。该程序已经在<code>sys-project/testcode/testcase/uart</code>下实现，只要在<span class="heti-skip"><span class="heti-spacing"> </span>project<span class="heti-spacing"> </span></span>目录下执行<code>make uart</code>就可以编译该文件夹下的代码得到<span><span class="heti-spacing"> </span>testcase.hex</span>，然后用该程序进行仿真测试。为了验证串口收发的正确性，我们在<code>sys-project/sim</code>提供了<span class="heti-skip"><span class="heti-spacing"> </span>sim_uart.sv<span class="heti-spacing"> </span></span>模块用于模拟<span class="heti-skip"><span class="heti-spacing"> </span>host<span class="heti-spacing"> </span></span>的串口收发，我们的处理器会和<span class="heti-skip"><span class="heti-spacing"> </span>host<span class="heti-spacing"> </span></span>共同实现回环测试。</p>
+<p>测试通过后<code>make bitstream</code>下板验证即可，不要忘记设置<span><span class="heti-spacing"> </span>FILE_PATH</span>。</p>
+<p>为了便于大家硬件调试，在处理器下板之后，可以将开关<code>sw[4:0]</code>拨至<code>10001</code>来查看串口内部<span class="heti-skip"><span class="heti-spacing"> </span>state<span class="heti-spacing"> </span></span>寄存器和<span class="heti-skip"><span class="heti-spacing"> </span>data<span class="heti-spacing"> </span></span>寄存器的值。</p>
+<h2 id="_9">实验报告<font color="Red"></font><a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ol>
+<li>请在实验报告中详细描述每一步的过程并配有适当的截图和解释，对于仿真设计和上板验证的结果也应当有适当的解释和照片 <font color="Red"></font></li>
+</ol>
+<blockquote>
+<p>细分：</p>
+<ul>
+<li>多周期处理器的仿真通过 <font color="Red"></font></li>
+<li>多周期处理器的下板测试 <font color="Red"></font></li>
+<li>串口的仿真通过 <font color="Red"></font></li>
+<li>串口的下板测试，终端显示自己的学号 <font color="Red"></font></li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>
+<p>阅读<span class="heti-skip"><span class="heti-spacing"> </span>uart<span class="heti-spacing"> </span></span>文件夹下的代码，解释处理器如何正确的进行串口的数据收发</p>
+</li>
+<li>
+<p>使用处理器进行串口收发和使用<span class="heti-skip"><span class="heti-spacing"> </span>lab4-2<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>looptest<span class="heti-spacing"> </span></span>模块进行串口收发相比有什么优缺点？</p>
+</li>
+<li>
+<p>尝试修改有限状态机，或者引入新的技术，对我们的多周期处理器的执行效率加以改进</p>
+</li>
+</ol>
+<h2 id="_10">代码提交<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_11">验收检查点<font color="Red"></font><a class="headerlink" href="#_11" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>多周期处理器仿真展示 <font color="Red"></font></li>
+<li>串口仿真展示 <font color="Red"></font></li>
+<li>代码解释或设计思路 <font color="Red"></font></li>
+<li>多周期处理器下板验证 <font color="Red"></font></li>
+<li>串口下板验证 <font color="Red"></font></li>
+</ul>
+<h3 id="_12">提交文件<a class="headerlink" href="#_12" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><code>src/project/</code> 中编写的<span class="heti-skip"><span class="heti-spacing"> </span>submit<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>include<span class="heti-spacing"> </span></span>的代码</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: 第二部分" class="md-footer__link md-footer__link--prev" href="../project-2/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                第二部分
+              </div>
+</div>
+</a>
+<a aria-label="Next: 附录：处理器差分测试" class="md-footer__link md-footer__link--next" href="../project-2-appendix/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                附录：处理器差分测试
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../js/katex.js"></script>
+</body>
+</html>

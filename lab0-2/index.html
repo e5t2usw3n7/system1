@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="http://zju-sys.pages.zjusct.io/sys1/sys1-sp24/lab0-2/" rel="canonical"/>
+<link href="../lab0-1/" rel="prev"/>
+<link href="../lab0-2-appendix/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.34" name="generator"/>
+<title>第二部分 - 浙江大学24年春夏系统一实验</title>
+<link href="../assets/stylesheets/main.35f28582.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#0-2fpga">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-header__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            浙江大学24年春夏系统一实验
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              第二部分
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-nav__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    浙江大学24年春夏系统一实验
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    首页
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导零
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            实验指导零
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      实验目的
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      实验环境
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      背景知识
+    </span>
+</a>
+<nav aria-label="背景知识" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fpga">
+<span class="md-ellipsis">
+      FPGA
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilog">
+<span class="md-ellipsis">
+      Verilog
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      实验步骤
+    </span>
+</a>
+<nav aria-label="实验步骤" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilog_1">
+<span class="md-ellipsis">
+      将原理图导出为 Verilog
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilator">
+<span class="md-ellipsis">
+      Verilator 仿真测试
+    </span>
+</a>
+<nav aria-label="Verilator 仿真测试" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      环境配置
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilator_1">
+<span class="md-ellipsis">
+      verilator 安装
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      仿真激励文件介绍
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilog_2">
+<span class="md-ellipsis">
+      仿真 Verilog 设计
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vivado">
+<span class="md-ellipsis">
+      Vivado 使用
+    </span>
+</a>
+<nav aria-label="Vivado 使用" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vivado_1">
+<span class="md-ellipsis">
+      Vivado 下板工作流程
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vivado_2">
+<span class="md-ellipsis">
+      Vivado 仿真
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vivado-batch">
+<span class="md-ellipsis">
+      Vivado Batch 模式
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      实验报告
+    </span>
+</a>
+<nav aria-label="实验报告" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilog-30">
+<span class="md-ellipsis">
+      Verilog 练习 30%
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#20">
+<span class="md-ellipsis">
+      仿真练习 20%
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#60">
+<span class="md-ellipsis">
+      验收和代码提交 60%
+    </span>
+</a>
+<nav aria-label="验收和代码提交 60%" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      验收检查点
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      提交文件
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2-appendix/">
+<span class="md-ellipsis">
+    附录：verilog 与电路
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导一
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            实验指导一
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导二
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            实验指导二
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1-appendix/">
+<span class="md-ellipsis">
+    附录：参数式编程
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导三
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            实验指导三
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-3/">
+<span class="md-ellipsis">
+    第三部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1-appendix/">
+<span class="md-ellipsis">
+    附录：reg 与时序电路
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-3-appendix/">
+<span class="md-ellipsis">
+    附录：阻塞赋值
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导四
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            实验指导四
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1-appendix/">
+<span class="md-ellipsis">
+    附录：SystemVerilog 高级语法
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导五
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            实验指导五
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导 project
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            实验指导 project
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-bonus/">
+<span class="md-ellipsis">
+    Bonus
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2-appendix/">
+<span class="md-ellipsis">
+    附录：处理器差分测试
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setup/">
+<span class="md-ellipsis">
+    环境配置
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../issue/">
+<span class="md-ellipsis">
+    提交提问
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pull/">
+<span class="md-ellipsis">
+    提交修改
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      实验目的
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      实验环境
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      背景知识
+    </span>
+</a>
+<nav aria-label="背景知识" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fpga">
+<span class="md-ellipsis">
+      FPGA
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilog">
+<span class="md-ellipsis">
+      Verilog
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      实验步骤
+    </span>
+</a>
+<nav aria-label="实验步骤" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilog_1">
+<span class="md-ellipsis">
+      将原理图导出为 Verilog
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilator">
+<span class="md-ellipsis">
+      Verilator 仿真测试
+    </span>
+</a>
+<nav aria-label="Verilator 仿真测试" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      环境配置
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilator_1">
+<span class="md-ellipsis">
+      verilator 安装
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      仿真激励文件介绍
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilog_2">
+<span class="md-ellipsis">
+      仿真 Verilog 设计
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vivado">
+<span class="md-ellipsis">
+      Vivado 使用
+    </span>
+</a>
+<nav aria-label="Vivado 使用" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vivado_1">
+<span class="md-ellipsis">
+      Vivado 下板工作流程
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vivado_2">
+<span class="md-ellipsis">
+      Vivado 仿真
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vivado-batch">
+<span class="md-ellipsis">
+      Vivado Batch 模式
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      实验报告
+    </span>
+</a>
+<nav aria-label="实验报告" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verilog-30">
+<span class="md-ellipsis">
+      Verilog 练习 30%
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#20">
+<span class="md-ellipsis">
+      仿真练习 20%
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#60">
+<span class="md-ellipsis">
+      验收和代码提交 60%
+    </span>
+</a>
+<nav aria-label="验收和代码提交 60%" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      验收检查点
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      提交文件
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24/-/blob/master/docs/lab0-2.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
+</a>
+<h1 id="0-2fpga">实验<span><span class="heti-spacing"> </span>0-2</span>：<span>FPGA<span class="heti-spacing"> </span></span>实验环境准备<a class="headerlink" href="#0-2fpga" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<h2 id="_1">实验目的<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>掌握<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>设计软件<span class="heti-skip"><span class="heti-spacing"> </span>Vivado<span class="heti-spacing"> </span></span>的基本使用方法</li>
+<li>掌握<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>语言的最基础使用方法</li>
+<li>学习卡诺图的化简和对应<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>语言的转换</li>
+</ul>
+<h2 id="_2">实验环境<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li><span>EDA<span class="heti-spacing"> </span></span>工具：<a href="https://ngspice.sourceforge.io">Ngspice</a>，<a href="https://github.com/logisim-evolution/logisim-evolution">LogSim Evolution</a></li>
+<li>操作系统：Windows 10+ 22H2，Ubuntu 22.04+</li>
+<li>VHDL：Verilog</li>
+</ul>
+<h2 id="_3">背景知识<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="fpga">FPGA<a class="headerlink" href="#fpga" title="Permanent link">¶</a></h3>
+<p><span>FPGA<span class="heti-spacing"> </span></span>器件属于专用集成电路中的一种半定制电路，是可编程的逻辑列阵，能够有效的解决原有的器件门电路数较少的问题。</p>
+<p><span>FPGA<span class="heti-spacing"> </span></span>的基本结构包括可编程输入输出单元，可配置逻辑块，数字时钟管理模块，嵌入式块<span><span class="heti-spacing"> </span>RAM</span>，布线资源，内嵌专用硬核，底层内嵌功能单元。</p>
+<h3 id="verilog">Verilog<a class="headerlink" href="#verilog" title="Permanent link">¶</a></h3>
+<p><span>Verilog HDL<span class="heti-spacing"> </span></span>是一种硬件描述语言，用于从算法级、门级到开关级的多种抽象设计层次的数字系统建模。被建模的数字系统对象的复杂性可以介于简单的门和完整的电子数字系统之间。数字系统能够按层次描述，并可在相同描述中显式地进行时序建模。</p>
+<p><span>Verilog HDL<span class="heti-spacing"> </span></span>语言具有下述描述能力：设计的行为特性、设计的数据流特性、设计的结构组成以及包含响应监控和设计验证方面的时延和波形产生机制。所有这些都使用同一种建模语言。</p>
+<p>此外，<span>Verilog HDL<span class="heti-spacing"> </span></span>语言提供了编程语言接口，通过该接口可以在模拟、验证期间从设计外部访问设计，包括模拟的具体控制和运行。</p>
+<h2 id="_4">实验步骤<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="verilog_1">将原理图导出为<span><span class="heti-spacing"> </span>Verilog</span><a class="headerlink" href="#verilog_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>启动<span><span class="heti-spacing"> </span>Logisim</span>，依次选择<span class="heti-skip"><span class="heti-spacing"> </span>File &gt; Open<span class="heti-spacing"> </span></span>打开在上个实验中绘制的电路原理图文件<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（也可以执行<code>java -jar logisim-evolution-3.8.0-all.jar /&lt;path_to_file&gt;/xxx.circ</code>打开保存的设计文件，<path_to_file>是你保存时的文件路径）</path_to_file></p>
+<p>依次选择上方状态栏的<span><span class="heti-spacing"> </span>FPGA &gt; Synthesize &amp; Download</span>。在弹出的窗口中：</p>
+<ul>
+<li>将<span class="heti-skip"><span class="heti-spacing"> </span>Target board<span class="heti-spacing"> </span></span>修改为<span><span class="heti-spacing"> </span>FPGA4U</span></li>
+<li>选择右上角的<span><span class="heti-spacing"> </span>Settings</span>，将<span class="heti-skip"><span class="heti-spacing"> </span>Hardware description language used for FPGA-commander<span class="heti-spacing"> </span></span>修改为<span><span class="heti-spacing"> </span>Verilog</span>，同时修改的<span class="heti-skip"><span class="heti-spacing"> </span>Workspace location<span class="heti-spacing"> </span></span>为希望<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>文件生成的文件路径</li>
+<li>点击<span class="heti-skip"><span class="heti-spacing"> </span>Execute<span class="heti-spacing"> </span></span>按钮，此时会弹出一个带有<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>图片的窗口，点击<span class="heti-skip"><span class="heti-spacing"> </span>Done<span class="heti-spacing"> </span></span>即可<ul>
+<li>如果报错没有添加<span><span class="heti-spacing"> </span>label</span>，先回到画布给端口添加<span><span class="heti-spacing"> </span>label</span>：I0、I1、I2、O（注意<span class="heti-skip"><span class="heti-spacing"> </span>label<span class="heti-spacing"> </span></span>必须与要求相同）</li>
+<li>可能弹出窗口 “Design is not completely mapped”，选择 “Yes” 继续即可</li>
+</ul>
+</li>
+</ul>
+<p>根据<span class="heti-skip"><span class="heti-spacing"> </span>log<span class="heti-spacing"> </span></span>中的记录找到生成的<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>文件，路径为 <code>&lt;Workspace location&gt;/&lt;工程名&gt;/main/verilog</code>。</p>
+<p>其中，在<span class="heti-skip"><span class="heti-spacing"> </span>circuit<span class="heti-spacing"> </span></span>目录下的<span class="heti-skip"><span class="heti-spacing"> </span>main.v<span class="heti-spacing"> </span></span>文件中应当包含如下内容，<strong>注意</strong>后续实验要求模块名和端口名必须和给出的样例相同：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">module</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="w"> </span><span class="n">I0</span><span class="p">,</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">             </span><span class="n">I1</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">             </span><span class="n">I2</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">             </span><span class="n">O</span><span class="w"> </span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>需要将<span class="heti-skip"><span class="heti-spacing"> </span>circuit<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>gates<span class="heti-spacing"> </span></span>目录下的生成的所有<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>文件拷贝至本仓库的 <code>src/lab0-2/submit</code> 目录下，后续实验会用到。</p>
+</div>
+<p>使用<span class="heti-skip"><span class="heti-spacing"> </span>tree<span class="heti-spacing"> </span></span>指令查看<span class="heti-skip"><span class="heti-spacing"> </span>src<span class="heti-spacing"> </span></span>文件夹结构，应当呈现如下结果：
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span>
+<span class="normal"><a href="#__codelineno-1-8">8</a></span>
+<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>.
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>└──<span class="w"> </span>src
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span>└──<span class="w"> </span>lab0-2
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">        </span>├──<span class="w"> </span>Makefile
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">        </span>└──<span class="w"> </span>submit
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">            </span>├──<span class="w"> </span>AND_GATE_3_INPUTS.v
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">            </span>├──<span class="w"> </span>main.v
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">            </span>├──<span class="w"> </span>OR_GATE_4_INPUTS.v
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">            </span>└──<span class="w"> </span>readme.md
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><span>src:<span class="heti-spacing"> </span></span>实验源代码</li>
+<li><span>src/lab0-2: lab0-2<span class="heti-spacing"> </span></span>实验的源代码</li>
+<li><span>src/lab0-2/submit: lab0-2<span class="heti-spacing"> </span></span>实验需要同学们实现的源代码存放目录，实验结束请提交这部分代码</li>
+<li><span>src/lab0-2/Makefile: lab0-2<span class="heti-spacing"> </span></span>实验的<span class="heti-skip"><span class="heti-spacing"> </span>makefile<span class="heti-spacing"> </span></span>脚本</li>
+</ul>
+<p>请根据<span class="heti-skip"><span class="heti-spacing"> </span>src/submit/readme.md<span class="heti-spacing"> </span></span>的指示修改<span class="heti-skip"><span class="heti-spacing"> </span>AND_GATE_3_INPUTS.v<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>OR_GATE_4_INPUTS.v<span class="heti-spacing"> </span></span>文件以满足后续需要。</p>
+<details class="tip">
+<summary>附：一些常见的<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>命令参考</summary>
+<p><code>$</code>开头的行代表输入的指令，没有的<code>$</code>的行代表指令执行的结果，<code>#</code>后的内容为注释。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>$<span class="w"> </span><span class="nb">pwd</span><span class="w">   </span><span class="c1"># 查看当前路径</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;path&gt;<span class="w"> </span><span class="c1"># 切换路径 </span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1"># 例：cd /tmp 是进入根目录下的tmp文件夹，/代表根目录</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1"># 除了上面的绝对路径外，还可以使用相对路径：</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1"># 例：cd .. 在linux中，.代表当前目录，..代表上一级的父文件夹，~代表用户Home目录</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>$<span class="w"> </span>ls<span class="w"> </span>&lt;path&gt;<span class="w"> </span><span class="c1"># 显示指定路径下的文件</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>$<span class="w"> </span>cp<span class="w"> </span>&lt;src<span class="w"> </span>file<span class="w"> </span>path&gt;<span class="w"> </span>&lt;dest<span class="w"> </span>path&gt;<span class="w">    </span><span class="c1"># 拷贝文件</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1"># 例：cp logisim_evolution_workspace/lab0.1/main/verilog/circuit/main.v sys1-sp23/src/lab0-2/sim/src</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="c1"># 其中，</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="c1">#   logisim_evolution_workspace/lab0.1/main/verilog/circuit/main.v 为要复制的文件路径</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="c1">#   sys1-sp23/src/lab0-2/sim/src 为目标文件夹路径</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>$<span class="w"> </span><span class="nb">pwd</span><span class="w">       </span><span class="c1"># 显示当前路径</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>/home/&lt;your<span class="w"> </span>name&gt;
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>$<span class="w"> </span>ls<span class="w">        </span><span class="c1"># 查看当前路径下所有文件</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>lab0.1.circ<span class="w">  </span>logisim-evolution-3.8.0-all.jar<span class="w">  </span>logisim_evolution_workspace<span class="w">  </span>sys1-sp24
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1"># cp格式：cp 指定目录下文件  目标路径（仓库下要求目录）</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>$<span class="w"> </span>cp<span class="w"> </span>logisim_evolution_workspace/lab0.1/main/verilog/circuit/main.v<span class="w"> </span>sys1-sp24/src/lab0-2/submit<span class="w">   </span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1"># 进入路径，确认拷贝完成</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>sys1-sp24/src/lab0-2/submit
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>$<span class="w"> </span>ls<span class="w">        </span><span class="c1"># 这里拷贝的文件是main.v</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>main.v
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="c1"># ~/表示绝对路径，即不受到前面已经进入的路径的干扰；输入完不要按回车，按tab可以显示该目录下文件作为提示</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>$<span class="w"> </span>cp<span class="w"> </span>~/logisim_evolution_workspace/lab0.1/main/verilog/gates/
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="c1"># 这里是按tab作为提示的结果</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>AND_GATE_3_INPUTS.v<span class="w">  </span>OR_GATE_4_INPUTS.v
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="c1">#已经在该目录下,可以在最后用“.”来移入当前路径</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>$<span class="w"> </span>cp<span class="w"> </span>~/logisim_evolution_workspace/lab0.1/main/verilog/gates/AND_GATE_3_INPUTS.v<span class="w"> </span>.
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="c1"># 可以按方向键↑来复原上一条指令</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="c1"># Tab可起到提示作用，可以多按几次来尝试</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">关于<span class="heti-skip"><span class="heti-spacing"> </span>verilog<span class="heti-spacing"> </span></span>与电路的关系，见<a href="../lab0-2-appendix/">本实验附录</a></p>
+</div>
+<h3 id="verilator"><span>Verilator<span class="heti-spacing"> </span></span>仿真测试<a class="headerlink" href="#verilator" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>用<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>语言设计完硬件之后，我们需要检测硬件功能是否正确。一种方法我们直接用电器元件搭建需要的硬件，然后用示波器、接线板、电源、电线检测功能，但无一这个测试的资金和时间成本是很高的，如果测试失败排除错误也是很困难的。</p>
+<p>所以我们希望有一种方法可以用计算机模拟<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>描述的逻辑电路的运行，然后检查模拟的逻辑电路输入输出是否正确，这个过程称之为<strong>仿真</strong>。现在我们介绍如何用<span class="heti-skip"><span class="heti-spacing"> </span>Verilator<span class="heti-spacing"> </span></span>工具进行仿真。</p>
+<h4 id="_5">环境配置<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>过去<span class="heti-skip"><span class="heti-spacing"> </span>Lab0-2<span class="heti-spacing"> </span></span>依赖的代码全部是在<span class="heti-skip"><span class="heti-spacing"> </span>src/lab0-2<span class="heti-spacing"> </span></span>文件夹下的，但为了防止部分同学篡改我们给出的测试代码，也为了帮助同学们将注意力集中在自己编程的代码上，我们特意将同学需要设计实现的代码和我们事先提供的其余代码进行分离，同学们需要实现的代码保留在<span><span class="heti-spacing"> </span>src/lab0-2</span>，其余代码被存放到外部依赖仓库<span><span class="heti-spacing"> </span>sys-project</span>。</p>
+<p>运行以下指令，然后可以得到如下的文件目录：</p>
+<p></p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>repo/sys-project<span class="w">    </span>//<span class="w"> </span>将<span class="w"> </span>sys-project<span class="w"> </span>仓库同步到<span class="w"> </span>repo/sys-project<span class="w"> </span>路径下
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>other<span class="w">                              </span>//<span class="w"> </span>sys-project<span class="w"> </span>切换到<span class="w"> </span>other<span class="w"> </span>分支
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>tree<span class="w">                                            </span>//<span class="w"> </span>查看当前的文件夹结构
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>.
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>├── repo
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>│   └── sys-project
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>│       └── lab0-2
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>│           ├── sim
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>│           │   └── testbench.v
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>│           ├── syn
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>│           │   ├── nexysa7.xdc
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>│           │   └── top.v
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>│           └── tcl
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>│               └── vivado.tcl
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>│
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><span>repo: submodule<span class="heti-spacing"> </span></span>外部依赖库，用于存放<span class="heti-skip"><span class="heti-spacing"> </span>sys1-sp24<span class="heti-spacing"> </span></span>仓库以来的其他仓库<ul>
+<li><span>sys-project:<span class="heti-spacing"> </span></span>所以是<span class="heti-skip"><span class="heti-spacing"> </span>sys1-sp24<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>src<span class="heti-spacing"> </span></span>依赖的其他实现提供的代码，请不要手动修改里面的代码<ul>
+<li><span>lab0-2:<span class="heti-spacing"> </span></span>实验依赖的助教提供的源代码<ul>
+<li><span>sim:<span class="heti-spacing"> </span></span>仅用于仿真测试的源代码</li>
+<li><span>syn:<span class="heti-spacing"> </span></span>仅用于综合下板的源代码</li>
+<li><span>syn:<span class="heti-spacing"> </span></span>用于综合下板的<span class="heti-skip"><span class="heti-spacing"> </span>vivado<span class="heti-spacing"> </span></span>执行脚本</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="verilator_1"><span>verilator<span class="heti-spacing"> </span></span>安装<a class="headerlink" href="#verilator_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>我们可以直接运行 <code>sudo apt install verilator</code> 来安装<span class="heti-skip"><span class="heti-spacing"> </span>verilator<span class="heti-spacing"> </span></span>工具，不过这个直接下载安装的<span class="heti-skip"><span class="heti-spacing"> </span>verilator<span class="heti-spacing"> </span></span>工具对于<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>的支持不够全面，所以建议手动安装最新版本。</p>
+<p>运行如下指令，所以<span class="heti-skip"><span class="heti-spacing"> </span>sys1-sp24<span class="heti-spacing"> </span></span>会自动拉取较新的<span class="heti-skip"><span class="heti-spacing"> </span>verilator<span class="heti-spacing"> </span></span>源代码，然后执行<span class="heti-skip"><span class="heti-spacing"> </span>makefile<span class="heti-spacing"> </span></span>的脚本编译安装<span><span class="heti-spacing"> </span>verilator</span>，这个版本的<span class="heti-skip"><span class="heti-spacing"> </span>verilator<span class="heti-spacing"> </span></span>暂时可以满足后续全部的仿真需求：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>repo/verilator
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>repo
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>make<span class="w"> </span>verilator
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">如果<span class="heti-skip"><span class="heti-spacing"> </span>repo/verilator<span class="heti-spacing"> </span></span>仓库<span class="heti-skip"><span class="heti-spacing"> </span>clone<span class="heti-spacing"> </span></span>实现网络连接失败可以考虑科学上网</p>
+</div>
+<p><code>make verilator</code> 如果出现类似于 <code>autoconf: not found, g++: command not found</code> 等报错说明当前环境缺少一些工具，考虑先运行以下命令安装：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>perl<span class="w"> </span>python3<span class="w"> </span>make<span class="w"> </span>autoconf<span class="w"> </span>g++<span class="w"> </span>flex<span class="w"> </span>bison<span class="w"> </span>ccache
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>autoconf<span class="w"> </span>automake<span class="w"> </span>libtool
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>help2man
+</code></pre></div></td></tr></table></div>
+<h4 id="_6">仿真激励文件介绍<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>我们使用的是开源的<span class="heti-skip"><span class="heti-spacing"> </span>RTL<span class="heti-spacing"> </span></span>仿真器<span><span class="heti-spacing"> </span>Verilator</span>，它会将硬件代码转化成主机可执行的<span class="heti-skip"><span class="heti-spacing"> </span>C++<span class="heti-spacing"> </span></span>模型，然后运行<span class="heti-skip"><span class="heti-spacing"> </span>C++<span class="heti-spacing"> </span></span>程序进行电路模拟。此外它还可以帮我们检查<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>的语法错误、接线错误、语义错误等，帮助我们在编译期间尽可能多的排除<span><span class="heti-spacing"> </span>bug</span>。</p>
+<p>我们使用的仿真激励文件位于<code>repo/sys-project/lab0-2/sim/testbench.v</code>，其基本的仿真激励模型如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span>
+<span class="normal"><a href="#__codelineno-8-30">30</a></span>
+<span class="normal"><a href="#__codelineno-8-31">31</a></span>
+<span class="normal"><a href="#__codelineno-8-32">32</a></span>
+<span class="normal"><a href="#__codelineno-8-33">33</a></span>
+<span class="normal"><a href="#__codelineno-8-34">34</a></span>
+<span class="normal"><a href="#__codelineno-8-35">35</a></span>
+<span class="normal"><a href="#__codelineno-8-36">36</a></span>
+<span class="normal"><a href="#__codelineno-8-37">37</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">module</span><span class="w"> </span><span class="n">Testbench</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="n">I0</span><span class="p">,</span><span class="n">I1</span><span class="p">,</span><span class="n">I2</span><span class="p">;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">O</span><span class="p">;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">    </span><span class="k">initial</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">        </span><span class="c1">// 设置输入的值</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">        </span><span class="n">I0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span><span class="w"> </span><span class="n">I1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span><span class="w"> </span><span class="n">I2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">        </span><span class="c1">// 等待 5 个单位时间修改输入激励的值</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">        </span><span class="p">#</span><span class="mh">5</span><span class="p">;</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">        </span><span class="n">I0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span><span class="w"> </span><span class="n">I1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span><span class="w"> </span><span class="n">I2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="w">        </span><span class="p">...</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="w">        </span><span class="p">#</span><span class="mh">5</span><span class="p">;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="w">        </span><span class="c1">// 结束仿真</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="w">        </span><span class="nb">$finish</span><span class="p">;</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="w">    </span><span class="n">main</span><span class="w"> </span><span class="n">dut</span><span class="p">(</span><span class="w"> </span>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">I0</span><span class="p">),</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">I1</span><span class="p">),</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="w">        </span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">I2</span><span class="p">),</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a><span class="w">        </span><span class="p">.</span><span class="n">O</span><span class="p">(</span><span class="n">O</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="w">    </span><span class="p">);</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a><span class="w">    </span><span class="c1">// 被仿真的模块，接受不同的输入，然后观察输出是否正确</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a>
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a><span class="w">    </span><span class="no">`ifdef</span><span class="w"> </span><span class="n">VERILATE</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a><span class="w">        </span><span class="k">initial</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a><span class="w">            </span><span class="c1">// 生成波形文件 build/verilator/Testbench.vcd</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29"></a><span class="w">            </span><span class="n">$dumpfile</span><span class="p">({</span><span class="no">`TOP_DIR</span><span class="p">,</span><span class="w"> </span><span class="s">"/Testbench.vcd"</span><span class="p">});</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30"></a><span class="w">            </span><span class="c1">//记录 dut 模块以及内部模块的线路信号变化</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31"></a><span class="w">            </span><span class="n">$dumpvars</span><span class="p">(</span><span class="mh">0</span><span class="p">,</span><span class="w"> </span><span class="n">dut</span><span class="p">);</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32"></a><span class="w">            </span><span class="c1">// 开始记录信号</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33"></a><span class="w">            </span><span class="n">$dumpon</span><span class="p">;</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35"></a><span class="w">    </span><span class="no">`endif</span>
+<a id="__codelineno-8-36" name="__codelineno-8-36"></a>
+<a id="__codelineno-8-37" name="__codelineno-8-37"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<p><span>reg<span class="heti-spacing"> </span></span>是寄存器的意思，可以认为是一个能提供固定输出的变量。如果我们忽略 <code>initial begin ... end</code> 块中的内容可以看到这是一个简单的电路，三个寄存器<span><span class="heti-spacing"> </span>I0</span>、I1、<span>I2<span class="heti-spacing"> </span></span>提供输出给需要测试的<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>模块，然后<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>模块输出到线路<span><span class="heti-spacing"> </span>O</span>。</p>
+<p>为了检验<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>模块是否功能正确，我们需要遍历<span><span class="heti-spacing"> </span>I0</span>、I1、<span>I2<span class="heti-spacing"> </span></span>从<span class="heti-skip"><span class="heti-spacing"> </span>000<span class="heti-spacing"> </span></span>到<span class="heti-skip"><span class="heti-spacing"> </span>111<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>个输入组合，然后依次检查对应的<span class="heti-skip"><span class="heti-spacing"> </span>O<span class="heti-spacing"> </span></span>输出是不是和<span class="heti-skip"><span class="heti-spacing"> </span>Lab0-1<span class="heti-spacing"> </span></span>的真值表的内容保持一致。</p>
+<p><code>initial</code> 块可以给<span class="heti-skip"><span class="heti-spacing"> </span>reg<span class="heti-spacing"> </span></span>寄存器赋值，让它们输出需要的值，所以：</p>
+<ul>
+<li>在<span class="heti-skip"><span class="heti-spacing"> </span>inital<span class="heti-spacing"> </span></span>块内用 <code>I0 = 1'b0; I1 = 1'b0; I2 = 1'b0;</code> 将<span><span class="heti-spacing"> </span>I0</span>、I1、<span>I2<span class="heti-spacing"> </span></span>分别赋值为低电平<ul>
+<li>然后<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>接收三个低电平输入仿真模拟得到对应的输出<span><span class="heti-spacing"> </span>O</span></li>
+</ul>
+</li>
+<li>之后我们用 <code>#5;</code> 语句延迟<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>个时间单位</li>
+<li>然后用 <code>I0 = 1'b0; I1 = 1'b0; I2 = 1'b1;</code> 修改输入为<span class="heti-skip"><span class="heti-spacing"> </span>001<span class="heti-spacing"> </span></span>进行第二组测试</li>
+<li>……依次类推直到<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>组测试都测试完毕</li>
+</ul>
+<p>之所以要延迟<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>个时间单位是为了让<span><span class="heti-spacing"> </span>I0</span>、I1、<span>I2<span class="heti-spacing"> </span></span>在给定输入下的输出可以维持<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>个单位的固定电平，便于通过波形观察<span class="heti-skip"><span class="heti-spacing"> </span>O<span class="heti-spacing"> </span></span>的输出电平。如果立刻修改<span><span class="heti-spacing"> </span>I0</span>、I1、<span>I2<span class="heti-spacing"> </span></span>的输出会导致<span class="heti-skip"><span class="heti-spacing"> </span>O<span class="heti-spacing"> </span></span>的值立刻变换，使得上一组输入对应的输出无法观察得到。</p>
+<p>最后用 <code>$finish;</code> 表示仿真结束。</p>
+<p>第二个<span class="heti-skip"><span class="heti-spacing"> </span>initial<span class="heti-spacing"> </span></span>模块中的<span><span class="heti-spacing"> </span>$dumpfile</span>、$dumpvars、<span>$dumpon<span class="heti-spacing"> </span></span>等用于将模块内部的波形导出到指定文件中。<span>Verilog<span class="heti-spacing"> </span></span>除了支持硬件描述、线路连接之外，还有一些特殊的<span class="heti-skip"><span class="heti-spacing"> </span>$func<span class="heti-spacing"> </span></span>函数来实现特殊的调试功能。</p>
+<h4 id="verilog_2">仿真<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>设计<a class="headerlink" href="#verilog_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>进入到本仓库的 <code>src/lab0-2</code> 目录下执行以下命令，首先安装实验所需的依赖，然后将<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>转换成<span class="heti-skip"><span class="heti-spacing"> </span>C++<span class="heti-spacing"> </span></span>模型并执行，最后使用<span class="heti-skip"><span class="heti-spacing"> </span>gtkwave<span class="heti-spacing"> </span></span>查看仿真期间产生的波形（保存在<span class="heti-skip"><span class="heti-spacing"> </span>lab0-2/build/verilate/Testbench.vcd<span class="heti-spacing"> </span></span>中<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>g++<span class="w"> </span>make<span class="w"> </span>gtkwave<span class="w"> </span>perl-doc
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>make
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>make<span class="w"> </span>wave
+</code></pre></div></td></tr></table></div>
+<p><span>gtkwave<span class="heti-spacing"> </span></span>启动后，首先从左侧依次展开我们的设计，然后选中<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>模块，从下方的窗口中将我们感兴趣的<span><span class="heti-spacing"> </span>I0</span>、I1、I2、<span>O<span class="heti-spacing"> </span></span>信号拖动到右侧的<span class="heti-skip"><span class="heti-spacing"> </span>Signals<span class="heti-spacing"> </span></span>窗口，这样它们我们就可以在窗口中查看它们在仿真过程中的值了。我们可以人工对照<span><span class="heti-spacing"> </span>I1</span>、I2、I3、<span>O<span class="heti-spacing"> </span></span>的输入输出，看是不是和<span class="heti-skip"><span class="heti-spacing"> </span>Lab0-1<span class="heti-spacing"> </span></span>的真值表保持一致。</p>
+<div class="admonition tip">
+<p class="admonition-title">如果<span class="heti-skip"><span class="heti-spacing"> </span>wsl<span class="heti-spacing"> </span></span>内的<span class="heti-skip"><span class="heti-spacing"> </span>GTKWave<span class="heti-spacing"> </span></span>不稳定，可以在<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>本机内安装查看波形</p>
+</div>
+<p>（暂时先注释掉<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>的 <code>VIVADO_SETUP        :=  $(error "please set your vivado's path")</code>）</p>
+<h3 id="vivado"><span>Vivado<span class="heti-spacing"> </span></span>使用<a class="headerlink" href="#vivado" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span>FPGA<span class="heti-spacing"> </span></span>是<span><span class="heti-spacing"> </span>Field Programmable Gate Array</span>，是一块小型的可编程序列，里面提供了一系列可以组装的电器元件，诸如<span><span class="heti-spacing"> </span>LUT</span>（查找表<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、MUX（选择器<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、FF（寄存器<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、BRAM（块存储器<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、加法器、乘法器等。</p>
+<p>我们仿真验证设计的硬件正确之后，就可以着手实现我们的硬件了。我们只需要将<span class="heti-skip"><span class="heti-spacing"> </span>verilog<span class="heti-spacing"> </span></span>转换为电路设计格式<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>然后发送给<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>芯片，<span>FPGA<span class="heti-spacing"> </span></span>芯片就会按照<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>的指示将这些电器元件组装起来，得到等效功能的电路。</p>
+<h4 id="vivado_1"><span>Vivado<span class="heti-spacing"> </span></span>下板工作流程<a class="headerlink" href="#vivado_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p><span>Vivado<span class="heti-spacing"> </span></span>的作用就是将电路从<span class="heti-skip"><span class="heti-spacing"> </span>verilog<span class="heti-spacing"> </span></span>的字符串描述形式转换为<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>可以理解的<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>的描述形式。为了让大家对<span class="heti-skip"><span class="heti-spacing"> </span>vivado<span class="heti-spacing"> </span></span>的工作流有一个比较具体的了解，我们来简要分析一下<span class="heti-skip"><span class="heti-spacing"> </span>vivado<span class="heti-spacing"> </span></span>是如何把<span class="heti-skip"><span class="heti-spacing"> </span>verilog<span class="heti-spacing"> </span></span>一步步转化为<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>的。</p>
+<details>
+<summary><span>Step 1.<span class="heti-spacing"> </span></span>下载安装<span><span class="heti-spacing"> </span>vivado</span></summary>
+<p>进入<span class="heti-skip"><span class="heti-spacing"> </span>Xilinx<span class="heti-spacing"> </span></span>官网下载<span class="heti-skip"><span class="heti-spacing"> </span>vivado2022.2<span class="heti-spacing"> </span></span>版本，安装请参考<a href="../setup/">环境配置指南</a>。</p>
+</details>
+<details>
+<summary><span>Step 2.<span class="heti-spacing"> </span></span>创建<span class="heti-skip"><span class="heti-spacing"> </span>vivado<span class="heti-spacing"> </span></span>工程</summary>
+<p>首先启动<span><span class="heti-spacing"> </span>vivado</span>，新建工程，命名为<span><span class="heti-spacing"> </span>sys1-lab0</span>。</p>
+<p><img alt="" src="../img/lab0-2/0.png"/></p>
+<p>选择无代码的<span class="heti-skip"><span class="heti-spacing"> </span>RTL<span class="heti-spacing"> </span></span>工程。</p>
+<p><img alt="" src="../img/lab0-2/1.png"/></p>
+<p>开发板型号下方搜索并选择<span><span class="heti-spacing"> </span>xc7a100tcsg324-1</span>。</p>
+<p><img alt="" src="../img/lab0-2/2.png"/></p>
+<p>点击<span class="heti-skip"><span class="heti-spacing"> </span>Add Source<span class="heti-spacing"> </span></span>选择<span><span class="heti-spacing"> </span>Add or create design sources</span>，将<span class="heti-skip"><span class="heti-spacing"> </span>/src/lab0-2/submit<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>verilog<span class="heti-spacing"> </span></span>文件添加进工程。</p>
+<p><img alt="" src="../img/lab0-2/3.png"/></p>
+<p><img alt="" src="../img/lab0-2/4.png"/></p>
+<p><span>Design Sources<span class="heti-spacing"> </span></span>自动显示了我们的<span class="heti-skip"><span class="heti-spacing"> </span>verilog<span class="heti-spacing"> </span></span>硬件模块的层次。最顶层的模块是<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>模块，它内部有<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>个子模块分别是<span><span class="heti-spacing"> </span>GATE_1 - GATE_5</span>，模块类型分别是<span class="heti-skip"><span class="heti-spacing"> </span>AND_GATE_3_INPUTS<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>OR_GATE_4_INPUTS</span>。</p>
+<p><img alt="" src="../img/lab0-2/5.png"/></p>
+</details>
+<details>
+<summary><span>Step 3.<span class="heti-spacing"> </span></span>综合（synthensis）</summary>
+<p>右键需要综合的模块，然后选择<span><span class="heti-spacing"> </span>Set as Top</span>，该模块就会变为顶层模块，之后的<span class="heti-skip"><span class="heti-spacing"> </span>synthensis<span class="heti-spacing"> </span></span>操作只针对该模块和它内部的模块进行。例如，我们设置<span class="heti-skip"><span class="heti-spacing"> </span>AND_GATE_3_INPUTS<span class="heti-spacing"> </span></span>为顶层模块则只综合<span class="heti-skip"><span class="heti-spacing"> </span>AND3<span class="heti-spacing"> </span></span>电路，而不综合<span class="heti-skip"><span class="heti-spacing"> </span>OR4<span class="heti-spacing"> </span></span>电路和<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>电路。</p>
+<p><img alt="" src="../img/lab0-2/6.png"/></p>
+<p>点击左侧<span><span class="heti-spacing"> </span>SYNTHENSIS &gt; Run Sythensis</span>，然后点击<span class="heti-skip"><span class="heti-spacing"> </span>OK<span class="heti-spacing"> </span></span>就可以开始电路的综合。</p>
+<p><img alt="" src="../img/lab0-2/7.png"/></p>
+<p>综合过程大致分为两步：</p>
+<ul>
+<li>第一步将<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>描述的电路转化为实现无关的与或非逻辑表达式的形式，可以简单地认为转换为仅由与或非门组成的简单电路</li>
+<li>第二步将实现无关的与或非门电路转换为<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>实现相关的电路</li>
+</ul>
+<p>例如<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>提供了<span class="heti-skip"><span class="heti-spacing"> </span>LUT3<span class="heti-spacing"> </span></span>电器元件，改电器元件有一个<span class="heti-skip"><span class="heti-spacing"> </span>8 bit<span class="heti-spacing"> </span></span>的可编程数组<span><span class="heti-spacing"> </span>array</span>，<span>FPGA<span class="heti-spacing"> </span></span>可以根据需要在数组内填入需要的<span><span class="heti-spacing"> </span>0</span>、<span>1<span class="heti-spacing"> </span></span>值。<span>LUT3<span class="heti-spacing"> </span></span>接收输入 <code>I={I2,I1,I0}</code> 作为索引，然后将数组中的第<span class="heti-skip"><span class="heti-spacing"> </span>I<span class="heti-spacing"> </span></span>位的值 <code>array[I]</code> 作为<span class="heti-skip"><span class="heti-spacing"> </span>O<span class="heti-spacing"> </span></span>的输出。</p>
+<p><img alt="LUT3" src="../img/lab0-2/lut3.png"/></p>
+<p>我们可以回忆一下<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>模块对应的真值表，要求输入 <code>I={I2,I1,I0}</code> 则输出为 <code>table[I]</code> 的值，所以我们只需要将真值表中对应的输出值依次填入<span class="heti-skip"><span class="heti-spacing"> </span>LUT3<span class="heti-spacing"> </span></span>就可以得到和<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>模块输入输出关系相同的电路，换句话说这个<span class="heti-skip"><span class="heti-spacing"> </span>LUT3<span class="heti-spacing"> </span></span>电路等价于我们设计的<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>电路，可以用这个<span class="heti-skip"><span class="heti-spacing"> </span>LUT3<span class="heti-spacing"> </span></span>电路实现我们设计的<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>电路。</p>
+<p><img alt="LUT3-synth" src="../img/lab0-2/LUT3-2.png"/></p>
+<p><span>sythensis<span class="heti-spacing"> </span></span>完毕后点击<span class="heti-skip"><span class="heti-spacing"> </span>SYNTHENSIS &gt; Sechematic<span class="heti-spacing"> </span></span>即可查看综合得到的电路图实现，可以看到<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>模块最后确实被综合成了一个<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>LUT3<span class="heti-spacing"> </span></span>电路。</p>
+<p><img alt="" src="../img/lab0-2/8.png"/></p>
+</details>
+<details>
+<summary><span>Step 4.<span class="heti-spacing"> </span></span>设置输入输出引脚</summary>
+<p>虽然我们得到了<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>模块的电路设计，但是在<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>板子中用<span class="heti-skip"><span class="heti-spacing"> </span>LUT3<span class="heti-spacing"> </span></span>电器元件组件这个电路是没有意义的，因为我们人既不能控制<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>的输入，也不能看到<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>的输出。这就好比我们有一台电脑但它既没有鼠标键盘，也没有显示屏，因此我们需要给<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>电路提供人可以控制的输入输出。</p>
+<p>点击<span class="heti-skip"><span class="heti-spacing"> </span>Add Sources &gt; Add or create design sources &gt; Add Files<span class="heti-spacing"> </span></span>将<span class="heti-skip"><span class="heti-spacing"> </span>repo/sys-project/lab0-2/syn/top.v<span class="heti-spacing"> </span></span>加入工程。</p>
+<p>该模块输入为<span><span class="heti-spacing"> </span>SW0</span>、SW1、SW2，输出为<span><span class="heti-spacing"> </span>LED0</span>，然后用<span><span class="heti-spacing"> </span>SW0</span>、SW1、<span>SW2<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>提供输入，用<span class="heti-skip"><span class="heti-spacing"> </span>LED0<span class="heti-spacing"> </span></span>接收<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>的输出。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="k">module</span><span class="w"> </span><span class="n">top</span><span class="p">(</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">SW0</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">SW1</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">SW2</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">LD0</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">    </span><span class="p">);</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">    </span><span class="n">main</span><span class="w"> </span><span class="n">ldut</span><span class="p">(</span><span class="w"> </span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">SW0</span><span class="p">),</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">SW1</span><span class="p">),</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="w">        </span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">SW2</span><span class="p">),</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">        </span><span class="p">.</span><span class="n">O</span><span class="p">(</span><span class="n">LD0</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w">    </span><span class="p">);</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<p>然后点击<span class="heti-skip"><span class="heti-spacing"> </span>Add Source &gt; Add and create constraints<span class="heti-spacing"> </span></span>将<span class="heti-skip"><span class="heti-spacing"> </span>repo/sys-project/lab0-2/syn/nexysa7.xdc<span class="heti-spacing"> </span></span>引脚约束文件加入工程。</p>
+<p>我们的<span class="heti-skip"><span class="heti-spacing"> </span>Nexysa7<span class="heti-spacing"> </span></span>开发板除了核心的<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>芯片外，还有很多配合使用的<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>外设比如开关、<span>LED<span class="heti-spacing"> </span></span>灯、按钮等，它们通过主板线路和<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>的指定引脚相连为<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>芯片提供输入输出。</p>
+<p><img alt="nexys-a7" src="../img/lab0-2/nexys-a7.png"/></p>
+<p>通过查阅<a href="https://digilent.com/reference/_media/reference/programmable-logic/nexys-a7/nexys-a7_rm.pdf"><span class="heti-skip"><span class="heti-spacing"> </span>Nexysa7<span class="heti-spacing"> </span></span>手册</a>可以看到开关<span class="heti-skip"><span class="heti-spacing"> </span>SW0-SW15<span class="heti-spacing"> </span></span>的输入连接到了<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>芯片的<span class="heti-skip"><span class="heti-spacing"> </span>J15-V10<span class="heti-spacing"> </span></span>引脚，当开关打开时对应的芯片引脚输入高电平，反之输入低电平；<span>FPGA<span class="heti-spacing"> </span></span>芯片的<span class="heti-skip"><span class="heti-spacing"> </span>H17-V11<span class="heti-spacing"> </span></span>的输出连接到<span class="heti-skip"><span class="heti-spacing"> </span>LED<span class="heti-spacing"> </span></span>灯<span><span class="heti-spacing"> </span>LD0-LD15</span>，当输出高电平时<span class="heti-skip"><span class="heti-spacing"> </span>LED<span class="heti-spacing"> </span></span>灯亮起，反之<span class="heti-skip"><span class="heti-spacing"> </span>LED<span class="heti-spacing"> </span></span>灯熄灭。</p>
+<p><img alt="basic-io" src="../img/lab0-2/basic-io.png"/></p>
+<p>现在我们希望用开关<span class="heti-skip"><span class="heti-spacing"> </span>SW0-SW2<span class="heti-spacing"> </span></span>得输入作为我们<span class="heti-skip"><span class="heti-spacing"> </span>top<span class="heti-spacing"> </span></span>模块的<span class="heti-skip"><span class="heti-spacing"> </span>SW0-SW2<span class="heti-spacing"> </span></span>接口的输入，希望<span class="heti-skip"><span class="heti-spacing"> </span>top<span class="heti-spacing"> </span></span>模块的输出<span class="heti-skip"><span class="heti-spacing"> </span>LED0<span class="heti-spacing"> </span></span>发送到<span class="heti-skip"><span class="heti-spacing"> </span>LED<span class="heti-spacing"> </span></span>灯<span class="heti-skip"><span class="heti-spacing"> </span>LD0<span class="heti-spacing"> </span></span>上，于是我们在<span class="heti-skip"><span class="heti-spacing"> </span>nexysa7.xdc<span class="heti-spacing"> </span></span>文件中指定芯片外部输入输出引脚和顶层<span class="heti-skip"><span class="heti-spacing"> </span>top<span class="heti-spacing"> </span></span>模块的输入输出的连接关系。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="p">##</span><span class="w"> </span><span class="n">IO</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">set_property</span><span class="w"> </span><span class="n">PACKAGE_PIN</span><span class="w"> </span><span class="p">{</span><span class="n">J15</span><span class="p">}</span><span class="w"> </span><span class="p">[</span><span class="n">get_ports</span><span class="w"> </span><span class="p">{</span><span class="n">SW0</span><span class="p">}]</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="p">#</span><span class="w"> </span><span class="err">将顶层模块的端口</span><span class="w"> </span><span class="n">SW0</span><span class="w"> </span><span class="err">和芯片的</span><span class="w"> </span><span class="n">J15</span><span class="w"> </span><span class="err">引脚绑定</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="n">set_property</span><span class="w"> </span><span class="n">IOSTANDARD</span><span class="w"> </span><span class="p">{</span><span class="n">LVCMOS33</span><span class="p">}</span><span class="w"> </span><span class="p">[</span><span class="n">get_ports</span><span class="w"> </span><span class="p">{</span><span class="n">SW0</span><span class="p">}]</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="p">#</span><span class="w"> </span><span class="err">引脚的驱动电平为</span><span class="w"> </span><span class="mf">3.3</span><span class="w"> </span><span class="n">V</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="n">set_property</span><span class="w"> </span><span class="n">PACKAGE_PIN</span><span class="w"> </span><span class="p">{</span><span class="n">L16</span><span class="p">}</span><span class="w"> </span><span class="p">[</span><span class="n">get_ports</span><span class="w"> </span><span class="p">{</span><span class="n">SW1</span><span class="p">}]</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="n">set_property</span><span class="w"> </span><span class="n">IOSTANDARD</span><span class="w"> </span><span class="p">{</span><span class="n">LVCMOS33</span><span class="p">}</span><span class="w"> </span><span class="p">[</span><span class="n">get_ports</span><span class="w"> </span><span class="p">{</span><span class="n">SW1</span><span class="p">}]</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="n">set_property</span><span class="w"> </span><span class="n">PACKAGE_PIN</span><span class="w"> </span><span class="p">{</span><span class="n">M13</span><span class="p">}</span><span class="w"> </span><span class="p">[</span><span class="n">get_ports</span><span class="w"> </span><span class="p">{</span><span class="n">SW2</span><span class="p">}]</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="n">set_property</span><span class="w"> </span><span class="n">IOSTANDARD</span><span class="w"> </span><span class="p">{</span><span class="n">LVCMOS33</span><span class="p">}</span><span class="w"> </span><span class="p">[</span><span class="n">get_ports</span><span class="w"> </span><span class="p">{</span><span class="n">SW2</span><span class="p">}]</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="n">set_property</span><span class="w"> </span><span class="n">PACKAGE_PIN</span><span class="w"> </span><span class="p">{</span><span class="n">H17</span><span class="p">}</span><span class="w"> </span><span class="p">[</span><span class="n">get_ports</span><span class="w"> </span><span class="p">{</span><span class="n">LD0</span><span class="p">}]</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="n">set_property</span><span class="w"> </span><span class="n">IOSTANDARD</span><span class="w"> </span><span class="p">{</span><span class="n">LVCMOS33</span><span class="p">}</span><span class="w"> </span><span class="p">[</span><span class="n">get_ports</span><span class="w"> </span><span class="p">{</span><span class="n">LD0</span><span class="p">}]</span>
+</code></pre></div></td></tr></table></div>
+<p>既然我们现在以<span class="heti-skip"><span class="heti-spacing"> </span>top<span class="heti-spacing"> </span></span>模块为顶层模块，所以右键<span><span class="heti-spacing"> </span>top</span>，选择<span><span class="heti-spacing"> </span>Set as top</span>，将<span class="heti-skip"><span class="heti-spacing"> </span>top<span class="heti-spacing"> </span></span>模块转换为顶层模块，然后重新<span><span class="heti-spacing"> </span>sythensis</span>。</p>
+</details>
+<details>
+<summary><span>Step 5.<span class="heti-spacing"> </span></span>构建（implementation）</summary>
+<p>通过<span class="heti-skip"><span class="heti-spacing"> </span>synthensis<span class="heti-spacing"> </span></span>步骤我们用<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>可以提供的资源搭建了<span class="heti-skip"><span class="heti-spacing"> </span>top<span class="heti-spacing"> </span></span>电路，然后通过<span class="heti-skip"><span class="heti-spacing"> </span>implementation<span class="heti-spacing"> </span></span>将这些资源和连线映射到<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>真实的电器元件上。</p>
+<p>点击左侧<span><span class="heti-spacing"> </span>IMPLEMENTAION &gt; Run Implementation</span>，然后点击<span class="heti-skip"><span class="heti-spacing"> </span>OK<span class="heti-spacing"> </span></span>就可以开始电路的构建：</p>
+<p><img alt="" src="../img/lab0-2/9.png"/></p>
+<p>执行完毕后点击弹窗的<span class="heti-skip"><span class="heti-spacing"> </span>OK<span class="heti-spacing"> </span></span>来<span class="heti-skip"><span class="heti-spacing"> </span>Open Implementation Design<span class="heti-spacing"> </span></span>得到最后<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>的布线情况：</p>
+<p><img alt="" src="../img/lab0-2/10.png"/>
+<img alt="" src="../img/lab0-2/11.png"/></p>
+<p>我们来看布线的细节：</p>
+<ol>
+<li>开关、<span>LED<span class="heti-spacing"> </span></span>灯外设连接的芯片<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>引脚配套的<span class="heti-skip"><span class="heti-spacing"> </span>IO buffer<span class="heti-spacing"> </span></span>被对应的启用，用于接收开关的输入和发送<span class="heti-skip"><span class="heti-spacing"> </span>LED<span class="heti-spacing"> </span></span>灯的输出</li>
+<li><span>top<span class="heti-spacing"> </span></span>模块的<span class="heti-skip"><span class="heti-spacing"> </span>LUT3<span class="heti-spacing"> </span></span>电路被分配到了<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>内部的一块<span class="heti-skip"><span class="heti-spacing"> </span>LUT6<span class="heti-spacing"> </span></span>电器元件（原理和<span class="heti-skip"><span class="heti-spacing"> </span>LUT3<span class="heti-spacing"> </span></span>一致，但是内部数组是<span><span class="heti-spacing"> </span>64</span>）上</li>
+<li>还有从<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>输入输出到<span class="heti-skip"><span class="heti-spacing"> </span>LUT6<span class="heti-spacing"> </span></span>输入输出的一些连线，图上没有体现</li>
+</ol>
+<p><img alt="distribute" src="../img/lab0-2/distribute.png"/></p>
+<p>所以<span class="heti-skip"><span class="heti-spacing"> </span>implementation<span class="heti-spacing"> </span></span>主要的任务是：</p>
+<ol>
+<li>启用<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>相关的引脚<span><span class="heti-spacing"> </span>buffer</span></li>
+<li>将顶层模块<span class="heti-skip"><span class="heti-spacing"> </span>synthensis<span class="heti-spacing"> </span></span>得到的电气元件映射到<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>芯片的物理资源，设置<span class="heti-skip"><span class="heti-spacing"> </span>LUT6<span class="heti-spacing"> </span></span>内部的<span class="heti-skip"><span class="heti-spacing"> </span>array<span class="heti-spacing"> </span></span>的值</li>
+<li>将<span><span class="heti-spacing"> </span>IO buffer</span>、启用的物理资源连接起来</li>
+<li>对物理资源做适当的优化，删除多余的物理资源，合并可重用的物理资源等，修改物理资源的布局改善电气特性</li>
+</ol>
+</details>
+<details>
+<summary><span>Step 6.<span class="heti-spacing"> </span></span>生成比特流（gerenate bitstream）</summary>
+<p><span>implementation<span class="heti-spacing"> </span></span>已经得到了<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>布线的全部细节，现在我们需要将布线细节打包为特定格式的<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>文件，然后发送给<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>芯片，芯片就会自动按照<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>指定的方式进行资源的组装。</p>
+<p><span>bitstream<span class="heti-spacing"> </span></span>需要包含的内容包括但不限于：</p>
+<ol>
+<li>需要被启用的<span class="heti-skip"><span class="heti-spacing"> </span>IO<span class="heti-spacing"> </span></span>引脚</li>
+<li>物理资源输入输出之间的连接关系</li>
+<li><span>LUT6<span class="heti-spacing"> </span></span>内部<span class="heti-skip"><span class="heti-spacing"> </span>array<span class="heti-spacing"> </span></span>填充的值</li>
+</ol>
+<p>点击左侧<span><span class="heti-spacing"> </span>PROGRAM AND DEBUG &gt; Generate Bitstream</span>，然后选择<span><span class="heti-spacing"> </span>OK</span>，就可以生成我们需要的<span class="heti-skip"><span class="heti-spacing"> </span>bit<span class="heti-spacing"> </span></span>流文件<span><span class="heti-spacing"> </span>top.bit</span>，该文件保存在<span class="heti-skip"><span class="heti-spacing"> </span>project<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>top.runs/impl_1<span class="heti-spacing"> </span></span>目录。</p>
+</details>
+<details>
+<summary><span>Step 7.<span class="heti-spacing"> </span></span>下板验证</summary>
+<p>最后我们将生成的<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>下载到开发板中，得到最开始生成的电路，然后就可以用开关操纵输入，通过<span class="heti-skip"><span class="heti-spacing"> </span>led<span class="heti-spacing"> </span></span>等观察输出，进而验证我们设计的电路是不是真的正确了。</p>
+<ul>
+<li>将开发板的<span class="heti-skip"><span class="heti-spacing"> </span>jtag-uart<span class="heti-spacing"> </span></span>通用线的<span class="heti-skip"><span class="heti-spacing"> </span>jtag<span class="heti-spacing"> </span></span>口插入板子的<span class="heti-skip"><span class="heti-spacing"> </span>jtag-uart<span class="heti-spacing"> </span></span>端口（①<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，将<span class="heti-skip"><span class="heti-spacing"> </span>USB<span class="heti-spacing"> </span></span>口插入<span class="heti-skip"><span class="heti-spacing"> </span>pc<span class="heti-spacing"> </span></span>机的<span class="heti-skip"><span class="heti-spacing"> </span>USB<span class="heti-spacing"> </span></span>口（②）</li>
+<li>打开电源开关（③）</li>
+</ul>
+<p><img alt="" src="../img/lab0-2/link.jpg"/></p>
+<ul>
+<li>点击<span class="heti-skip"><span class="heti-spacing"> </span>PROGRAM AND DEBUG &gt; Open Hardware Manager &gt; Open Target &gt; Auto Connect<span class="heti-spacing"> </span></span>连接开发板</li>
+</ul>
+<p><img alt="" src="../img/lab0-2/13.png"/></p>
+<ul>
+<li>选中<span class="heti-skip"><span class="heti-spacing"> </span>Hardware<span class="heti-spacing"> </span></span>中的<span class="heti-skip"><span class="heti-spacing"> </span>xc7a100t<span class="heti-spacing"> </span></span>开发板为我们要下载<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>的开发板</li>
+<li>点击<span class="heti-skip"><span class="heti-spacing"> </span>Program Device<span class="heti-spacing"> </span></span>准备载入<span><span class="heti-spacing"> </span>bitstream</span></li>
+<li>在目录中寻找准备下板的<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>文件<span><span class="heti-spacing"> </span>top.bit</span></li>
+<li>最后点击<span class="heti-skip"><span class="heti-spacing"> </span>Program<span class="heti-spacing"> </span></span>下板</li>
+</ul>
+<p><img alt="" src="../img/lab0-2/14.png"/></p>
+<p>现在已经下板成功了，大家可以自由操纵<span class="heti-skip"><span class="heti-spacing"> </span>SW0-SW2<span class="heti-spacing"> </span></span>观察<span class="heti-skip"><span class="heti-spacing"> </span>LED<span class="heti-spacing"> </span></span>灯的现象了。</p>
+</details>
+<h4 id="vivado_2"><span>Vivado<span class="heti-spacing"> </span></span>仿真<a class="headerlink" href="#vivado_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>我们之前学习了如何用<span class="heti-skip"><span class="heti-spacing"> </span>Verilator<span class="heti-spacing"> </span></span>仿真，但实际上<span class="heti-skip"><span class="heti-spacing"> </span>vivado<span class="heti-spacing"> </span></span>也可以仿真。具体见下：</p>
+<details>
+<summary><span>vivado<span class="heti-spacing"> </span></span>内仿真流程</summary>
+<ol>
+<li>点击左侧<span><span class="heti-spacing"> </span>Add Source &gt; Add or create simulation sources &gt; OK</span>，然后载入仿真文件<span><span class="heti-spacing"> </span>repo/sys-project/lab0-2/sim/testbench.v</span>，仿真文件的作用之前已经介绍过了</li>
+<li>右键<span class="heti-skip"><span class="heti-spacing"> </span>Simulation Source<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>testbench</span>，然后<span><span class="heti-spacing"> </span>Set as top</span>，不然的话默认<span class="heti-skip"><span class="heti-spacing"> </span>top<span class="heti-spacing"> </span></span>是顶层模块，之后就会仿真模拟<span class="heti-skip"><span class="heti-spacing"> </span>top<span class="heti-spacing"> </span></span>而不是<span><span class="heti-spacing"> </span>testbench</span></li>
+</ol>
+<p><img alt="sim" src="../img/lab0-2/sim.png"/></p>
+<ol start="3">
+<li>点击左侧<span><span class="heti-spacing"> </span>SIMULATION &gt; Run Simulation &gt; Run Behavior Simulation</span>，查看仿真波形</li>
+</ol>
+<p><img alt="simulation" src="../img/lab0-2/simulation.png"/></p>
+<p><img alt="wave" src="../img/lab0-2/wave.png"/></p>
+</details>
+<h4 id="vivado-batch"><span>Vivado Batch<span class="heti-spacing"> </span></span>模式<a class="headerlink" href="#vivado-batch" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p><span>Vivado<span class="heti-spacing"> </span></span>也提供了一个可以完全通过命令行使用的<span><span class="heti-spacing"> </span>batch mode</span>，这样前面下板的一系列复杂操作就可以通过命令来执行了，不必再通过<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>页面逐个设置并点击。</p>
+<p>进入到本仓库的<code>src/lab0-2</code>目录下，将<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>中的<span class="heti-skip"><span class="heti-spacing"> </span>VIVADO_SETUP<span class="heti-spacing"> </span></span>变量按照参照注释中的说明替换为你本机的实际位置。</p>
+<p>然后执行以下命令，首先将<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>代码综合为用于编程<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>Bitstream<span class="heti-spacing"> </span></span>二进制文件，然后打开<span class="heti-skip"><span class="heti-spacing"> </span>Vivado<span class="heti-spacing"> </span></span>的图形化界面将其下载到板子上。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>make<span class="w"> </span>bitstream
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>make<span class="w"> </span>vivado
+</code></pre></div></td></tr></table></div>
+<p><code>make bitstream</code> 命令会启动<span><span class="heti-spacing"> </span>vivado</span>，然后<span class="heti-skip"><span class="heti-spacing"> </span>vivado<span class="heti-spacing"> </span></span>命令行自动执行<span><span class="heti-spacing"> </span>repo/sys-project/lab-2/tcl/vivado.tcl</span>，完成工程建立、<span>.v/.xdc<span class="heti-spacing"> </span></span>文件载入、synthensis、implementation、<span>write bitstream<span class="heti-spacing"> </span></span>等一系列过程。有兴趣的同学可以对照着<span class="heti-skip"><span class="heti-spacing"> </span>Vivado GUI<span class="heti-spacing"> </span></span>流程的各步操作自行推断<span class="heti-skip"><span class="heti-spacing"> </span>vivado.tcl<span class="heti-spacing"> </span></span>脚本的作用，应该是较为明了的。</p>
+<p>生成的<span class="heti-skip"><span class="heti-spacing"> </span>project<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>在<span><span class="heti-spacing"> </span>src/lab0-2/build/project</span>。</p>
+<p><code>make vivado</code> 可以启动<span class="heti-skip"><span class="heti-spacing"> </span>vivado<span class="heti-spacing"> </span></span>图形界面，可以在这里打开<span class="heti-skip"><span class="heti-spacing"> </span>project<span class="heti-spacing"> </span></span>和下载<span class="heti-skip"><span class="heti-spacing"> </span>bitstream<span class="heti-spacing"> </span></span>到开发板。</p>
+<h2 id="_7">实验报告<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="verilog-30"><span>Verilog<span class="heti-spacing"> </span></span>练习<font color="Red"><span><span class="heti-spacing"> </span>30%</span></font><a class="headerlink" href="#verilog-30" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>写出对应的<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>代码（补全<span><span class="heti-spacing"> </span>src/lab0-3/syn</span><font color="Red"><span><span class="heti-spacing"> </span>10%</span></font>、src/lab0-3/submit <font color="Red">10%</font>）</li>
+<li>上板验证，其中将开关<span><span class="heti-spacing"> </span>R15</span>、M13、L16、<span>J15<span class="heti-spacing"> </span></span>作为输入，<span>LED<span class="heti-spacing"> </span></span>灯<span class="heti-skip"><span class="heti-spacing"> </span>H17<span class="heti-spacing"> </span></span>作为输出（给出上板结果<font color="Red"><span><span class="heti-spacing"> </span>10%</span></font>）:  </li>
+</ul>
+<div class="arithmatex">\[
+F(A,B,C,D) = \sum_{m}(0,2,3,5,7,8,10,11,14,15)
+\]</div>
+<h3 id="20">仿真练习<font color="Red"><span><span class="heti-spacing"> </span>20%</span></font><a class="headerlink" href="#20" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>为该模块设计仿真激励文件（补全<span><span class="heti-spacing"> </span>src/lab0-3/sim</span><font color="Red"><span><span class="heti-spacing"> </span>10%</span></font><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，分别用<span class="heti-skip"><span class="heti-spacing"> </span>verilator<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>vivado<span class="heti-spacing"> </span></span>进行仿真，解释仿真设计的思路，并提供仿真的波形截图，两部分思路截图<font color="Red">各<span><span class="heti-spacing"> </span>5%</span>，共<span><span class="heti-spacing"> </span>10%</span></font></li>
+<li>尝试<span><span class="heti-spacing"> </span>verilator</span>、<span>vivado<span class="heti-spacing"> </span></span>波形窗口的各个按键，尝试理解每个按键的功能</li>
+</ul>
+<h2 id="60">验收和代码提交<font color="Red"><span><span class="heti-spacing"> </span>60%</span></font><a class="headerlink" href="#60" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_8">验收检查点<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>仿真代码解释和仿真波形展示<font color="Red"><span><span class="heti-spacing"> </span>20%</span></font> </li>
+<li>代码解释<font color="Red"><span><span class="heti-spacing"> </span>20%</span></font></li>
+<li>下板验证<font color="Red"><span><span class="heti-spacing"> </span>20%</span></font></li>
+</ul>
+<h3 id="_9">提交文件<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li><span>5.1<span class="heti-spacing"> </span></span>练习编写的源代码文件和引脚约束文件</li>
+<li><span>5.2<span class="heti-spacing"> </span></span>练习编写的仿真文件</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: 第一部分" class="md-footer__link md-footer__link--prev" href="../lab0-1/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                第一部分
+              </div>
+</div>
+</a>
+<a aria-label="Next: 附录：verilog 与电路" class="md-footer__link md-footer__link--next" href="../lab0-2-appendix/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                附录：verilog 与电路
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../js/katex.js"></script>
+</body>
+</html>

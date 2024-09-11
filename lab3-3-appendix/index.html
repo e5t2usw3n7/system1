@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="http://zju-sys.pages.zjusct.io/sys1/sys1-sp24/lab3-3-appendix/" rel="canonical"/>
+<link href="../lab3-1-appendix/" rel="prev"/>
+<link href="../lab4-1/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.34" name="generator"/>
+<title>附录：阻塞赋值 - 浙江大学24年春夏系统一实验</title>
+<link href="../assets/stylesheets/main.35f28582.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-header__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            浙江大学24年春夏系统一实验
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              附录：阻塞赋值
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-nav__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    浙江大学24年春夏系统一实验
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    首页
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导零
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            实验指导零
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2-appendix/">
+<span class="md-ellipsis">
+    附录：verilog 与电路
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导一
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            实验指导一
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导二
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            实验指导二
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1-appendix/">
+<span class="md-ellipsis">
+    附录：参数式编程
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导三
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            实验指导三
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-3/">
+<span class="md-ellipsis">
+    第三部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1-appendix/">
+<span class="md-ellipsis">
+    附录：reg 与时序电路
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    附录：阻塞赋值
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    附录：阻塞赋值
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      一个例子
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      阻塞赋值的电路
+    </span>
+</a>
+<nav aria-label="阻塞赋值的电路" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      重命名
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      无环图
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reg">
+<span class="md-ellipsis">
+      中间变量的 reg
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      阻塞赋值的优点
+    </span>
+</a>
+<nav aria-label="阻塞赋值的优点" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      设计简单
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      实现灵活
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      阻塞赋值的缺点
+    </span>
+</a>
+<nav aria-label="阻塞赋值的缺点" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      忽略电路实现
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      行为未定义
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      如何正确使用阻塞赋值
+    </span>
+</a>
+<nav aria-label="如何正确使用阻塞赋值" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+<span class="md-ellipsis">
+      构造组合电路
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_14">
+<span class="md-ellipsis">
+      构造仿真激励
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_15">
+<span class="md-ellipsis">
+      不使用中间变量
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#logic">
+<span class="md-ellipsis">
+      使用 logic
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导四
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            实验指导四
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1-appendix/">
+<span class="md-ellipsis">
+    附录：SystemVerilog 高级语法
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导五
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            实验指导五
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导 project
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            实验指导 project
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-bonus/">
+<span class="md-ellipsis">
+    Bonus
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2-appendix/">
+<span class="md-ellipsis">
+    附录：处理器差分测试
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setup/">
+<span class="md-ellipsis">
+    环境配置
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../issue/">
+<span class="md-ellipsis">
+    提交提问
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pull/">
+<span class="md-ellipsis">
+    提交修改
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      一个例子
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      阻塞赋值的电路
+    </span>
+</a>
+<nav aria-label="阻塞赋值的电路" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      重命名
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      无环图
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reg">
+<span class="md-ellipsis">
+      中间变量的 reg
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      阻塞赋值的优点
+    </span>
+</a>
+<nav aria-label="阻塞赋值的优点" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      设计简单
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      实现灵活
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      阻塞赋值的缺点
+    </span>
+</a>
+<nav aria-label="阻塞赋值的缺点" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      忽略电路实现
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      行为未定义
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      如何正确使用阻塞赋值
+    </span>
+</a>
+<nav aria-label="如何正确使用阻塞赋值" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+<span class="md-ellipsis">
+      构造组合电路
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_14">
+<span class="md-ellipsis">
+      构造仿真激励
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_15">
+<span class="md-ellipsis">
+      不使用中间变量
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#logic">
+<span class="md-ellipsis">
+      使用 logic
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24/-/blob/master/docs/lab3-3-appendix.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
+</a>
+<h1 id="_1">阻塞赋值和非阻塞赋值<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<p>不同于<span class="heti-skip"><span class="heti-spacing"> </span>wire<span class="heti-spacing"> </span></span>变量只能被<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>赋值，<span>reg<span class="heti-spacing"> </span></span>变量在<span class="heti-skip"><span class="heti-spacing"> </span>always<span class="heti-spacing"> </span></span>块中其实可以被<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>&lt;=<span class="heti-spacing"> </span></span>两个运算符赋值，使用<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>赋值的方式被称为阻塞赋值，使用<span class="heti-skip"><span class="heti-spacing"> </span>&lt;=<span class="heti-spacing"> </span></span>的赋值方式被称之为非阻塞赋值。我们在之前的实验中使用的<span class="heti-skip"><span class="heti-spacing"> </span>always<span class="heti-spacing"> </span></span>赋值语句都是非阻塞赋值语句，阻塞赋值是一种使用灵活、功能强大的语法，但是也很容易出错，因此我们在这一节详细介绍一下阻塞赋值，以及使用阻塞赋值需要注意的细节。个人建议，尽量不使用阻塞赋值。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="c1">// 阻塞赋值 </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="c1">// 非阻塞赋值</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_2">一个例子<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>为了理解阻塞赋值和非阻塞赋值的差异，我们给出如下的例子：
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+非阻塞赋值语句的<code>&lt;=</code>左侧是会被赋值的寄存器，右侧是各个寄存器和线路的输出构造的组合电路。同一个 always 块内的所有赋值语句是被同时执行的，相互之间没有依赖关系，我们针对每一个被赋值的寄存器分别实现对应的电路。所以上述代码的功能就是寄存器 a、b、c 在下个时钟周期分别载入寄存器 c、a、b 的值。电路图如下：
+<img alt="no-block" src="../img/lab3-3/non-block.png"/>
+<p>如果是<code>=</code>的语句，赋值语句左侧的<span class="heti-skip"><span class="heti-spacing"> </span>reg<span class="heti-spacing"> </span></span>变量并不一定会被建模为寄存器，而是如下图。这三句赋值语句是有先后关系的，首先变量<span class="heti-skip"><span class="heti-spacing"> </span>c<span class="heti-spacing"> </span></span>获得变量<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>的值，然后变量<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>获得变量<span class="heti-skip"><span class="heti-spacing"> </span>c<span class="heti-spacing"> </span></span>的值也就是原来<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>的值，最后<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>后的变量<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>的值也就是最开始变量<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>的值，形成环路。最后只有这个环路的最终结果<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>会被建模为寄存器，其他的<span><span class="heti-spacing"> </span>a</span>、<span>c<span class="heti-spacing"> </span></span>则会被建模为<span><span class="heti-spacing"> </span>wire</span>。
+<img alt="block" src="../img/lab3-3/block.png"/></p>
+<h2 id="_3">阻塞赋值的电路<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_4">重命名<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>不同于非阻塞语句一个寄存器只能被赋值一次，阻塞语句的寄存器可以被多次赋值。例如：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mh">0</span><span class="p">];</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mh">1</span><span class="p">];</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<p>虽然看起来<span class="heti-skip"><span class="heti-spacing"> </span>tmp<span class="heti-spacing"> </span></span>寄存器被赋值了很多次，但是每个被赋值的<span class="heti-skip"><span class="heti-spacing"> </span>tmp<span class="heti-spacing"> </span></span>是不同的变量，他们只是暂时共用了<span class="heti-skip"><span class="heti-spacing"> </span>tmp<span class="heti-spacing"> </span></span>这个名字，我们可以将被先后赋值的<span class="heti-skip"><span class="heti-spacing"> </span>tmp<span class="heti-spacing"> </span></span>重命名为<span><span class="heti-spacing"> </span>tmp</span>、tmp0、tmp1，则可以得到如下的<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>语句。实际上变量的名字不是那么重要，它代表的数据发生了变化，它就是一个新的数据：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span>
+<span class="normal"><a href="#__codelineno-3-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">        </span><span class="n">tmp0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mh">0</span><span class="p">];</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">        </span><span class="n">tmp1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mh">1</span><span class="p">];</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">        </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp1</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<p>于是对应的电路图如下：
+<img alt="rename" src="../img/lab3-3/rename.png"/></p>
+<p>重命名的方法可以如下：</p>
+<ul>
+<li>当一个变量被赋值，且在之前已经被赋值过或者充到源操作数之后，该变量分配一个新的名字</li>
+<li>后续使用这个变量做源操作数的时候，用该变量最新被分配的名字做源操作数</li>
+</ul>
+<h3 id="_5">无环图<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><span>always<span class="heti-spacing"> </span></span>块内部的阻塞赋值关系可以非常复杂，但无论多么复杂都是可以表示为一个数据流图的，数据流图是有向无环图，那些最终那些出度为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的节点才会被最终生成寄存器，而那些中间赋值的变量值会被生成<span><span class="heti-spacing"> </span>wire</span>。例如：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">        </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">        </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<p>对应的控制流图如下：
+<img alt="data-flow" src="../img/lab3-3/data-flow.png"/></p>
+<p>所以最后生成电路的时候，<span>e<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>f<span class="heti-spacing"> </span></span>会生成寄存器，但是<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>只会得到线路<span><span class="heti-spacing"> </span>wire</span></p>
+<h3 id="reg">中间变量的<span><span class="heti-spacing"> </span>reg</span><a class="headerlink" href="#reg" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>一下若干种情况中间变量会变为寄存器，即这个中间变量的源操作数的值和自己有关，它的电路成环，如：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<p>对应的电路图如下：
+<img alt="circle" src="../img/lab3-3/circle.png"/></p>
+<p>因为线路<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>依赖于中间变量<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>的值，所以<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>不能被综合为<span class="heti-skip"><span class="heti-spacing"> </span>wire<span class="heti-spacing"> </span></span>不然会产生环路，因此这里<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>的线路结果会被保存进入寄存器<span><span class="heti-spacing"> </span>a</span>，换句话说变量<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>确实会被综合为寄存器，但是变量<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>得到的不是寄存器<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>的输出，而是和<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>一样的输入。</p>
+<p><span>b<span class="heti-spacing"> </span></span>也一样，<span>b<span class="heti-spacing"> </span></span>如果被综合为<span class="heti-skip"><span class="heti-spacing"> </span>wire<span class="heti-spacing"> </span></span>也会有环路问题，所以<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>被综合为寄存器，变量<span class="heti-skip"><span class="heti-spacing"> </span>c<span class="heti-spacing"> </span></span>载入的值是寄存器<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>得输入而不是输出。</p>
+<h2 id="_6">阻塞赋值的优点<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_7">设计简单<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>阻塞赋值的执行方式和<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言的执行方式高度类似，如果有一段<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>代码，可以将它几乎不加修改的用阻塞赋值的方式实现，例如下面这段代码：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>就可以直接用如下阻塞语句实现</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">0</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="_8">实现灵活<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>对于复杂的中间过程的计算可以用定义大量中间变量进行暂存，甚至可以搭配<span><span class="heti-spacing"> </span>for</span>、<span>if<span class="heti-spacing"> </span></span>等高级语法使用，非常灵活方便，有很好的可读性。例如下面这段代码：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">multiplier</span><span class="p">[</span><span class="mh">0</span><span class="p">])</span><span class="k">begin</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">            </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiplicant</span><span class="p">;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<p>如果使用阻塞赋值的方式实现的话，要么将多条表达式用嵌套的形式改为一条表达式，但是这种表达式可读性比较差，中间过程语义不明，且容易写错。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">multiplier</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="o">?</span><span class="n">result</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nl">multiplicant:</span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<p>或者可以将复杂的组合电路运算拿到<span class="heti-skip"><span class="heti-spacing"> </span>always<span class="heti-spacing"> </span></span>块外面用<span class="heti-skip"><span class="heti-spacing"> </span>assign<span class="heti-spacing"> </span></span>语法加以分布实现。这样在可读性上虽然好了很多，但是一个完整的逻辑会被拆分为两块代码，还是有一定的间离。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span>
+<span class="normal"><a href="#__codelineno-10-7">7</a></span>
+<span class="normal"><a href="#__codelineno-10-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">add_one</span><span class="p">;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">shift</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">add_one</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiplier</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="o">?</span><span class="n">result</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nl">multiplicant:</span><span class="n">result</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">shift</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_one</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">shift</span><span class="p">;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_9">阻塞赋值的缺点<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_10">忽略电路实现<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>因为阻塞赋值可以实现从<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言到<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>的快速转换，所以容易出现对代码不加修改的直接照抄。不同于<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语言每行代码较为廉价，多一条<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>语句只会导致<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>多执行几个周期，对于<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>而言多一条语句可能就会多一个大型电路。例如上面我们照搬的例子，可以看到需要一套加法器和一条减法器。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">0</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<p>但我们只要稍作修改就可以只用一个加法器，而节约下一个减法器。语法简洁了之后，编程者容易忽略底层的硬件开销和电路实现，从而导致浪费，就像<span class="heti-skip"><span class="heti-spacing"> </span>Java<span class="heti-spacing"> </span></span>的开销远大于<span class="heti-skip"><span class="heti-spacing"> </span>C<span class="heti-spacing"> </span></span>一样。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<p>上面的例子只会导致电路的浪费，但是下面的例子会导致电路结构发生巨大的变化。我们以乘法器为例，在<span class="heti-skip"><span class="heti-spacing"> </span>lab3-3<span class="heti-spacing"> </span></span>的教程中我们提到将每次迭代当作一个状态，然后将这个状态迭代<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>次。但是部分同学会照抄伪代码得到如下的<span><span class="heti-spacing"> </span>Verilog</span>：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">7</a></span>
+<span class="normal"><a href="#__codelineno-13-8">8</a></span>
+<span class="normal"><a href="#__codelineno-13-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mh">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mh">32</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">multiplier</span><span class="p">[</span><span class="mh">0</span><span class="p">])</span><span class="k">begin</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">                </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiplicant</span><span class="p">;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">            </span><span class="k">end</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">            </span><span class="n">multiplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiplier</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">            </span><span class="n">multiplicant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiplicant</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<p>该电路（当然还需要做调整才可以真的执行）确实可以实现乘法器的功能，但是实际上<span class="heti-skip"><span class="heti-spacing"> </span>for<span class="heti-spacing"> </span></span>循环会把电路展开为<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>份，也就是每次迭代执的加法器、选择器、移位器会被重复<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>次。最后我们不是一组电路<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>次迭代得到最终结果，而是<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>组电路串联然后一个周期得到最终结果。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">multiplier</span><span class="p">[</span><span class="mh">0</span><span class="p">])</span><span class="k">begin</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">            </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiplicant</span><span class="p">;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">        </span><span class="n">multiplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiplier</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">        </span><span class="n">multiplicant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiplicant</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">        </span><span class="p">...</span><span class="w"> </span><span class="c1">// 重复 32 次</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">multiplier</span><span class="p">[</span><span class="mh">0</span><span class="p">])</span><span class="k">begin</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w">            </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">multiplicant</span><span class="p">;</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="w">        </span><span class="n">multiplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiplier</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="w">        </span><span class="n">multiplicant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multiplicant</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="_11">行为未定义<a class="headerlink" href="#_11" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>中间变量被外部调用的情况不确定。例如下面这个例子。因为<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>所在的数据成环路，所以<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>会成为一个寄存器，但是寄存器的值有输出的值、有输入的值，它们都叫做<span><span class="heti-spacing"> </span>b</span>。那么对于<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>e<span class="heti-spacing"> </span></span>而言他们输入的数据<span class="heti-skip"><span class="heti-spacing"> </span>b<span class="heti-spacing"> </span></span>是寄存器的输出还是输入呢？这个是不确定的，有的模拟器认为是输入、有的认为是输出，所以在<span class="heti-skip"><span class="heti-spacing"> </span>always<span class="heti-spacing"> </span></span>块外部使用中间变量会导致大量的不确定问题。
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span>
+<span class="normal"><a href="#__codelineno-15-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="w">    </span><span class="k">always</span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="k">begin</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="w">        </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="w">    </span><span class="k">end</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_12">如何正确使用阻塞赋值<a class="headerlink" href="#_12" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_13">构造组合电路<a class="headerlink" href="#_13" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>因为阻塞赋值会将中间变量根据情况建模为<span class="heti-skip"><span class="heti-spacing"> </span>wire<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>reg</span>，导致很多复杂的分析和不确定的考量。但是我们可以在<code>always@(*)</code>电路当中使用阻塞赋值，因为<code>always@(*)</code>本身就是用来生成组合电路的，所有变量都是<span><span class="heti-spacing"> </span>wire</span>，所以可以规避这个问题。</p>
+<p>常见的选择是<code>always@(*)</code>搭配<code>=</code>构建组合电路，<code>always@(posedge clk)</code>搭配<code>&lt;=</code>构建时序电路。</p>
+<p>因为我们已经介绍了<span class="heti-skip"><span class="heti-spacing"> </span>always_ff<span class="heti-spacing"> </span></span>的写法，所以可以<span class="heti-skip"><span class="heti-spacing"> </span>always_ff<span class="heti-spacing"> </span></span>搭配<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>进行编程。</p>
+<h3 id="_14">构造仿真激励<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>我们可以看到阻塞赋值的语法是按照指令顺序从前往后进行赋值的，我们在<code>initial</code>块对仿真输入做激励的时候就是用的阻塞赋值的语法。实际上<code>initial</code>也可以和<code>always</code>一样使用<span class="heti-skip"><span class="heti-spacing"> </span>for<span class="heti-spacing"> </span></span>语句和<span class="heti-skip"><span class="heti-spacing"> </span>if<span class="heti-spacing"> </span></span>语句，来实现复杂的激励功能。</p>
+<h3 id="_15">不使用中间变量<a class="headerlink" href="#_15" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>对于中间变量在被<span class="heti-skip"><span class="heti-spacing"> </span>always<span class="heti-spacing"> </span></span>块外部程序调用的时候是使用寄存器得输入、还是寄存器的输出、还是<span class="heti-skip"><span class="heti-spacing"> </span>wire<span class="heti-spacing"> </span></span>的值本身是难以界定的，甚至本身就是<span class="heti-skip"><span class="heti-spacing"> </span>undefine<span class="heti-spacing"> </span></span>的，所以应该规避中间变量的使用。我们在电路设计的时候应该事先确定我们需要构造<span class="heti-skip"><span class="heti-spacing"> </span>always<span class="heti-spacing"> </span></span>块的所有<span><span class="heti-spacing"> </span>reg</span>，然后<span class="heti-skip"><span class="heti-spacing"> </span>reg<span class="heti-spacing"> </span></span>之间的输入输出依赖只和这些<span class="heti-skip"><span class="heti-spacing"> </span>reg<span class="heti-spacing"> </span></span>有关，然后在实现某个<span class="heti-skip"><span class="heti-spacing"> </span>reg<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>always<span class="heti-spacing"> </span></span>块的时候处于方便起见，加入一些<span class="heti-skip"><span class="heti-spacing"> </span>reg<span class="heti-spacing"> </span></span>存储中间结果，而决不在<span class="heti-skip"><span class="heti-spacing"> </span>always<span class="heti-spacing"> </span></span>块外部使用。</p>
+<h3 id="logic">使用<span><span class="heti-spacing"> </span>logic</span><a class="headerlink" href="#logic" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>阻塞赋值的变量类型为<span><span class="heti-spacing"> </span>reg</span>，但是建模的时候既可能是<span><span class="heti-spacing"> </span>reg</span>、也可能是<span><span class="heti-spacing"> </span>wire</span>，会造成歧义。这个时候不如用<span class="heti-skip"><span class="heti-spacing"> </span>logic<span class="heti-spacing"> </span></span>变量来消弭这种语法上带来的歧义。</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: 附录：reg 与时序电路" class="md-footer__link md-footer__link--prev" href="../lab3-1-appendix/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                附录：reg 与时序电路
+              </div>
+</div>
+</a>
+<a aria-label="Next: 第一部分" class="md-footer__link md-footer__link--next" href="../lab4-1/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                第一部分
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../js/katex.js"></script>
+</body>
+</html>

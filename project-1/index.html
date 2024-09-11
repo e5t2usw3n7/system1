@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="http://zju-sys.pages.zjusct.io/sys1/sys1-sp24/project-1/" rel="canonical"/>
+<link href="../lab5-2/" rel="prev"/>
+<link href="../project-2/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.34" name="generator"/>
+<title>第一部分 - 浙江大学24年春夏系统一实验</title>
+<link href="../assets/stylesheets/main.35f28582.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+<link href="../css/heti.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&amp;display=fallback" rel="stylesheet"/>
+<link href="../css/custom.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#project-cpu">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-header__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            浙江大学24年春夏系统一实验
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              第一部分
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="浙江大学24年春夏系统一实验" class="md-nav__button md-logo" data-md-component="logo" href=".." title="浙江大学24年春夏系统一实验">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    浙江大学24年春夏系统一实验
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">
+    zju-sys/sys1/sys1-sp24
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    首页
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导零
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            实验指导零
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab0-2-appendix/">
+<span class="md-ellipsis">
+    附录：verilog 与电路
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导一
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            实验指导一
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导二
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            实验指导二
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2-1-appendix/">
+<span class="md-ellipsis">
+    附录：参数式编程
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导三
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            实验指导三
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-3/">
+<span class="md-ellipsis">
+    第三部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-1-appendix/">
+<span class="md-ellipsis">
+    附录：reg 与时序电路
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab3-3-appendix/">
+<span class="md-ellipsis">
+    附录：阻塞赋值
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导四
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            实验指导四
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4-1-appendix/">
+<span class="md-ellipsis">
+    附录：SystemVerilog 高级语法
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导五
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            实验指导五
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-1/">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<span class="md-ellipsis">
+    实验指导 project
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            实验指导 project
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    第一部分
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      实验目的
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      实验环境
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      背景知识
+    </span>
+</a>
+<nav aria-label="背景知识" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cpu">
+<span class="md-ellipsis">
+      单周期 CPU
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      数据通路设计
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      数据通路图
+    </span>
+</a>
+<nav aria-label="数据通路图" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      模块设计要点
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      数字电路设计要点
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      实验步骤
+    </span>
+</a>
+<nav aria-label="实验步骤" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      实验前准备
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory">
+<span class="md-ellipsis">
+      Memory 设计
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory_1">
+<span class="md-ellipsis">
+      Memory 接口
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      数据通路设计
+    </span>
+</a>
+<nav aria-label="数据通路设计" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#register-file">
+<span class="md-ellipsis">
+      Register File
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alu">
+<span class="md-ellipsis">
+      ALU
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cmp">
+<span class="md-ellipsis">
+      Cmp
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instruction-selection">
+<span class="md-ellipsis">
+      Instruction Selection
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-package">
+<span class="md-ellipsis">
+      Data Package
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-mask-generation">
+<span class="md-ellipsis">
+      Data Mask Generation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-truncation">
+<span class="md-ellipsis">
+      Data Truncation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#coredatapath">
+<span class="md-ellipsis">
+      Core（DataPath）
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      文件结构
+    </span>
+</a>
+<nav aria-label="文件结构" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      硬件部分
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+<span class="md-ellipsis">
+      软件部分
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_14">
+<span class="md-ellipsis">
+      工作区管理
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#makefile">
+<span class="md-ellipsis">
+      Makefile 脚本功能
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_15">
+<span class="md-ellipsis">
+      未完待续
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2/">
+<span class="md-ellipsis">
+    第二部分
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-bonus/">
+<span class="md-ellipsis">
+    Bonus
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../project-2-appendix/">
+<span class="md-ellipsis">
+    附录：处理器差分测试
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setup/">
+<span class="md-ellipsis">
+    环境配置
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../issue/">
+<span class="md-ellipsis">
+    提交提问
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pull/">
+<span class="md-ellipsis">
+    提交修改
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      实验目的
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      实验环境
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      背景知识
+    </span>
+</a>
+<nav aria-label="背景知识" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cpu">
+<span class="md-ellipsis">
+      单周期 CPU
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      数据通路设计
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      数据通路图
+    </span>
+</a>
+<nav aria-label="数据通路图" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      模块设计要点
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      数字电路设计要点
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+<span class="md-ellipsis">
+      实验步骤
+    </span>
+</a>
+<nav aria-label="实验步骤" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+<span class="md-ellipsis">
+      实验前准备
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory">
+<span class="md-ellipsis">
+      Memory 设计
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory_1">
+<span class="md-ellipsis">
+      Memory 接口
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_10">
+<span class="md-ellipsis">
+      数据通路设计
+    </span>
+</a>
+<nav aria-label="数据通路设计" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#register-file">
+<span class="md-ellipsis">
+      Register File
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alu">
+<span class="md-ellipsis">
+      ALU
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cmp">
+<span class="md-ellipsis">
+      Cmp
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#instruction-selection">
+<span class="md-ellipsis">
+      Instruction Selection
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-package">
+<span class="md-ellipsis">
+      Data Package
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-mask-generation">
+<span class="md-ellipsis">
+      Data Mask Generation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-truncation">
+<span class="md-ellipsis">
+      Data Truncation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#coredatapath">
+<span class="md-ellipsis">
+      Core（DataPath）
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+<span class="md-ellipsis">
+      文件结构
+    </span>
+</a>
+<nav aria-label="文件结构" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_12">
+<span class="md-ellipsis">
+      硬件部分
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_13">
+<span class="md-ellipsis">
+      软件部分
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_14">
+<span class="md-ellipsis">
+      工作区管理
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#makefile">
+<span class="md-ellipsis">
+      Makefile 脚本功能
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_15">
+<span class="md-ellipsis">
+      未完待续
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://git.zju.edu.cn/zju-sys/sys1/sys1-sp24/-/blob/master/docs/project-1.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"></path></svg>
+</a>
+<h1 id="project-cpu"><span>project:<span class="heti-spacing"> </span></span>单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>数据通路设计<a class="headerlink" href="#project-cpu" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<h2 id="_1">实验目的<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>了解<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>设计的基本原理</li>
+<li>设计<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>数据通路</li>
+<li>为之后搭起单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>打下基础</li>
+</ul>
+<h2 id="_2">实验环境<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>操作系统：Windows 10+ 22H2，Ubuntu 22.04+</li>
+<li>VHDL：Verilog，SystemVerilog</li>
+</ul>
+<h2 id="_3">背景知识<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="cpu">单周期<span><span class="heti-spacing"> </span>CPU</span><a class="headerlink" href="#cpu" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>主要特征是在一个周期内完成一条指令，也就意味着其<span class="heti-skip"><span class="heti-spacing"> </span>CPI (cycle per instruction)<span class="heti-spacing"> </span></span>是<span><span class="heti-spacing"> </span>1</span>。
+考虑到不同的指令都需要在一个周期内完成，因而单周期 CPU 时钟频率是以执行最慢的那条指令作为基准，这也是单周期 CPU 最大的缺陷之一。
+我们可以把单周期 CPU 分成数据通路和控制单元两个模块，本次实验将完成数据通路模块。</p>
+<h3 id="_4">数据通路设计<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>为了之后能和流水线<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>进行衔接，我们把单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>数据通路划分成<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>个阶段（stage）:</p>
+<ul>
+<li>Instruction Fetch (IF)</li>
+<li>Instruction Decode (ID)</li>
+<li>EXecution (EX)</li>
+<li>MEMory access (MEM)</li>
+<li>register Write Back (WB)</li>
+</ul>
+<p>这<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>stage<span class="heti-spacing"> </span></span>所做的操作解释：</p>
+<ul>
+<li>获取指令阶段<span><span class="heti-spacing"> </span>(IF)</span></li>
+<li>从<span class="heti-skip"><span class="heti-spacing"> </span>Instruction Memory<span class="heti-spacing"> </span></span>中获取<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位指令</li>
+<li>令当前的<span class="heti-skip"><span class="heti-spacing"> </span>PC (Program Counter)<span class="heti-spacing"> </span></span>增加<span><span class="heti-spacing"> </span>4</span>（PC = PC + 4，使当前<span class="heti-skip"><span class="heti-spacing"> </span>PC<span class="heti-spacing"> </span></span>指向下一条<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位的指令，<span>Instruction Memory<span class="heti-spacing"> </span></span>是<span><span class="heti-spacing"> </span>byte-addressing</span>，所以是<span class="heti-skip"><span class="heti-spacing"> </span>+4<span class="heti-spacing"> </span></span>而不是<span><span class="heti-spacing"> </span>+32</span>）</li>
+<li>指令译码阶段<span><span class="heti-spacing"> </span>(ID)</span></li>
+<li>拿到指令之后，我们需要知道指令能提供各种信息包括<span class="heti-skip"><span class="heti-spacing"> </span>Opcode, Rs1, Rs2, Rd, Imm<span class="heti-spacing"> </span></span>等等，所以需要对指令进行译码，提取信息。</li>
+<li>译码完成后，我们可以通过拿到的<span class="heti-skip"><span class="heti-spacing"> </span>Rs1, Rs2<span class="heti-spacing"> </span></span>读取相应的寄存器值</li>
+<li>执行阶段<span><span class="heti-spacing"> </span>(EX)</span></li>
+<li>执行一些运算操作，包括<span><span class="heti-spacing"> </span>+</span>，-，*，/，逻辑运算或左移、右移等等</li>
+<li>跳转地址的计算也可以在这个阶段执行</li>
+<li>访存阶段<span><span class="heti-spacing"> </span>(MEM)</span></li>
+<li>从<span class="heti-skip"><span class="heti-spacing"> </span>Data Memory<span class="heti-spacing"> </span></span>中拿到数据</li>
+<li>写回阶段<span><span class="heti-spacing"> </span>(WB)</span></li>
+<li>把计算后获得的数据或者从<span class="heti-skip"><span class="heti-spacing"> </span>Data Memory<span class="heti-spacing"> </span></span>读的数据写回到寄存器中</li>
+</ul>
+<h3 id="_5">数据通路图<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p><img alt="参考数据通路" src="../img/project-1/datapath.png"/></p>
+<h4 id="_6">模块设计要点<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<ul>
+<li>示意图中的处理器为哈佛架构，内存分为<span class="heti-skip"><span class="heti-spacing"> </span>Instruction Memory<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>Data Memory</span>。为了兼容输入样例，我们需要实现冯诺依曼架构。简便起见，我们将两块内存合并为一个双口内存，其中<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>号端口为提供给<span class="heti-skip"><span class="heti-spacing"> </span>IF<span class="heti-spacing"> </span></span>取指阶段的只读端口，<span>1<span class="heti-spacing"> </span></span>号端口为提供给<span class="heti-skip"><span class="heti-spacing"> </span>MEM<span class="heti-spacing"> </span></span>阶段的读写端口，并且支持字节掩码</li>
+<li><span>Add<span class="heti-spacing"> </span></span>模块就是简单的加法，注意其和<span class="heti-skip"><span class="heti-spacing"> </span>ALU<span class="heti-spacing"> </span></span>的区别</li>
+<li><span>Registers<span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位寄存器</li>
+<li>因为<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>Imm<span class="heti-spacing"> </span></span>在指令中的位置不是固定的，所以需要针对不同指令生成相应的<span><span class="heti-spacing"> </span>Imm</span>，当然<span class="heti-skip"><span class="heti-spacing"> </span>Imm Gen<span class="heti-spacing"> </span></span>模块也可以放到之后要实现的控制单元模块中或者说指令解码器中</li>
+<li><span>ALU<span class="heti-spacing"> </span></span>模块根据要实现的指令实现具体的操作，注意要充分利用<span class="heti-skip"><span class="heti-spacing"> </span>Verilog<span class="heti-spacing"> </span></span>提供的操作符，例如<span class="heti-skip"><span class="heti-spacing"> </span>+, -, &lt;&lt;, &gt;&gt;&gt;<span class="heti-spacing"> </span></span>等</li>
+</ul>
+<h4 id="_7">数字电路设计要点<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>数字电路根据其特点大概可以分成<em>组合电路</em>和<em>时序电路</em>两大类，其概念和特性已经在课上讲述，在这里不多阐述。在单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>设计中，这两种电路设计归纳如下：</p>
+<ul>
+<li>在实验中， <span>Instruction Memory<span class="heti-spacing"> </span></span>是组合电路，<span>Data Memory<span class="heti-spacing"> </span></span>是时序电路（仅限于本实验，实际中并非如此）</li>
+<li>Registers、<span>PC<span class="heti-spacing"> </span></span>模块使用时序电路</li>
+<li>ALU、<span>Add<span class="heti-spacing"> </span></span>模块使用组合电路</li>
+<li>Imm Gen、<span>Mux<span class="heti-spacing"> </span></span>模块使用组合电路</li>
+</ul>
+<h2 id="_8">实验步骤<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_9">实验前准备<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>启动安装在你电脑中的<span class="heti-skip"><span class="heti-spacing"> </span>Ubuntu 22.04<span class="heti-spacing"> </span></span>环境（ <span>WSL<span class="heti-spacing"> </span></span>或虚拟机<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，随后通过 <code>cd</code> 移动到 <code>sys1-sp24</code> 目录下，执行下面的命令：
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>repo/sys-project
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
+</code></pre></div></td></tr></table></div>
+该实验的 sys-project 代码在 main 分支下。
+<h3 id="memory"><span>Memory<span class="heti-spacing"> </span></span>设计<a class="headerlink" href="#memory" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>在本实验中，<code>sys-project/general/DRAM.v</code>实现了一个简单的内存模型<span><span class="heti-spacing"> </span>:</span></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#__codelineno-1-38">38</a></span>
+<span class="normal"><a href="#__codelineno-1-39">39</a></span>
+<span class="normal"><a href="#__codelineno-1-40">40</a></span>
+<span class="normal"><a href="#__codelineno-1-41">41</a></span>
+<span class="normal"><a href="#__codelineno-1-42">42</a></span>
+<span class="normal"><a href="#__codelineno-1-43">43</a></span>
+<span class="normal"><a href="#__codelineno-1-44">44</a></span>
+<span class="normal"><a href="#__codelineno-1-45">45</a></span>
+<span class="normal"><a href="#__codelineno-1-46">46</a></span>
+<span class="normal"><a href="#__codelineno-1-47">47</a></span>
+<span class="normal"><a href="#__codelineno-1-48">48</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">module</span><span class="w"> </span><span class="n">DRAM</span><span class="w"> </span><span class="p">#(</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">FILE_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w">   </span><span class="c1">// 初始化内存的文件路径</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">DATA_WIDTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">  </span><span class="c1">// 数据的宽度</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="k">parameter</span><span class="w"> </span><span class="n">CAPACITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4096</span><span class="w">   </span><span class="c1">// 内存存储的数据量</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="n">clk</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="n">wen</span><span class="p">,</span><span class="w">   </span><span class="c1">// 写使能，当 wen=1 时写内存</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="p">[$</span><span class="n">clog2</span><span class="p">(</span><span class="n">CAPACITY</span><span class="o">/</span><span class="p">(</span><span class="n">DATA_WIDTH</span><span class="o">/</span><span class="mi">8</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">waddr</span><span class="p">,</span><span class="w"> </span><span class="c1">//  写操作的内存地址</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="p">[</span><span class="n">DATA_WIDTH</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">wdata</span><span class="p">,</span><span class="w">                      </span><span class="c1">//  写操作写入的数据</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="p">[</span><span class="n">DATA_WIDTH</span><span class="o">/</span><span class="mi">8</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">wmask</span><span class="p">,</span><span class="w">                    </span><span class="c1">//  写操作的字节掩码</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="c1">// MEM 阶段写操作</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="p">[$</span><span class="n">clog2</span><span class="p">(</span><span class="n">CAPACITY</span><span class="o">/</span><span class="p">(</span><span class="n">DATA_WIDTH</span><span class="o">/</span><span class="mi">8</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">raddr0</span><span class="p">,</span><span class="c1">//  第一个读口的读操作内存地址</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="n">DATA_WIDTH</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">rdata0</span><span class="p">,</span><span class="w">                     </span><span class="c1">//  第一个读口返回的数据</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="c1">// IF 阶段读操作</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="k">input</span><span class="w">  </span><span class="p">[$</span><span class="n">clog2</span><span class="p">(</span><span class="n">CAPACITY</span><span class="o">/</span><span class="p">(</span><span class="n">DATA_WIDTH</span><span class="o">/</span><span class="mi">8</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">raddr1</span><span class="p">,</span><span class="c1">//  第二个读口的读操作内存地址</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="p">[</span><span class="n">DATA_WIDTH</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">rdata1</span><span class="w">                      </span><span class="c1">//  第二个读口返回的数据</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">    </span><span class="c1">// MEM 阶段读操作</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="p">);</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">    </span><span class="k">localparam</span><span class="w"> </span><span class="n">BYTE_NUM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATA_WIDTH</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">    </span><span class="k">localparam</span><span class="w"> </span><span class="n">DEPTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CAPACITY</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">BYTE_NUM</span><span class="p">;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">    </span><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="n">DATA_WIDTH</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">mem</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="o">:</span><span class="n">DEPTH</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span><span class="w">   </span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">    </span><span class="c1">// distribute memory，用寄存器模拟的内存区域</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">    </span><span class="c1">// 读写效率高，但是资源开销大</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">    </span><span class="k">initial</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="w">        </span><span class="p">$</span><span class="n">readmemh</span><span class="p">(</span><span class="n">FILE_PATH</span><span class="p">,</span><span class="w"> </span><span class="n">mem</span><span class="p">);</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">        </span><span class="c1">//  用 hex 文件初始化内存值</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a>
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wen</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w">  </span><span class="c1">// 写操作</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BYTE_NUM</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">wmask</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="k">begin</span><span class="w">  </span>
+<a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="w">                </span><span class="c1">// 写掩码按位使能，64 位的数据有 8 位掩码，掩码为 1，对应的字节写入</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="w">                    </span><span class="n">mem</span><span class="p">[</span><span class="n">waddr</span><span class="p">][</span><span class="n">i</span><span class="o">*</span><span class="mi">8</span><span class="w"> </span><span class="o">+:</span><span class="w"> </span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">wdata</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">8</span><span class="w"> </span><span class="o">+:</span><span class="w"> </span><span class="mi">8</span><span class="p">];</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="w">                </span><span class="k">end</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">            </span><span class="k">end</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44"></a>
+<a id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">rdata0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mem</span><span class="p">[</span><span class="n">raddr0</span><span class="p">];</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">rdata1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mem</span><span class="p">[</span><span class="n">raddr1</span><span class="p">];</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="w">    </span><span class="c1">// 读操作</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<p><span>DRAM<span class="heti-spacing"> </span></span>根据<span class="heti-skip"><span class="heti-spacing"> </span>FILE_PATH<span class="heti-spacing"> </span></span>参数的文件地址进行初始化，我们在<code>sys-project/testcode/testcase</code>下提供了一些测试文件，用于加载到<span class="heti-skip"><span class="heti-spacing"> </span>RAM<span class="heti-spacing"> </span></span>中，测试你的<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>是否能合理得执行指令。其中<code>.hex</code>后缀的为实际加载到<span class="heti-skip"><span class="heti-spacing"> </span>RAM<span class="heti-spacing"> </span></span>中的文件，你需要在修改<code>project/include/initial_mem.vh</code>头文件的<code>FILE_PATH</code>参数为你本地的绝对路径。</p>
+<p><code>.elf</code>后缀的文件为测试输入的原始<span class="heti-skip"><span class="heti-spacing"> </span>ELF<span class="heti-spacing"> </span></span>文件，协同测试框架会使用该文件。</p>
+<p><code>.S</code>后缀的文件为测试样例对应的汇编代码，其中测试了部分指令（lw, sw, addi, bne<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>我们会在补充更多测试样例，并且我们欢迎同学们提交自己的测试样例。</p>
+<h3 id="memory_1"><span>Memory<span class="heti-spacing"> </span></span>接口<a class="headerlink" href="#memory_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>本实验使用的内存模型很简单，这样导致<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>的交互操作非常简单，且可以在一个周期执行多次内存操作。但是实际上的内存操作是很复杂的，需要复杂的时序控制和多周期的执行时间，因此我们在本次实验中提供了一个相对较为复杂且完备的<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>接口，虽然在本实验中无法体现它的效果，但是在之后系统<span><span class="heti-spacing"> </span>II</span>、系统<span class="heti-skip"><span class="heti-spacing"> </span>III<span class="heti-spacing"> </span></span>的实验中，大家会慢慢感受到它的优秀之处，这里做一个简要介绍。</p>
+<p><span>Memory<span class="heti-spacing"> </span></span>接口由四个数据通道组成：</p>
+<ul>
+<li>读请求通道：该通道线路相互配合，将<span class="heti-skip"><span class="heti-spacing"> </span>Core<span class="heti-spacing"> </span></span>的读请求发送给<span><span class="heti-spacing"> </span>Memory</span></li>
+<li>r_request_bits：类型<span><span class="heti-spacing"> </span>RrequestBit</span>，为读请求的数据包<ul>
+<li>raddr：类型<span><span class="heti-spacing"> </span>addr_t</span>，为需要读的内存地址</li>
+</ul>
+</li>
+<li>r_request_valid：类型<span><span class="heti-spacing"> </span>ctrl_t</span>，<span>Core<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span>r_request_bits<span class="heti-spacing"> </span></span>的握手信号</li>
+<li>r_request_ready：类型<span><span class="heti-spacing"> </span>ctrl_t</span>，<span>Core<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span>r_request_bits<span class="heti-spacing"> </span></span>的握手信号</li>
+<li>读响应通道：该通道线路相互配合，将<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>读到的结果返还给<span><span class="heti-spacing"> </span>Memory</span></li>
+<li>r_reply_bits：类型<span><span class="heti-spacing"> </span>RreplyBit</span>，为读响应的数据包<ul>
+<li>rdata：类型<span><span class="heti-spacing"> </span>data_t</span>，为读到的内存数据</li>
+<li>rresp：类型为<span><span class="heti-spacing"> </span>resp_t</span>，为内存访问过程中的报错信息</li>
+</ul>
+</li>
+<li>r_reply_valid：类型<span><span class="heti-spacing"> </span>ctrl_t</span>，<span>Core<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span>r_reply_bits<span class="heti-spacing"> </span></span>的握手信号</li>
+<li>r_reply_ready：类型<span><span class="heti-spacing"> </span>ctrl_t</span>，<span>Core<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span>r_reply_bits<span class="heti-spacing"> </span></span>的握手信号</li>
+<li>写请求通道：该通道线路相互配合，将<span class="heti-skip"><span class="heti-spacing"> </span>Core<span class="heti-spacing"> </span></span>的写请求发送给<span><span class="heti-spacing"> </span>Memory</span></li>
+<li>w_request_bits：类型<span><span class="heti-spacing"> </span>WrequestBit</span>，为写请求的数据包<ul>
+<li>waddr：类型<span><span class="heti-spacing"> </span>addr_t</span>，为需要写的内存地址</li>
+<li>wmask：类型为<span><span class="heti-spacing"> </span>mask_t</span>，为写操作的字节掩码</li>
+<li>wdata：类型为<span><span class="heti-spacing"> </span>data_t</span>，为写入的数据</li>
+</ul>
+</li>
+<li>w_request_valid：类型<span><span class="heti-spacing"> </span>ctrl_t</span>，<span>Core<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span>w_request_bits<span class="heti-spacing"> </span></span>的握手信号</li>
+<li>w_request_ready：类型<span><span class="heti-spacing"> </span>ctrl_t</span>，<span>Core<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span>w_request_bits<span class="heti-spacing"> </span></span>的握手信号</li>
+<li>写响应通道：该通道线路相互配合，将<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>写的结果返还给<span><span class="heti-spacing"> </span>Memory</span></li>
+<li>w_reply_bits：类型<span><span class="heti-spacing"> </span>WreplyBit</span>，为写响应的数据包<ul>
+<li>bresp：类型为<span><span class="heti-spacing"> </span>resp_t</span>，为内存访问过程中的报错信息</li>
+</ul>
+</li>
+<li>w_reply_valid：类型<span><span class="heti-spacing"> </span>ctrl_t</span>，<span>Core<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span>w_reply_bits<span class="heti-spacing"> </span></span>的握手信号</li>
+<li>w_reply_ready：类型<span><span class="heti-spacing"> </span>ctrl_t</span>，<span>Core<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Memory<span class="heti-spacing"> </span></span>关于<span class="heti-skip"><span class="heti-spacing"> </span>w_reply_bits<span class="heti-spacing"> </span></span>的握手信号</li>
+</ul>
+<p>当进行读操作的时候，首先通过读通道的握手，<span>Master<span class="heti-spacing"> </span></span>将读请求的内容发送给<span><span class="heti-spacing"> </span>Slave</span>，然后等待<span class="heti-skip"><span class="heti-spacing"> </span>Slave<span class="heti-spacing"> </span></span>通过读响应通道的握手，将读操作的结果反馈给<span><span class="heti-spacing"> </span>Master</span>；写操作同理，<span>Master<span class="heti-spacing"> </span></span>通过写请求通道握手发送请求内容，然后等待写响应握手得到<span class="heti-skip"><span class="heti-spacing"> </span>Slave<span class="heti-spacing"> </span></span>写的结果。</p>
+<p>不过本次实验因为是单周期<span><span class="heti-spacing"> </span>CPU</span>，一个周期内一定可以得到读写结果，所以<span class="heti-skip"><span class="heti-spacing"> </span>valid-ready<span class="heti-spacing"> </span></span>握手一直成立，大家只要将需要读写的通道常开即可。对于复杂的内存访问操作会遇到各种待处理的内存错误，所以接口会返回<span><span class="heti-spacing"> </span>rresp</span>、bresp，这些在之后的系统<span class="heti-skip"><span class="heti-spacing"> </span>II<span class="heti-spacing"> </span></span>和系统<span class="heti-skip"><span class="heti-spacing"> </span>III<span class="heti-spacing"> </span></span>中大家也会慢慢遇到，这里可以先不考虑。本次实验只要求大家学习使用<span class="heti-skip"><span class="heti-spacing"> </span>interface<span class="heti-spacing"> </span></span>的基本语法即可。</p>
+<p>我们的<span class="heti-skip"><span class="heti-spacing"> </span>Core<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>DRAM<span class="heti-spacing"> </span></span>之间用<span class="heti-skip"><span class="heti-spacing"> </span>mem_ift<span class="heti-spacing"> </span></span>相连接。为此我们将<span class="heti-skip"><span class="heti-spacing"> </span>DRAM<span class="heti-spacing"> </span></span>的输入输出接口包装为<span class="heti-skip"><span class="heti-spacing"> </span>mem_ift<span class="heti-spacing"> </span></span>的接口模式，得到<span class="heti-skip"><span class="heti-spacing"> </span>Mem_ift_DRAM<span class="heti-spacing"> </span></span>模块。</p>
+<h3 id="_10">数据通路设计<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>根据<span class="heti-skip"><span class="heti-spacing"> </span>3.3<span class="heti-spacing"> </span></span>中给出的参考数据通路图，实现数据通路（当然也鼓励自己设计数据通路<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>我们给出部分模块的代码框架供同学们参考（也可以自由发挥<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<h4 id="register-file">Register File<a class="headerlink" href="#register-file" title="Permanent link">¶</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="no">`include</span><span class="w"> </span><span class="s">"core_struct.vh"</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">module</span><span class="w"> </span><span class="n">RegFile</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="k">input</span><span class="w"> </span><span class="n">rst</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span><span class="k">input</span><span class="w"> </span><span class="n">we</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">  </span><span class="k">input</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">reg_ind_t</span><span class="w">  </span><span class="n">read_addr_1</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">  </span><span class="k">input</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">reg_ind_t</span><span class="w">  </span><span class="n">read_addr_2</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">  </span><span class="k">input</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">reg_ind_t</span><span class="w">  </span><span class="n">write_addr</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">  </span><span class="k">input</span><span class="w">  </span><span class="n">CorePack</span><span class="o">::</span><span class="n">data_t</span><span class="w"> </span><span class="n">write_data</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">  </span><span class="k">output</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">data_t</span><span class="w"> </span><span class="n">read_data_1</span><span class="p">,</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">  </span><span class="k">output</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">data_t</span><span class="w"> </span><span class="n">read_data_2</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="p">);</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::*</span><span class="p">;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">  </span><span class="n">data_t</span><span class="w"> </span><span class="n">register</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">31</span><span class="p">];</span><span class="w"> </span><span class="c1">// x1 - x31, x0 keeps zero</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">  </span><span class="c1">// fill your code</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<p>可以参考如下电路图：</p>
+<p><img alt="regfile" src="../img/project-1/regfile.png"/></p>
+<p>大家也可以参考<span class="heti-skip"><span class="heti-spacing"> </span>DRAM<span class="heti-spacing"> </span></span>的写法来编写<span><span class="heti-spacing"> </span>Regfile</span>，顺便思考<span class="heti-skip"><span class="heti-spacing"> </span>regfile<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>dram<span class="heti-spacing"> </span></span>有什么内在联系。请注意<span class="heti-skip"><span class="heti-spacing"> </span>zero<span class="heti-spacing"> </span></span>寄存器恒等于<span><span class="heti-spacing"> </span>0</span>。</p>
+<h4 id="alu">ALU<a class="headerlink" href="#alu" title="Permanent link">¶</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="no">`include</span><span class="w"> </span><span class="s">"core_struct.vh"</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">module</span><span class="w"> </span><span class="n">ALU</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span><span class="k">input</span><span class="w">  </span><span class="n">CorePack</span><span class="o">::</span><span class="n">data_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span><span class="k">input</span><span class="w">  </span><span class="n">CorePack</span><span class="o">::</span><span class="n">data_t</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">  </span><span class="k">input</span><span class="w">  </span><span class="n">CorePack</span><span class="o">::</span><span class="n">alu_op_enum</span><span class="w">  </span><span class="n">alu_op</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">  </span><span class="k">output</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">data_t</span><span class="w"> </span><span class="n">res</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="p">);</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::*</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">  </span><span class="c1">// fill your code</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<p>大家可以参考如下电路图：</p>
+<p><img alt="alu" src="../img/project-1/alu.png"/></p>
+<h4 id="cmp">Cmp<a class="headerlink" href="#cmp" title="Permanent link">¶</a></h4>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="no">`include</span><span class="s">"core_struct.vh"</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="k">module</span><span class="w"> </span><span class="n">Cmp</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">data_t</span><span class="w"> </span><span class="n">a</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">data_t</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">cmp_op_enum</span><span class="w"> </span><span class="n">cmp_op</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">cmp_res</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="p">);</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::*</span><span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span><span class="c1">// fill your code</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<p>大家可以参考如下电路图：</p>
+<p><img alt="cmp" src="../img/project-1/cmp.png"/></p>
+<p>多路选择器的电路开销总是最大的，大家可以思考如何对电路进行优化，用更少的电器元件得到同样的电路</p>
+<h4 id="instruction-selection">Instruction Selection<a class="headerlink" href="#instruction-selection" title="Permanent link">¶</a></h4>
+<p>由于内存访存读回的数据为是<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位，因此需要根据<span class="heti-skip"><span class="heti-spacing"> </span>PC<span class="heti-spacing"> </span></span>来进一步判断需要执行的是高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位令还是低<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位，选择结果传给译码模块。</p>
+<h4 id="data-package">Data Package<a class="headerlink" href="#data-package" title="Permanent link">¶</a></h4>
+<p>根据传入的寄存器中数据以及访存地址来进行对应的移位操作，使写入内存的数据的地址对应到所需的地址处，打包后的数据输入给内存模块。</p>
+<h4 id="data-mask-generation">Data Mask Generation<a class="headerlink" href="#data-mask-generation" title="Permanent link">¶</a></h4>
+<p>根据要写入数据的宽度以及访存地址来决定要打包后的数据中的有效位。</p>
+<h4 id="data-truncation">Data Truncation<a class="headerlink" href="#data-truncation" title="Permanent link">¶</a></h4>
+<p>根据要读取数据的宽度对访存得到的<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位数据进行调整。</p>
+<h4 id="coredatapath">Core（DataPath）<a class="headerlink" href="#coredatapath" title="Permanent link">¶</a></h4>
+<p>在你的控制通路中集成上面实现的这些模块，声明为<span class="heti-skip"><span class="heti-spacing"> </span>Core<span class="heti-spacing"> </span></span>模块。<span>Core<span class="heti-spacing"> </span></span>模块有两个<span class="heti-skip"><span class="heti-spacing"> </span>mem_ift<span class="heti-spacing"> </span></span>的内存接口和<span class="heti-skip"><span class="heti-spacing"> </span>DRAM<span class="heti-spacing"> </span></span>连接，其中<span class="heti-skip"><span class="heti-spacing"> </span>imem_ift<span class="heti-spacing"> </span></span>仅使用读请求和读响应通道，向<span class="heti-skip"><span class="heti-spacing"> </span>DRAM<span class="heti-spacing"> </span></span>请求指令；<span>dmem_ift<span class="heti-spacing"> </span></span>使用四个通道分别进行<span class="heti-skip"><span class="heti-spacing"> </span>DRAM<span class="heti-spacing"> </span></span>的读写操作。</p>
+<p>该模块的顶层引脚如下，<span>cosim_core_info<span class="heti-spacing"> </span></span>结构复杂连接<span class="heti-skip"><span class="heti-spacing"> </span>core<span class="heti-spacing"> </span></span>内部的数据信息，这些信息会被用于差分测试和硬件调试，请务必仔细连接。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span>
+<span class="normal"><a href="#__codelineno-5-30">30</a></span>
+<span class="normal"><a href="#__codelineno-5-31">31</a></span>
+<span class="normal"><a href="#__codelineno-5-32">32</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="no">`include</span><span class="w"> </span><span class="s">"core_struct.vh"</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="k">module</span><span class="w"> </span><span class="n">Core</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">clk</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="n">rst</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">    </span><span class="n">Mem_ift</span><span class="p">.</span><span class="n">Master</span><span class="w"> </span><span class="n">imem_ift</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="n">Mem_ift</span><span class="p">.</span><span class="n">Master</span><span class="w"> </span><span class="n">dmem_ift</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::</span><span class="n">CoreInfo</span><span class="w"> </span><span class="n">cosim_core_info</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="p">);</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">    </span><span class="n">import</span><span class="w"> </span><span class="n">CorePack</span><span class="o">::*</span><span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="w">    </span><span class="c1">// fill your code</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">pc</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="p">;</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">inst</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">32</span><span class="mb">'b0</span><span class="p">,</span><span class="n">inst</span><span class="p">};</span><span class="w">   </span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">rs1_id</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">59</span><span class="mb">'b0</span><span class="p">,</span><span class="w"> </span><span class="n">rs1</span><span class="p">};</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">rs1_data</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">read_data_1</span><span class="p">;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">rs2_id</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">59</span><span class="mb">'b0</span><span class="p">,</span><span class="w"> </span><span class="n">rs2</span><span class="p">};</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">rs2_data</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">read_data_2</span><span class="p">;</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">alu</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">alu_res</span><span class="p">;</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">mem_addr</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">dmem_ift</span><span class="p">.</span><span class="n">r_request_bits</span><span class="p">.</span><span class="n">raddr</span><span class="p">;</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">mem_we</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">63</span><span class="mb">'b0</span><span class="p">,</span><span class="w"> </span><span class="n">dmem_ift</span><span class="p">.</span><span class="n">w_request_valid</span><span class="p">};</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">mem_wdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dmem_ift</span><span class="p">.</span><span class="n">w_request_bits</span><span class="p">.</span><span class="n">wdata</span><span class="p">;</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">mem_rdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dmem_ift</span><span class="p">.</span><span class="n">r_reply_bits</span><span class="p">.</span><span class="n">rdata</span><span class="p">;</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">rd_we</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">63</span><span class="mb">'b0</span><span class="p">,</span><span class="w"> </span><span class="n">we_reg</span><span class="p">};</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">rd_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">59</span><span class="mb">'b0</span><span class="p">,</span><span class="w"> </span><span class="n">rd</span><span class="p">};</span><span class="w"> </span>
+<a id="__codelineno-5-28" name="__codelineno-5-28"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">rd_data</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">wb_val</span><span class="p">;</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">br_taken</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">63</span><span class="mb">'b0</span><span class="p">,</span><span class="w"> </span><span class="n">br_taken</span><span class="p">};</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">cosim_core_info</span><span class="p">.</span><span class="n">npc</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">next_pc</span><span class="p">;</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31"></a>
+<a id="__codelineno-5-32" name="__codelineno-5-32"></a><span class="k">endmodule</span>
+</code></pre></div></td></tr></table></div>
+<p>注意上述<code>cosim_core_info</code>信号中要求必须要引出的有：pc、inst、rd_we、rd_id、rd_data。</p>
+<h3 id="_11">文件结构<a class="headerlink" href="#_11" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>本实验的文件数目较多，为了方便同学们进行文件管理，我们设置了如下的文件结构：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>.
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>├── repo
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>│   └── sys-project
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>│       ├── general
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>│       ├── include
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>│       ├── ip
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>│       ├── sim
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>│       ├── syn
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>│       ├── tcl
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>│       └── testcode
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>│           └── testcase
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>└── src
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a>    └── project
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>        ├── include
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>        ├── Makefile
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>        └── submit
+</code></pre></div></td></tr></table></div>
+<h4 id="_12">硬件部分<a class="headerlink" href="#_12" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<ul>
+<li>general：提供给同学们的既用于仿真、也用于综合的代码</li>
+<li>include：提供的一些头文件</li>
+<li>ip：用于差分测试的<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>静态链接库和头文件，和<span class="heti-skip"><span class="heti-spacing"> </span>sim<span class="heti-spacing"> </span></span>文件配合进行差分测试<ul>
+<li>当前<span class="heti-skip"><span class="heti-spacing"> </span>ip<span class="heti-spacing"> </span></span>文件夹提供的静态链接库是<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>架构的，如果部分同学不是<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>的机器，请在<span class="heti-skip"><span class="heti-spacing"> </span>repo<span class="heti-spacing"> </span></span>文件夹运行 <code>make ip_gen</code> 自行编译静态链接库</li>
+</ul>
+</li>
+<li>sim：仅用于仿真的<span><span class="heti-spacing"> </span>v</span>、sv、<span>cpp<span class="heti-spacing"> </span></span>代码</li>
+<li>syn：仅用于综合的<span><span class="heti-spacing"> </span>v</span>、xcd、<span>sv<span class="heti-spacing"> </span></span>代码</li>
+<li>tcl：<span>vivado<span class="heti-spacing"> </span></span>用于综合的脚本</li>
+</ul>
+<h4 id="_13">软件部分<a class="headerlink" href="#_13" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p><span>testcode<span class="heti-spacing"> </span></span>文件夹下：</p>
+<ul>
+<li><span>testcase:<span class="heti-spacing"> </span></span>初始化<span class="heti-skip"><span class="heti-spacing"> </span>0-0x1000<span class="heti-spacing"> </span></span>的内存，进行简单的功能测试</li>
+<li>sample：简单测试样例，用于熟悉实验结构</li>
+<li>rtype：测试<span class="heti-skip"><span class="heti-spacing"> </span>R<span class="heti-spacing"> </span></span>型指令</li>
+<li>itype：测试<span class="heti-skip"><span class="heti-spacing"> </span>I<span class="heti-spacing"> </span></span>型指令</li>
+<li>stype：测试<span class="heti-skip"><span class="heti-spacing"> </span>S<span class="heti-spacing"> </span></span>型指令</li>
+<li>btype：测试<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>型指令</li>
+<li>utype：测试<span class="heti-skip"><span class="heti-spacing"> </span>U<span class="heti-spacing"> </span></span>型指令</li>
+<li>jyupe：测试<span class="heti-skip"><span class="heti-spacing"> </span>J<span class="heti-spacing"> </span></span>型指令</li>
+<li>remain：测试其他类型的指令</li>
+<li>full：测试所有类型的指令</li>
+</ul>
+<p>编译方式如下，不过多数时候不需要手动执行<span class="heti-skip"><span class="heti-spacing"> </span>Makefile<span class="heti-spacing"> </span></span>进行编译：</p>
+<ul>
+<li>运行 <code>make -C testcase TESTCASE=xxx</code>，编译其中指定的测试样例<ul>
+<li>例如 <code>TESTCASE=sample</code>，编译<span class="heti-skip"><span class="heti-spacing"> </span>sample<span class="heti-spacing"> </span></span>文件夹的测试样例，得到<span><span class="heti-spacing"> </span>sample.hex</span></li>
+<li>如果需要得到综合下板的测试样例，则运行 <code>make -C testcase board TESTCASE=xxx</code>，这样执行完毕可以顺利死循环在<span class="heti-skip"><span class="heti-spacing"> </span>pass<span class="heti-spacing"> </span></span>指令处</li>
+</ul>
+</li>
+</ul>
+<h4 id="_14">工作区管理<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<ul>
+<li><span>src/project<span class="heti-spacing"> </span></span>是用于编译综合的工作区，<span>project<span class="heti-spacing"> </span></span>的各个子文件夹作用如下：<ul>
+<li><span>include:<span class="heti-spacing"> </span></span>用于存放用户自己编写的头文件</li>
+<li><span>submit:<span class="heti-spacing"> </span></span>用于实现用户自己的硬件部分代码，包括编写自定义模块和补全我们提供的模块</li>
+<li><span>Makefile:<span class="heti-spacing"> </span></span>编译综合的脚本</li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>即<span class="heti-skip"><span class="heti-spacing"> </span>src/project<span class="heti-spacing"> </span></span>是实际需要编写你自己的代码、编译运行、提交的工作区。而<span class="heti-skip"><span class="heti-spacing"> </span>repo/sys-project<span class="heti-spacing"> </span></span>是实验框架，不需要也不可以修改。</p>
+</div>
+<h4 id="makefile"><span>Makefile<span class="heti-spacing"> </span></span>脚本功能<a class="headerlink" href="#makefile" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<ul>
+<li>make verilate：进行不下板仿真，运行在<span class="heti-skip"><span class="heti-spacing"> </span>repo/sys-project/testcode<span class="heti-spacing"> </span></span>中执行 <code>make sim</code> 后得到的测试代码</li>
+<li>make board_sim：进行下板仿真，运行在<span class="heti-skip"><span class="heti-spacing"> </span>.../testcode<span class="heti-spacing"> </span></span>中执行 <code>make board</code> 后得到的测试代码</li>
+<li>make wave：<span>gtkwave<span class="heti-spacing"> </span></span>查看波形</li>
+<li>make bitstream：生成<span class="heti-skip"><span class="heti-spacing"> </span>bit<span class="heti-spacing"> </span></span>流</li>
+<li>make vivado：打开<span><span class="heti-spacing"> </span>vivado</span></li>
+</ul>
+<p>希望这些脚本的改动可以方便大家编译安装工具、进行仿真测试、进行综合下板，不过更希望大家可以仔细阅读这些脚本，从中学习到更多的知识。如果大家有更好的管理方法来提高脚本的质量，也欢迎和助教们联系。</p>
+<h4 id="_15">未完待续<a class="headerlink" href="#_15" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>欲知后事如何，请看下个实验文档</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: 第二部分" class="md-footer__link md-footer__link--prev" href="../lab5-2/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                第二部分
+              </div>
+</div>
+</a>
+<a aria-label="Next: 第二部分" class="md-footer__link md-footer__link--next" href="../project-2/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                第二部分
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../js/katex.js"></script>
+</body>
+</html>
